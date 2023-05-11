@@ -1,5 +1,198 @@
 {% extends 'index.html' %}
+{% load static %}
 <title>{% block title %} KicksKorner | Store {% endblock %}</title>
 
 {% block modal-advertise %}
 {% endblock modal-advertise %}
+
+{% block maincontent %}
+<main>
+    <div id="carousel-home">
+        <div class="owl-carousel owl-theme">
+            <div class="owl-slide cover" style="background-image: url({% static 'assets/img/slides/1.jpg' %});">
+                <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                    <div class="container">
+                        <div class="row justify-content-center justify-content-md-end">
+                            <div class="col-lg-6 static">
+                                <div class="slide-text text-end white">
+                                    <h2 class="owl-slide-animated owl-slide-title">Attack Air<br>Max 720 Sage Low</h2>
+                                    <p class="owl-slide-animated owl-slide-subtitle">
+                                        Limited items available at this price
+                                    </p>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="{% url 'store' %}" role="button">Shop Now</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/owl-slide-->
+            <div class="owl-slide cover" style="background-image: url({% static 'assets/img/slides/2.jpg' %});">
+                <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                    <div class="container">
+                        <div class="row justify-content-center justify-content-md-start">
+                            <div class="col-lg-6 static">
+                                <div class="slide-text white">
+                                    <h2 class="owl-slide-animated owl-slide-title"> Air Jordan 4<br>Kaws Cool Grey</h2>
+                                    <p class="owl-slide-animated owl-slide-subtitle">
+                                        Limited items available at this price
+                                    </p>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="http://127.0.0.1:8000/store/jordan/" role="button">Shop Now</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/owl-slide-->
+            <div class="owl-slide cover" style="background-image: url({% static 'assets/img/slides/3.jpg' %});">
+                <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                    <div class="container">
+                        <div class="row justify-content-center justify-content-md-start">
+                            <div class="col-lg-12 static">
+                                <div class="slide-text text-center white">
+                                    <h2 class="owl-slide-animated owl-slide-title">Travis scott<br>Nike SB Dunk low</h2>
+                                    <p class="owl-slide-animated owl-slide-subtitle">
+                                        Lightweight cushioning and durable support with a Phylon midsole
+                                    </p>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="http://127.0.0.1:8000/store/jordan/" role="button">Shop Now</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/owl-slide-->
+            </div>
+        </div>
+        <div id="icon_drag_mobile"></div>
+    </div>
+    <!--/carousel-->
+    
+    <div class="container margin_60_35">
+        <div class="main_title">
+            <h2>Top Selling</h2>
+            <span>Products</span>
+            <p>Top selling products of all time</p>
+        </div>
+        <div class="row small-gutters">
+            {% for product in products %}
+            <div class="col-6 col-md-4 col-xl-3">
+                <div class="grid_item">
+                    <span class="ribbon new">{{product.ribbon}}</span>
+                    <figure>
+                        <a href="{{product.get_url}}">
+                            <img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}" alt="">
+                            <img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}" alt="">
+                        </a>
+                    </figure>
+                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+                    <a href="{{product.get_url}}">
+                        <h3>{{ product.product_name }}</h3>
+                    </a>
+                    <div class="price_box">
+                        <span class="new_price">Rs. {{ product.selling_price }}</span>
+                        <span class="old_price">{{ product.discounted_price }}</span>
+                    </div>
+                    <ul>
+                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                        <li class="btn_add_to_cart"><a href="{% url 'add_cart' product.id %}" class="tooltip-1 btn_1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                    </ul>
+                </div>
+                <!-- /grid_item -->
+            </div>
+            {% endfor %}
+            <!-- /col -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+
+    <div class="featured lazy" data-bg="url({% static 'assets/img/23.jpg' %})">
+        <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+            <div class="container margin_60">
+                <div class="row justify-content-center justify-content-md-start">
+                    <div class="col-lg-6 wow" data-wow-offset="150">
+                        <h3>Air jordan 4<br>kaws cool grey</h3>
+                        <p>Lightweight cushioning and durable support with a Phylon midsole</p>
+                        <div class="feat_text_block">
+                            <div class="price_box">
+                                <span class="new_price">Rs. 5600</span>
+                                <span class="old_price">Rs. 7000</span>
+                            </div>
+                            <a class="btn_1" href="{% url 'store' %}" role="button">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /featured -->
+
+    <div class="container margin_60_35">
+        <div class="main_title">
+            <h2>Featured</h2>
+            <span>Products</span>
+            <p>Top Featured Shoes You Might Like</p>
+        </div>
+        <div class="owl-carousel owl-theme products_carousel">
+            {% for product in products %}
+            <div class="item">
+                <div class="grid_item">
+                    <span class="ribbon new">{{product.ribbon}}</span>
+                    <figure>
+                        <a href="{{product.get_url}}">
+                            <img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}" alt="">
+                            <img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}" alt="">
+                        </a>
+                    </figure>
+                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+                    <a href="{{product.get_url}}">
+                        <h3>{{ product.product_name }}</h3>
+                    </a>
+                    <div class="price_box">
+                        <span class="new_price">Rs. {{ product.selling_price }}</span>
+                        <span class="old_price">{{ product.discounted_price }}</span>
+                    </div>
+                    <ul>
+                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                    </ul>
+                </div>
+                <!-- /grid_item -->
+            </div>
+            {% endfor %}
+            <!-- /item -->
+        </div>
+        <!-- /products_carousel -->
+    </div>
+    <!-- /container -->
+
+    <div class="bg_gray">
+        <div class="container margin_30">
+            <div id="brands" class="owl-carousel owl-theme">
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/logo_1.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/logo_2.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/logo_3.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/logo_4.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/logo_5.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/logo_6.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item --> 
+            </div><!-- /carousel -->
+        </div><!-- /container -->
+    </div>
+    <!-- /bg_gray -->
+
+</main>
+{% endblock maincontent %}
+<!-- /main -->
