@@ -85,7 +85,3 @@ def cart(request, total=0, quantity=0, cart_items=None):
 
     }
     return render (request, templates_name, context)
-
-
-def error(request):
-    return render(request, 'store/404.html')
