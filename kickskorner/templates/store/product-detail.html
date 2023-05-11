@@ -1,0 +1,227 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}KicksKorner | Product Detail {% endblock %}
+
+{% block specific-css %}
+<link href="{% static 'css/product_page.css' %}" rel="stylesheet">
+{% endblock specific-css %}
+
+
+{% block maincontent %}
+<main>
+    <div class="container margin_30">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="all">
+                    <div class="slider">
+                        <div class="owl-carousel owl-theme main">
+                            <div style="background-image: url({{single_product.image1.url}});" class="item-box"></div>
+                            <div style="background-image: url({{single_product.image2.url}});" class="item-box"></div>
+                            <div style="background-image: url({{single_product.image3.url}});" class="item-box"></div>
+                            <div style="background-image: url({{single_product.image4.url}});" class="item-box"></div>
+                            <div style="background-image: url({{single_product.image5.url}});" class="item-box"></div>
+                            <div style="background-image: url({{single_product.image6.url}});" class="item-box"></div>
+                        </div>
+                        <div class="left nonl"><i class="ti-angle-left"></i></div>
+                        <div class="right"><i class="ti-angle-right"></i></div>
+                    </div>
+                    <div class="slider-two">
+                        <div class="owl-carousel owl-theme thumbs">
+                            <div style="background-image: url({{single_product.image1.url}});" class="item active"></div>
+                            <div style="background-image: url({{single_product.image2.url}});" class="item"></div>
+                            <div style="background-image: url({{single_product.image3.url}});" class="item"></div>
+                            <div style="background-image: url({{single_product.image4.url}});" class="item"></div>
+                            <div style="background-image: url({{single_product.image5.url}});" class="item"></div>
+                            <div style="background-image: url({{single_product.image6.url}});" class="item"></div>
+                        </div>
+                        <div class="left-t nonl-t"></div>
+                        <div class="right-t"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Category</a></li>
+                        <li>Page active</li>
+                    </ul>
+                </div>
+                <!-- /page_header -->
+                <div class="prod_info">
+                    <h1>{{single_product.product_name}}</h1>
+                    <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i><em>4 reviews</em></span>
+                    <p><small>{{single_product.product_name}}</small><br>{{single_product.description}}</p>
+                    <div class="prod_options">
+                        <div class="row">
+                            <label class="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
+                            <div class="col-xl-4 col-lg-5 col-md-6 col-6 colors">
+                                <ul>
+                                    <li><a href="#0" class="color color_1 active"></a></li>
+                                    <li><a href="#0" class="color color_2"></a></li>
+                                    <li><a href="#0" class="color color_3"></a></li>
+                                    <li><a href="#0" class="color color_4"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Size</strong> - Size Guide <a href="#0" data-bs-toggle="modal" data-bs-target="#size-modal"><i class="ti-help-alt"></i></a></label>
+                            <div class="col-xl-4 col-lg-5 col-md-6 col-6">
+                                <div class="custom-select-form">
+                                    <select class="wide">
+                                        <option value="" selected>38</option>
+                                        <option value="">39</option>
+                                        <option value=" ">40</option>
+                                        <option value=" ">41</option>
+                                        <option value=" ">42</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="price_main"><span class="new_price">Rs. {{single_product.selling_price}}</span>
+                                <span class="percentage">{{single_product.product_detail_ribbon}}</span>
+                                <span class="old_price">{{single_product.discounted_price}}</span></div>
+                        </div>
+                        {% if single_product.stock <= 0 %}
+                        <h4 class="text-danger" style="margin-top:25px;">Out of Stock</h4>
+                        <hr>
+                        {% else %}
+                        <div class="col-lg-4 col-md-6">
+                            <div class="btn_add_to_cart"><a href="#0" class="btn_1">Add to Cart</a></div>
+                        </div>
+                        {% endif %}
+                    </h5>
+                </div>
+                <!-- /prod_info -->
+                <div class="product_actions">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="ti-heart"></i><span>Add to Wishlist</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /product_actions -->
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+    
+
+    <div class="container margin_60_35">
+        <div class="main_title">
+            <h2>Related</h2>
+            <span>Products</span>
+            <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+        </div>
+        <div class="owl-carousel owl-theme products_carousel">
+            <div class="item">
+                <div class="grid_item">
+                    <span class="ribbon new">New</span>
+                    <figure>
+                        <a href="product_detail-1.html">
+                            <img class="owl-lazy" src="{% static 'assets/img/products/product_placeholder_square_medium.jpg' %}" data-src="{% static 'assets/img/products/shoes/4.jpg' %}" alt="">
+                        </a>
+                    </figure>
+                    <a href="product_detail-1.html">
+                        <h3>ACG React Terra</h3>
+                    </a>
+                    <div class="price_box">
+                        <span class="new_price">$110.00</span>
+                    </div>
+                    <ul>
+                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                    </ul>
+                </div>
+                <!-- /grid_item -->
+            </div>
+            <!-- /item -->
+        </div>
+        <!-- /products_carousel -->
+    </div>
+    <!-- /container -->
+
+    <div class="feat">
+        <div class="container">
+            <ul>
+                <li>
+                    <div class="box">
+                        <i class="ti-gift"></i>
+                        <div class="justify-content-center">
+                            <h3>Free Shipping</h3>
+                            <p>For all oders over $99</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <i class="ti-wallet"></i>
+                        <div class="justify-content-center">
+                            <h3>Secure Payment</h3>
+                            <p>100% secure payment</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="box">
+                        <i class="ti-headphone-alt"></i>
+                        <div class="justify-content-center">
+                            <h3>24/7 Support</h3>
+                            <p>Online top support</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/feat-->
+
+</main>
+<!-- /main -->
+
+<!-- Back to top button -->
+<div id="toTop"></div>
+
+	<div class="top_panel">
+	    <div class="container header_panel">
+	        <a href="#0" class="btn_close_top_panel"><i class="ti-close"></i></a>
+	        <label>1 product added to cart</label>
+	    </div>
+	    <!-- /header_panel -->
+	   <div class="item">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-md-7">
+	                    <div class="item_panel">
+	                        <figure>
+	                            <img src="{{single_product.image1.url}}" data-src="{{single_product.image1.url}}" class="lazy" alt="">
+	                        </figure>
+	                        <h4>{{single_product.product_name}}</h4>
+	                        <div class="price_panel"><span class="new_price">Rs. {{single_product.selling_price}}</span><span class="percentage">{{single_product.product_detail_ribbon}}</span> <span class="old_price">{{single_product.discounted_price}}</span></div>
+	                    </div>
+	                </div>
+	                <div class="col-md-5 btn_panel">
+	                    <a href="{% url 'add_cart' single_product.id %}" class="btn_1 outline">View cart</a> <a href="checkout.html" class="btn_1">Checkout</a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- /item -->
+	</div>
+	<!-- /add_cart_panel -->
+{% endblock maincontent %}
+
+{% block modal-advertise %}
+{% endblock modal-advertise %}
+
+
+{% block specific-js %}
+<!-- SPECIFIC SCRIPTS -->
+<script src="{% static 'js/carousel_with_thumbs.js' %}"></script>
+{% endblock specific-js %}
+

@@ -1,0 +1,226 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block specific-css %}
+	<!-- SPECIFIC CSS -->
+    <link href="{% static 'css/listing.css' %}" rel="stylesheet">
+{% endblock specific-css %}
+
+{% block modal-advertise %}
+{% endblock modal-advertise %}
+
+{% block maincontent %}
+<main>
+    <div class="top_banner">
+        <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.3)">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Category</a></li>
+                    </ul>
+                </div>
+                <h1>Shoes - By Categories</h1>
+            </div>
+        </div>
+        <img src="{% static 'assets/img/bg_cat_shoes.jpg' %}" class="img-fluid" alt="">
+    </div>
+    <!-- /top_banner -->
+        <div id="stick_here"></div>		
+        <div class="toolbox elemento_stick">
+            <div class="container">
+            <ul class="clearfix">
+                <li>
+                    <!-- <div class="sort_select">
+                        <select name="sort" id="sort">
+                                <option value="popularity" selected="selected">Sort by popularity</option>
+                                <option value="rating">Sort by average rating</option>
+                                <option value="date">Sort by newness</option>
+                                <option value="price">Sort by price: low to high</option>
+                                <option value="price-desc">Sort by price: high to 
+                        </select>
+                    </div> -->
+                </li>
+                <li>
+                    <a href="#0"><i class="ti-view-grid"></i></a>
+                    <a href="listing-row-1-sidebar-left.html"><i class="ti-view-list"></i></a>
+                </li>
+                <li>
+                    <a href="#0" class="open_filters">
+                        <i class="ti-filter"></i><span>Filters</span>
+                    </a>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <!-- /toolbox -->
+        <div class="container margin_30">
+            <h2>Results For <b></b></h2>
+            <br>
+        
+        <div class="row">
+            <aside class="col-lg-3" id="sidebar_fixed">
+                <div class="filter_col">
+                    <div class="inner_bt"><a href="#" class="open_filters"><i class="ti-close"></i></a></div>
+                    <div class="filter_type version_2">
+                        <h4><a href="#filter_1" data-bs-toggle="collapse" class="opened">Categories</a></h4>
+                        <div class="collapse show" id="filter_1">
+                            <ul>
+                                <li>
+                                    <label class="container_check"><a href="{% url 'store' %}" style="color:rgb(44, 44, 44);">
+                                        All Products</a><small></small>
+                                        <!-- <input type="checkbox">
+                                        <span class="checkmark"></span> -->
+                                    </label>
+                                </li>
+                                {% for category in links %}
+                                <li>
+                                    <label class="container_check"><a href="{{category.get_url}}" style="color:rgb(44, 44, 44);">
+                                        {{category.category_name}}</a><small></small>
+                                        <!-- <input type="checkbox">
+                                        <span class="checkmark"></span> -->
+                                    </label>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <!-- /filter_type -->
+                    </div>
+                    <!-- /filter_type -->
+                    <div class="filter_type version_2">
+                        <h4><a href="#filter_2" data-bs-toggle="collapse" class="opened">Color</a></h4>
+                        <div class="collapse show" id="filter_2">
+                            <ul>
+                                <li>
+                                    <label class="container_check">Blue <small></small>
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check">Red <small></small>
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check">Orange <small></small>
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check">Black <small></small>
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /filter_type -->
+                    <div class="filter_type version_2">
+                        <h4><a href="#filter_4" data-bs-toggle="collapse" class="closed">Price</a></h4>
+                        <div class="collapse" id="filter_4">
+                            <ul>
+                                <li>
+                                    <label class="container_check">$0 — $50<small>11</small>
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check">$50 — $100<small>08</small>
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check">$100 — $150<small>05</small>
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="container_check">$150 — $200<small>18</small>
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /filter_type -->
+                    <div class="buttons">
+                        <a href="" class="btn_1">Filter</a> <a href="#0" class="btn_1 gray">Reset</a>
+                    </div>
+                </div>
+            </aside>
+            <!-- /col -->
+            <div class="col-lg-9">
+                <div class="row small-gutters">
+				{% for product in products %}
+                    <div class="col-6 col-md-4">
+                        <div class="grid_item">
+                            <span class="ribbon new">{{product.ribbon}}</span>
+                            <figure>
+                                <a href="{{product.get_url}}">
+                                    <img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}" alt="">
+								    <img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}" alt="">
+                                </a>
+                            </figure>
+                            <a href="{{product.get_url}}">
+                                <h3>{{ product.product_name }}</h3>
+                            </a>
+                            <div class="price_box">
+                                <span class="new_price">Rs. {{ product.selling_price }}</span>
+							<span class="old_price">{{ product.discounted_price }}</span>
+
+                            </div>
+                            <ul>
+                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+                            </ul>
+                        </div>
+                        <!-- /grid_item -->
+                    </div>
+				{% endfor %}
+                    <!-- /col -->
+                </div>
+                <!-- /row -->
+                <div class="pagination__wrapper">
+                    <ul class="pagination">
+                        <li><a href="#0" class="prev" title="previous page">&#10094;</a></li>
+                        <li>
+                            <a href="#0" class="active">1</a>
+                        </li>
+                        <li>
+                            <a href="#0">2</a>
+                        </li>
+                        <li>
+                            <a href="#0">3</a>
+                        </li>
+                        <li>
+                            <a href="#0">4</a>
+                        </li>
+                        <li><a href="#0" class="next" title="next page">&#10095;</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /col -->
+        </div>
+        <!-- /row -->			
+            
+    </div>
+    <!-- /container -->
+</main>
+<!-- /main -->
+{% endblock %}
+
+
+	
+{% block specific-js %}
+<!-- SPECIFIC SCRIPTS -->
+<script src="{% static 'js/sticky_sidebar.min.js' %}"></script>
+<script src="{% static 'js/specific_listing.js' %}"></script>
+{% endblock specific-js %}

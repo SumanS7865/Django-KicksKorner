@@ -1,0 +1,175 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}KicksKorner | About Us {% endblock %}
+
+
+{% block specific-css %}
+<link href="{% static 'css/about.css' %}" rel="stylesheet">
+{% endblock specific-css %}
+
+
+{% block maincontent %}
+<main class="bg_gray">
+    <div class="container margin_60_35 add_bottom_30">
+        <div class="main_title">
+            <h2>About KicksKorner</h2>
+            <p>Welcome to our website! Our goal is to provide you with a
+                seamless online shopping experience,from browsing our extensive collection of shoes to checking
+                out and receiving your order.</p>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-5">
+                <div class="box_about">
+                    <h2>Top Products</h2>
+                    <p class="lead"> we offer a wide variety of high-quality shoes from top brands in the industry. </p>
+                    <p>Classic sneaker line with signature air cushioning technology, available in models such as Air Max 90, Air Max 95, and Air Max 97. Running shoes designed for maximum comfort and support, but also great for everyday wear.</p>
+                    <img src="{% static 'assets/img/arrow_about.png' %}" alt="" class="arrow_1">
+                </div>
+            </div>
+            <div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
+                    <img src="{% static 'assets/img/about_1.svg' %}" alt="" class="img-fluid" width="350" height="268">
+            </div>
+        </div>
+        <!-- /row -->
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-5 pr-lg-5 text-center d-none d-lg-block">
+                    <img src="{% static 'assets/img/about_2.svg' %}" alt="" class="img-fluid" width="350" height="268">
+            </div>
+            <div class="col-lg-5">
+                <div class="box_about">
+                    <h2>Top Brands</h2>
+                    <p class="lead">we offer a variety of top shoe brands in the industry. Here are some of our top brands:</p>
+                    <p>Nike: Nike is one of the most popular athletic shoe brands in the world, offering a wide variety of shoes for different sports and activities. <br>
+                        Converse: Converse is an iconic sneaker brand, famous for its Chuck Taylor All Star shoes that have been popular for decades.
+                    </p>
+                    <img src="{% static 'assets/img/arrow_about.png' %}" alt="" class="arrow_2">
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+        <div class="row justify-content-center align-items-center ">
+            <div class="col-lg-5">
+                <div class="box_about">
+                    <h2>+1000 products</h2>
+                    <p class="lead"> we offer an extensive range of shoes with over 1000 products to choose from.</p>
+                    <p> we pride ourselves on having a vast selection of high-quality shoes from top brands in the industry. With over 1000 products to choose from, we have something for everyone, whether you're looking for athletic shoes, casual sneakers, or boots.</p>
+                </div>
+
+            </div>
+            <div class="col-lg-5 pl-lg-5 text-center d-none d-lg-block">
+                    <img src="{% static 'assets/img/about_3.svg' %}" alt="" class="img-fluid" width="350" height="316">
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+
+    <div class="bg_white">
+        <div class="container margin_60_35">
+            <div class="main_title">
+                <h2>Why Choose KicksKorner</h2>
+                <p>KicksKorner is an online shoe store that offers a wide range of high-quality and stylish shoes</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="box_feat">
+                        <i class="ti-medall-alt"></i>
+                        <h3>+ 1000 Customers</h3>
+                        <p>We are grateful to have served over 1000 customers, and we strive to continue providing excellent service to each and every one of them. </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="box_feat">
+                        <i class="ti-help-alt"></i>
+                        <h3>H24 Support</h3>
+                        <p>Our H24 support team is available to answer any questions or concerns you may have, whether it's regarding a recent purchase, shipping status. </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="box_feat">
+                        <i class="ti-gift"></i>
+                        <h3>Great Sale Offers</h3>
+                        <p>We always strive to provide our customers with the best possible prices and deals on our high-quality shoes.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="box_feat">
+                        <i class="ti-headphone-alt"></i>
+                        <h3>Help Direct Line</h3>
+                        <p>Our direct help line is available via phone or live chat, and our customer service team is trained to assist you with any questions you may have. </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="box_feat">
+                        <i class="ti-wallet"></i>
+                        <h3>Secure Payments</h3>
+                        <p>We offer a variety of payment, we use industry-standard security measures to ensure all payment information is kept secure.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="box_feat">
+                        <i class="ti-comments"></i>
+                        <h3>Support via Chat</h3>
+                        <p>we offer customer support via chat to make it as convenient as possible for our customers to get the assistance they need.</p>
+                    </div>
+                </div>
+            </div>
+            <!--/row-->
+        </div>
+    </div>
+    <!-- /bg_white -->
+
+<div class="container margin_60">
+    <div class="main_title">
+        <h2>Meet KicksKorner Staff</h2>
+        <p>Meet KicksKorner Staff</p>
+    </div>
+    <div class="owl-carousel owl-theme carousel_centered">
+        <div class="item">
+            <a href="https://www.facebook.com/SSpk07/">
+                <div class="title">
+                    <h4>Suman Sapkota<em>Founder</em></h4>
+                </div><img src="{% static 'assets/img/staff/suman.jpg' %}" alt="">
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://instagram.com/lowkey_nishan/">
+                <div class="title">
+                    <h4>Ranjit Rijal<em>Marketing </em></h4>
+                </div><img src="{% static 'assets/img/staff/ranjit.jpg' %}" alt="">
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://www.facebook.com/santosh.ammai.3">
+                <div class="title">
+                    <h4>Santosh Ammai<em>Business strategist</em></h4>
+                </div><img src="{% static 'assets/img/staff/santosh.jpg' %}" alt="">
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://www.facebook.com/prabin.ghimire.980">
+                <div class="title">
+                    <h4>Pravin Ghimire<em>Customer Service</em></h4>
+                </div><img src="{% static 'assets/img/staff/pravin2.jpg' %}" alt="">
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://www.facebook.com/nissan.carkey.1">
+                <div class="title">
+                    <h4>Nissan Karki<em>Social Media Manager</em></h4>
+                </div><img src="{% static 'assets/img/staff/nissan.jpg' %}" alt="">
+            </a>
+        </div>
+    </div>
+    <!-- /carousel -->
+</div>
+<!-- /container -->
+</main>
+<!--/main-->
+{% endblock maincontent %}
+
+{% block modal-advertise %}
+{% endblock modal-advertise %}
+
+{% block specific-js %}
+{% endblock specific-js %}

@@ -1,0 +1,44 @@
+ /* index navbar hover css starts here */
+
+ .header__a:after{
+  background: none repeat scroll 0 0 transparent;
+  bottom: 20px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #FFC107;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.header__a:hover:after{
+  width: 100%; 
+  left: 0; 
+}
+
+
+
+/* .my-li:hover{
+  color: #fff;
+}
+.my-a::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFC107;
+  z-index: -1;
+  transition: 0.5s;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+}
+.my-a::before{
+  transform: scaleX(0);
+}
+.my-a:hover::before{
+  transform: scaleX(1); */
+/* } */
+ /* index navbar hover css ends here */

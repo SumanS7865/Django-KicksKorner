@@ -1,0 +1,81 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}KicksKorner | Account Detail {% endblock %}
+
+
+{% block specific-css %}
+<link href="{% static 'css/account.css' %}" rel="stylesheet">
+{% endblock specific-css %}
+
+
+{% block maincontent %}
+<main class="bg_gray">
+	
+		
+	<div class="container margin_30">
+		<div class="page_header">
+			<div class="breadcrumbs">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Category</a></li>
+					<li>Page active</li>
+				</ul>
+		</div>
+		<h1>Sign In or Create an Account</h1>
+	</div>
+	<!-- /page_header -->
+			<div class="row justify-content-center">
+			<div class="col-xl-6 col-lg-6 col-md-8">
+				<div class="box_account">
+					<h3 class="new_client">Signup</h3> <small class="float-right pt-2">* Required Fields</small>
+					<div class="form_container">
+					<form action="" method="POST">
+                        {% csrf_token %}
+						<div class="form-group">
+							<input type="text" class="form-control" name="username" id="username" placeholder="Username*">
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control" name="email" id="email" placeholder="Email*">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" name="password1" id="password_in_1" value="" placeholder="Password*">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" name="password2" id="password_in_2" value="" placeholder="Password*">
+						</div>
+						<hr>
+						<hr>
+						<div class="form-group">
+							<label class="container_check">Accept <a href="#0">Terms and conditions</a>
+								<input type="checkbox">
+								<span class="checkmark"></span>
+                                <a href="{% url 'loginform' %}" style="font-size: medium;"><label for="" class="container_check float-end"> Already Have an account? </label></a>
+							</label>
+						</div>
+						<div class="text-center"><input type="submit" value="Register" class="btn_1 full-width"></div>
+					</form>
+					</div>
+					<!-- /form_container -->
+				</div>
+				<!-- /box_account -->
+			</div>
+		</div>
+		<!-- /row -->
+		</div>
+		<!-- /container -->
+	</main>
+	<!--/main-->
+{% endblock maincontent %}
+
+
+{% block specific-js %}
+<script>
+    // Client type Panel
+		$('input[name="client_type"]').on("click", function() {
+		    var inputValue = $(this).attr("value");
+		    var targetBox = $("." + inputValue);
+		    $(".box").not(targetBox).hide();
+		    $(targetBox).show();
+		});
+</script>
+{% endblock specific-js %}
