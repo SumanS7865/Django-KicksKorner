@@ -4,6 +4,7 @@ from category.models import Category
 from carts.models import CartItem
 from carts.views import _cart_id
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.db.models import Q
 
 # Create your views here.
 def store(request):
@@ -69,4 +70,13 @@ def error(request):
 
 
 def search(request):
-    return HttpResponse('search page')
+    if 'keyword' in request.GET:
+        keyword = request.GET['keyword']
+        if keyword:
+            products = Product.objects.order_by('-created_date').filter(Q(description__icontains=keyword) | Q(product_name__icontains=keyword))
+
+    context = {
+        'products' : products,
+    }
+
+    return render(request, 'store/search.html', context)
