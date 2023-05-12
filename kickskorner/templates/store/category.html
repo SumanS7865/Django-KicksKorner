@@ -197,7 +197,7 @@
                         {% if products.has_previous %}
                         <li><a href="?page={{products.previous_page_number}}" class="prev" title="previous page">&#10094;</a></li>
                         {% else %}
-                        <li><a href="#" class="prev disabled" title="previous page">&#10094;</a></li>
+                        <li><a href="#" class="prev" disabled title="previous page">&#10094;</a></li>
                     {% endif %}
         
                         {% for i in products.paginator.page_range %}
@@ -215,7 +215,7 @@
                         {% if products.has_next %}
                             <li><a href="?page={{products.next_page_number}}" class="next" title="next page">&#10095;</a></li>
                         {% else %}
-                            <li><a href="" class="next disabled" title="next page">&#10095;</a></li>
+                            <li><a href="" class="next" disabled title="next page">&#10095;</a></li>
                         {% endif %}
                     </ul>
                     {% endif %}

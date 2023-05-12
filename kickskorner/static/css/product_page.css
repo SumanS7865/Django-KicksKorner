@@ -327,19 +327,16 @@
   left: 8px;
 }
 .prod_options .colors ul li a.color.color_1 {
-  background-color: #ffcc00;
+  background-color: #0621bd	;
 }
 .prod_options .colors ul li a.color.color_2 {
-  background-color: #ff9933;
+  background-color: #0621bd;
 }
 .prod_options .colors ul li a.color.color_3 {
-  background-color: #ff9966;
+  background-color: #0621bd;
 }
 .prod_options .colors ul li a.color.color_4 {
-  background-color: #ff9999;
-}
-.prod_options .colors ul li a.color.color_5 {
-  background-color: #ffcc00;
+  background-color: #0621bd;
 }
 .prod_options.version_2 {
   border: none;

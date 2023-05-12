@@ -6,6 +6,7 @@
 <link href="{% static 'css/product_page.css' %}" rel="stylesheet">
 {% endblock specific-css %}
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 {% block maincontent %}
 <main>
@@ -40,82 +41,86 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="breadcrumbs">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Category</a></li>
-                        <li>Page active</li>
-                    </ul>
-                </div>
-                <!-- /page_header -->
-                <div class="prod_info">
-                    <h1>{{single_product.product_name}}</h1>
-                    <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i><em>4 reviews</em></span>
-                    <p><small>{{single_product.product_name}}</small><br>{{single_product.description}}</p>
-                    <div class="prod_options">
-                        <div class="row">
-                            <label class="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
-                            <div class="col-xl-4 col-lg-5 col-md-6 col-6 colors">
-                                <ul>
-                                    <li><a href="#0" class="color color_1 active"></a></li>
-                                    <li><a href="#0" class="color color_2"></a></li>
-                                    <li><a href="#0" class="color color_3"></a></li>
-                                    <li><a href="#0" class="color color_4"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label class="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Size</strong> - Size Guide <a href="#0" data-bs-toggle="modal" data-bs-target="#size-modal"><i class="ti-help-alt"></i></a></label>
-                            <div class="col-xl-4 col-lg-5 col-md-6 col-6">
-                                <div class="custom-select-form">
-                                    <select class="wide">
-                                        <option value="" selected>38</option>
-                                        <option value="">39</option>
-                                        <option value=" ">40</option>
-                                        <option value=" ">41</option>
-                                        <option value=" ">42</option>
-                                    </select>
+                <form action="{% url 'add_cart' single_product.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Category</a></li>
+                            <li>Page active</li>
+                        </ul>
+                    </div>
+                    <!-- /page_header -->
+                    <div class="prod_info">
+                        <h1>{{single_product.product_name}}</h1>
+                        <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i><em>4 reviews</em></span>
+                        <p><small>{{single_product.product_name}}</small><br>{{single_product.description}}</p>
+                        <div class="prod_options">
+                            <div class="row">
+                                <label class="col-xl-5 col-lg-5  col-md-6 col-6 pt-0"><strong>Color</strong></label>
+                                <div class="col-xl-4 col-lg-5 col-md-6 col-6">
+                                    <div class="custom-select-form">
+                                        <select name="color" class="wide form-control" required>
+                                            <option value="" disabled selected>Select</option>
+                                            {% for i in single_product.variation_set.colors %}
+                                            <option value="{{i.variation_value | lower}}">{{i.variation_value | capfirst}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <label class="col-xl-5 col-lg-5 col-md-6 col-6"><strong>Size</strong></label>
+                                <div class="col-xl-4 col-lg-5 col-md-6 col-6">
+                                    <div class="custom-select-form">
+                                        <select name="size" class="wide size">
+                                            <option value="" disabled selected>Select</option>
+                                            {% for i in single_product.variation_set.sizes %}
+                                            <option value="{{ i.variation_value }}">{{i.variation_value}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
-                        
+                        <div class="row">
+                            <div class="col-lg-5 col-md-6">
+                                <div class="price_main"><span class="new_price">Rs. {{single_product.selling_price}}</span>
+                                    <span class="percentage">{{single_product.product_detail_ribbon}}</span>
+                                    <span class="old_price">{{single_product.discounted_price}}</span></div>
+                            </div>
+                            {% if single_product.stock <= 0 %}
+                            <h4 class="text-danger" style="margin-top:25px;">Out of Stock</h4>
+                            <hr>
+                            {% else %}
+                            {% if in_cart %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="btn btn-success"><a href="#0" class=""  style="color: white;">Added to Cart  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+                                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                                </svg></a></div><br><br>
+                            </div>
+                            <div class="btn_add_to_cart" ><a href="{% url 'cart' %}" class="btn_1">View Cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                            </svg></a></div>
+                            {% else %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="btn_add_to_cart"><button type="submit" class="btn_1">Add to Cart</button></div>
+                            </div>
+                            {% endif %}
+                            {% endif %}
+                        </h5>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-5 col-md-6">
-                            <div class="price_main"><span class="new_price">Rs. {{single_product.selling_price}}</span>
-                                <span class="percentage">{{single_product.product_detail_ribbon}}</span>
-                                <span class="old_price">{{single_product.discounted_price}}</span></div>
-                        </div>
-                        {% if single_product.stock <= 0 %}
-                        <h4 class="text-danger" style="margin-top:25px;">Out of Stock</h4>
-                        <hr>
-                        {% else %}
-                        {% if in_cart %}
-                        <div class="col-lg-4 col-md-6">
-                            <div class="btn btn-success"><a href="#0" class=""  style="color: white;">Added to Cart  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
-                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/>
-                              </svg></a></div><br><br>
-                        </div>
-                        <div class="btn_add_to_cart" ><a href="{% url 'cart' %}" class="btn_1">View Cart <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                          </svg></a></div>
-                        {% else %}
-                        <div class="col-lg-4 col-md-6">
-                            <div class="btn_add_to_cart"><a href="#0" class="btn_1">Add to Cart</a></div>
-                        </div>
-                        {% endif %}
-                        {% endif %}
-                    </h5>
-                </div>
-                <!-- /prod_info -->
-                <div class="product_actions">
-                    <ul>
-                        <li>
-                            <a href="#"><i class="ti-heart"></i><span>Add to Wishlist</span></a>
-                        </li>
-                    </ul>
-                </div>
+                    <!-- /prod_info -->
+                    <div class="product_actions">
+                        <ul>
+                            <li>
+                                <a href="#"><i class="ti-heart"></i><span>Add to Wishlist</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
                 <!-- /product_actions -->
             </div>
         </div>
@@ -196,41 +201,16 @@
 </main>
 <!-- /main -->
 
-<!-- Back to top button -->
-<div id="toTop"></div>
-suman
 
-	<div class="top_panel">
-	    <div class="container header_panel">
-	        <a href="#0" class="btn_close_top_panel"><i class="ti-close"></i></a>
-	        <label>1 product added to cart</label>
-	    </div>
-	    <!-- /header_panel -->
-	   <div class="item">
-	        <div class="container">
-	            <div class="row">
-	                <div class="col-md-7">
-	                    <div class="item_panel">
-	                        <figure>
-	                            <img src="{{single_product.image1.url}}" data-src="{{single_product.image1.url}}" class="lazy" alt="">
-	                        </figure>
-	                        <h4>{{single_product.product_name}}</h4>
-	                        <div class="price_panel"><span class="new_price">Rs. {{single_product.selling_price}}</span><span class="percentage">{{single_product.product_detail_ribbon}}</span> <span class="old_price">{{single_product.discounted_price}}</span></div>
-	                    </div>
-	                </div>
-	                <div class="col-md-5 btn_panel">
-	                    <a href="{% url 'add_cart' single_product.id %}" class="btn_1 outline">View cart</a> <a href="checkout.html" class="btn_1">Checkout</a>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    <!-- /item -->
-	</div>
-	<!-- /add_cart_panel -->
 {% endblock maincontent %}
 
 {% block modal-advertise %}
 {% endblock modal-advertise %}
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
 
 
 {% block specific-js %}

@@ -66,3 +66,7 @@ def about(request):
 
 def error(request):
     return render(request, 'store/404.html')
+
+
+def search(request):
+    return HttpResponse('search page')
