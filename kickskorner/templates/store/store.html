@@ -108,9 +108,13 @@
         </div>
         <!-- /row -->
         <div class="pagination__wrapper">
-            {% if products.has_other_page %}
+            {% if products.has_other_pages %}
             <ul class="pagination">
-                <li><a href="#0" class="prev" title="previous page">&#10094;</a></li>
+                {% if products.has_previous %}
+                <li><a href="?page-{{products.previous_page_number}}" class="prev" title="previous page">&#10094;</a></li>
+                {% else %}
+                <li><a href="#" class="prev disabled" title="previous page">&#10094;</a></li>
+                {% endif %}
                 <li>
                     <a href="#0" class="active">1</a>
                 </li>
