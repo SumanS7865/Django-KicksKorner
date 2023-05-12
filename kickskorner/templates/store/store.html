@@ -108,6 +108,7 @@
         </div>
         <!-- /row -->
         <div class="pagination__wrapper">
+            {% if products.has_other_page %}
             <ul class="pagination">
                 <li><a href="#0" class="prev" title="previous page">&#10094;</a></li>
                 <li>
@@ -124,6 +125,7 @@
                 </li>
                 <li><a href="#0" class="next" title="next page">&#10095;</a></li>
             </ul>
+            {% endif %}
         </div>
     </div>
     <!-- /container -->
