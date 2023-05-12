@@ -111,23 +111,28 @@
             {% if products.has_other_pages %}
             <ul class="pagination">
                 {% if products.has_previous %}
-                <li><a href="?page-{{products.previous_page_number}}" class="prev" title="previous page">&#10094;</a></li>
+                <li><a href="?page={{products.previous_page_number}}" class="prev" title="previous page">&#10094;</a></li>
                 {% else %}
                 <li><a href="#" class="prev disabled" title="previous page">&#10094;</a></li>
+            {% endif %}
+
+                {% for i in products.paginator.page_range %}
+                    {% if products.number == i %}
+                <li>
+                    <a href="" class="active">{{i}}</a>
+                </li>
+                    {% else %}
+                <li>
+                <a href="?page={{i}}" class="">{{i}}</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+
+                {% if products.has_next %}
+                    <li><a href="?page={{products.next_page_number}}" class="next" title="next page">&#10095;</a></li>
+                {% else %}
+                    <li><a href="" class="next disabled" title="next page">&#10095;</a></li>
                 {% endif %}
-                <li>
-                    <a href="#0" class="active">1</a>
-                </li>
-                <li>
-                    <a href="#0">2</a>
-                </li>
-                <li>
-                    <a href="#0">3</a>
-                </li>
-                <li>
-                    <a href="#0">4</a>
-                </li>
-                <li><a href="#0" class="next" title="next page">&#10095;</a></li>
             </ul>
             {% endif %}
         </div>

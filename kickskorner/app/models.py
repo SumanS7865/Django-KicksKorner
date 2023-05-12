@@ -10,7 +10,7 @@ class Product(models.Model):
     slug                    = models.SlugField(max_length=500, unique=True)
     description             = models.TextField(max_length=2000, blank=True)
     selling_price           = models.IntegerField(blank=True)
-    discounted_price        = models.IntegerField(blank=True)
+    discounted_price        = models.CharField(blank=True, max_length=100)
     product_detail_ribbon   =models.CharField(max_length=100,blank=True)
     ribbon                  = models.CharField(max_length=100, blank=True)
     image1                  = models.ImageField(upload_to='photos/products')

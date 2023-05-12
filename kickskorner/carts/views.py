@@ -72,8 +72,6 @@ def cart(request, total=0, quantity=0, cart_items=None):
     except Cart.DoesNotExist:
         pass  #just ignore
     templates_name = ['store/cart.html']
-    templates_name1 = ['index.html']
-
 
     context = {
         'total' : total,
