@@ -74,16 +74,40 @@
                                     <div class="thumb_cart">
                                         <img src="{{cart_item.product.image1.url}}" data-src="{{cart_item.product.image1.url}}" class="lazy" alt="Image">
                                     </div>
-                                    <a href="{{cart_item.product.get_url}}" class="item_cart">{{cart_item.product.product_name}}</a>
+                                    <a href="{{cart_item.product.get_url}}" class="font-weight-bold">{{cart_item.product.product_name}}</a><br>
+                                    <p class="text-muted small">
+                                        {% if cart_item.variations.all %}
+                                            {% for item in cart_item.variations.all %}
+                                                {{ item.variation_category | capfirst }} : {{ item.variation_value | capfirst }} <br>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </p>
                                 </td>
                                 <td>
                                     <strong>Rs. {{cart_item.product.selling_price}}</strong>
                                 </td>
                                 <td>
-                                    <div class="numbers-row">
-                                        <input type="text" value="{{cart_item.quantity}}" class="qty2">
-                                    <a href="{% url 'add_cart' cart_item.product.id %}" class="inc button_inc">+</a>
-                                    <a href="{% url 'remove_cart' cart_item.product.id %}" class="dec button_inc">-</a></div>
+                                    <div class="col">
+                                        <div class="input-group input-spinner">
+                                            <div class="input-group-prepend">
+                                                <a href="{% url 'remove_cart' cart_item.product.id cart_item.id %}" class="btn btn-light" type="button" id="button-plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                                                  </svg></a>
+                                            </div>
+                                            <input type="text" class="form-control" value="{{cart_item.quantity}}">
+                                            <div class="input-group-append">
+                                                <form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
+                                                    {% csrf_token %}
+                                                    {% for item in cart_item.variations.all %}
+                                                        <input type="hidden" name="{{ item.variation_category | lower }}" value="{{ item.variation_value | capfirst }}">
+                                                    {% endfor %}
+                                                    <button class="btn btn-light" type="submit" id="button-minus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                                      </svg></button>
+                                                </form>
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </td>
                                 <td>
                                     <strong>Rs. {{ cart_item.sub_total }}</strong>
