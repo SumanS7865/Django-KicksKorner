@@ -24,6 +24,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('store/', include('app.urls')),
     path('cart/', include('carts.urls')),
-    path('accounts', include('members.urls')),
+    path('members', include('members.urls')),
     path('', include('category.urls')),
 ]

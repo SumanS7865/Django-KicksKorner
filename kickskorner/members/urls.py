@@ -4,13 +4,9 @@ from kickskorner.settings import DEBUG, STATIC_URL, STATIC_ROOT, STATICFILES_DIR
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('register', views.register, name='register'),
-    path('login', views.login, name='login'),
-    path('logout', views.logout, name='logout'),
-
-
-    
-
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name='logout'),
 
 ]
 
