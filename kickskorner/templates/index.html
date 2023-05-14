@@ -150,7 +150,7 @@
 														<span>{{cart_item.product.product_name}}</span>
 														Rs. {{cart_item.product.selling_price}}</strong>
 												</a>
-												<a href="{% url 'remove_cart_item' cart_item.product.id %}" class="action"><i class="ti-trash"></i></a>
+												<a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id %}" class="action"><i class="ti-trash"></i></a>
 											</li>
 											{% endfor %}
 										</ul>
