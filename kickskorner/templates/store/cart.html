@@ -113,7 +113,7 @@
                                     <strong>Rs. {{ cart_item.sub_total }}</strong>
                                 </td>
                                 <td class="options">
-                                    <a href="{% url 'remove_cart_item' cart_item.product.id %}"><i class="ti-trash"></i></a>
+                                    <a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id %}"><i class="ti-trash"></i></a>
                                 </td> 
                             </tr>
                             {% endfor %}
