@@ -1,6 +1,6 @@
 from django.urls import path
 from .import views
-from kickskorner.settings import DEBUG, STATIC_URL, STATIC_ROOT, STATICFILES_DIRS, MEDIA_ROOT, MEDIA_URL
+from kickskorner.settings import DEBUG, STATIC_URL, STATIC_ROOT, MEDIA_ROOT, MEDIA_URL
 from django.conf.urls.static import static
 
 urlpatterns = [
