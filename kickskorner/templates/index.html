@@ -88,9 +88,15 @@
 						</div>
 						<!--/main-menu -->
 					</nav>
+					{% if user.id is None  %}
 					<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
-						<a class="phone_top" href="tel://9438843343"><strong><span>Need Help?</span>9846946584</strong></a>
+						<a class="phone_top" href="tel://9438843343"><strong>Welcome, guest!</strong></a>
 					</div>
+					{% else %}
+					<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
+						<a class="phone_top" href="tel://9438843343"><strong>Welcome,{{user.first_name}}!</strong></a>
+					</div>
+					{% endif %}
 				</div>
 				<!-- /row -->
 			</div>
@@ -167,27 +173,44 @@
 								<a href="#0" class="wishlist"><span>Wishlist</span></a>
 							</li>
 							<li>
+								{% if user.id is None %}
 								<div class="dropdown dropdown-access">
-									<a href="{% url 'login' %}" class="access_link"><span>Account</span></a>
+									<a href="{% url 'register' %}" class="access_link"><span>Account</span></a>
 									<div class="dropdown-menu">
 										<a href="" class="btn_1">Sign In or Sign Up</a>
 										<ul>
 											<li>
-												<a href="track-order.html"><i class="ti-truck"></i>Track your Order</a>
+												<a href="{% url 'register' %}"><i class="ti-package"></i>My Orders</a>
 											</li>
 											<li>
-												<a href="account.html"><i class="ti-package"></i>My Orders</a>
+												<a href="{% url 'register' %}"><i class="ti-user"></i>My Profile</a>
 											</li>
-											<li>
-												<a href="account.html"><i class="ti-user"></i>My Profile</a>
-											</li>
-											<li>
+											<!-- <li>
 												<a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
-											</li>
+											</li> -->
 										</ul>
 									</div>
 								</div>
 								<!-- /dropdown-access-->
+								{% else %}
+								<div class="dropdown dropdown-access">
+									<a href="{% url 'login' %}" class="access_link"><span>Account</span></a>
+									<div class="dropdown-menu">
+										<a href="{% url 'logout' %}" class="btn_1">Logout</a>
+										<ul>
+											<li>
+												<a href="#"><i class="ti-package"></i>My Orders</a>
+											</li>
+											<li>
+												<a href="#"><i class="ti-user"></i>My Profile</a>
+											</li>
+											<!-- <li>
+												<a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
+											</li> -->
+										</ul>
+									</div>
+								</div>
+								{% endif %}
 							</li>
 							<li>
 								<a href="javascript:void(0);" class="btn_search_mob"><span>Search</span></a>
