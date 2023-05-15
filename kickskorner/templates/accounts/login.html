@@ -32,22 +32,14 @@
 				<div class="box_account">
 					<h3 class="client">Login</h3>
 					<div class="form_container">
-					<form action="" method="POST">
+						{% include 'accounts/alerts.html' %}
+					<form action="{% url 'login' %}" method="POST">
 						{% csrf_token %}
-						<div class="row no-gutters">
-							<div class="col-lg-6 pr-lg-1">
-								<a href="#0" class="social_bt facebook">Login with Facebook</a>
-							</div>
-							<div class="col-lg-6 pl-lg-1">
-								<a href="#0" class="social_bt google">Login with Google</a>
-							</div>
-						</div>
-						<div class="divider"><span>Or</span></div>
 						<div class="form-group">
-							<input type="email"  class="form-control" name="email" id="email" placeholder="Email*" required>
+							<input type="email"  class="form-control" name="email" placeholder="Email*" required>
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" name="password" id="password" value="" placeholder="Password*" required>
+							<input type="password" class="form-control" name="password" placeholder="Password*" required>
                             
 						</div>
 						<div class="clearfix add_bottom_15">
