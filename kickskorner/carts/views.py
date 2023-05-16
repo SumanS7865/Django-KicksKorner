@@ -114,7 +114,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
             quantity += cart_item.quantity
         tax = (2 * total)/100
         shipping = 50
-        grand_total = total+shipping+tax
+        grand_total = total+shipping + tax
     except Cart.DoesNotExist:
         pass  #just ignore
 

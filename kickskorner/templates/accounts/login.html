@@ -27,7 +27,18 @@
 		<h1>Sign In or Create an Account</h1>
 	</div>
 	<!-- /page_header -->
-			<div class="row justify-content-center">
+	{% if request.GET.command == 'verification' %}
+
+	<div class="alert alert-info row justify-content-center box_account text-center" role="alert" style="margin-left: 300px; margin-right: 300px; margin-bottom: 100px; margin-top: 100px;">
+		Thank you for registering with us. We have sent you a verification email to your email address at {{request.GET.email}}.
+		<br><br>
+		<p>
+			Already verified? <a href="{% url 'login' %}">Login</a>
+		</p>
+	</div>
+
+	{% else %}
+		<div class="row justify-content-center">
 			<div class="col-xl-6 col-lg-6 col-md-8">
 				<div class="box_account">
 					<h3 class="client">Login</h3>
@@ -87,7 +98,7 @@
 			</div>
 		</div>
 		<!-- /row -->
-		</div>
+		{% endif %}
 		<!-- /container -->
 	</main>
 	<!--/main-->

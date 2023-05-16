@@ -1,11 +1,21 @@
 {% autoescape off %}
 
-    Hi {{user.first_name}},
-    please click on below link to confirm your registration.
+    Welcome <h2>{{user.first_name}}!</h2><br>
+    <p>
+        Thank you for signing up for KicksKorner.
+    </p>
+    <br>
+    <p> Please verify your email address by clicking the link below.</p>
     http://{{domain}}{% url 'activate' uidb64=uid token=token %}
 
-    If you think it's not you, please ignore this email.
+   <p>
+        If you think it's not you, please ignore this email.
+    </p>
 
-    from @kickskornerofficial@gmail.com
 
+    <p>
+        Sincerely,
+        KicksKorner Team
+        kickskornerofficial@gmail.com
+    </p>
 {% endautoescape %}
