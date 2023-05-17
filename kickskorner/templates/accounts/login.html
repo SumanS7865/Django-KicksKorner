@@ -14,7 +14,7 @@
 
 {% block maincontent %}
 <main class="bg_gray">
-		
+
 	<div class="container margin_30">
 		<div class="page_header">
 			<div class="breadcrumbs">
@@ -23,58 +23,64 @@
 					<li><a href="#">Category</a></li>
 					<li>Page active</li>
 				</ul>
+			</div>
+			<h1>Sign In or Create an Account</h1>
 		</div>
-		<h1>Sign In or Create an Account</h1>
-	</div>
-	<!-- /page_header -->
-	{% if request.GET.command == 'verification' %}
+		<!-- /page_header -->
+		{% if request.GET.command == 'verification' %}
 
-	<div class="alert alert-info row justify-content-center box_account text-center" role="alert" style="margin-left: 300px; margin-right: 300px; margin-bottom: 100px; margin-top: 100px;">
-		Thank you for registering with us. We have sent you a verification email to your email address at {{request.GET.email}}.
-		<br><br>
-		<p>
-			Already verified? <a href="{% url 'login' %}">Login</a>
-		</p>
-	</div>
+		<div class="alert alert-info row justify-content-center box_account text-center" role="alert"
+			style="margin-left: 300px; margin-right: 300px; margin-bottom: 100px; margin-top: 100px;">
+			Thank you for registering with us. We have sent you a verification email to your email address at
+			{{request.GET.email}}.
+			<br><br>
+			<p>
+				Already verified? <a href="{% url 'login' %}">Login</a>
+			</p>
+		</div>
 
-	{% else %}
+		{% else %}
 		<div class="row justify-content-center">
 			<div class="col-xl-6 col-lg-6 col-md-8">
 				<div class="box_account">
 					<h3 class="client">Login</h3>
 					<div class="form_container">
 						{% include 'accounts/alerts.html' %}
-					<form action="{% url 'login' %}" method="POST">
-						{% csrf_token %}
-						<div class="form-group">
-							<input type="email"  class="form-control" name="email" placeholder="Email*" required>
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" name="password" placeholder="Password*" required>
-                            
-						</div>
-						<div class="clearfix add_bottom_15">
-							<div class="checkboxes float-start">
-								<label class="container_check">Remember me
-									<input type="checkbox">
-									<span class="checkmark"></span>
-								</label>
-							</div>
-							<div class="float-end"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div><br><br>
-                            <div class="text-center">
-                                <input type="submit" value="Log In" class="btn_1 full-width">
-                                <br>
-                                Don’t have an account? <a href="{% url 'register' %}">Sign up</a>
-                            </div>
-						</div>
-						<div id="forgot_pw">
+						<form action="{% url 'login' %}" method="POST">
+							{% csrf_token %}
 							<div class="form-group">
-								<input type="email" class="form-control" name="email_forgot" id="email_forgot" placeholder="Type your email">
+								<input type="email" class="form-control" name="email" placeholder="Email*" required>
 							</div>
-							<p>A new password will be sent shortly.</p>
-							<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
-						</div>
-					</form>
+							<div class="form-group">
+								<input type="password" class="form-control" name="password" placeholder="Password*"
+									required>
+
+							</div>
+							<div class="clearfix add_bottom_15">
+								<div class="checkboxes float-start">
+									<label class="container_check">Remember me
+										<input type="checkbox">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="float-end"><a id="forgot" href="javascript:void(0);">Forgot Password?</a>
+								</div><br><br>
+								<div class="text-center">
+									<input type="submit" value="Log In" class="btn_1 full-width">
+									<br>
+									Don’t have an account? <a href="{% url 'register' %}">Sign up</a>
+								</div>
+							</div>
+							<div id="forgot_pw">
+								<div class="form-group">
+									<input type="email" class="form-control" name="email_forgot" id="email_forgot"
+										placeholder="Type your email">
+								</div>
+								<p>A new password will be sent shortly.</p>
+								<div class="text-center"><input type="submit" value="Reset Password" class="btn_1">
+								</div>
+							</div>
+						</form>
 					</div>
 					<!-- /form_container -->
 				</div>
@@ -100,19 +106,19 @@
 		<!-- /row -->
 		{% endif %}
 		<!-- /container -->
-	</main>
-	<!--/main-->
+</main>
+<!--/main-->
 {% endblock maincontent %}
 
 
 {% block specific-js %}
 <script>
-    // Client type Panel
-		$('input[name="client_type"]').on("click", function() {
-		    var inputValue = $(this).attr("value");
-		    var targetBox = $("." + inputValue);
-		    $(".box").not(targetBox).hide();
-		    $(targetBox).show();
-		});
+	// Client type Panel
+	$('input[name="client_type"]').on("click", function () {
+		var inputValue = $(this).attr("value");
+		var targetBox = $("." + inputValue);
+		$(".box").not(targetBox).hide();
+		$(targetBox).show();
+	});
 </script>
 {% endblock specific-js %}
