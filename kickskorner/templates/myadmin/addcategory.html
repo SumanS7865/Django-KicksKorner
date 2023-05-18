@@ -1,5 +1,33 @@
 {% extends 'myadmin/dashboard.html' %}
+{% load static %}
 
+{% block admin-navbar %}
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <div class="breadcrumbs-area clearfix">
+                <h4 class="page-title pull-left">Dashboard</h4>
+                <ul class="breadcrumbs pull-left">
+                    <li><a href="{% url 'categories' %}">Category</a></li>
+                    <li><span>Add Category</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6 clearfix">
+            <div class="user-profile pull-right">
+                <img class="avatar user-thumb" src="{% static 'admin-assets/images/author/avatar.jpg' %}" alt="avatar">
+                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Suman Sapkota<i
+                        class="fa fa-angle-down"></i></h4>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Message</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="{% url 'admin_login' %}">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock admin-navbar %}
 
 {% block main-content %}
 
@@ -25,8 +53,8 @@
         <div class="col-sm-3">
             <label for="example-text-input" class="col-form-label">Category Image</label>
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+
             </div>
         </div>
     </div>

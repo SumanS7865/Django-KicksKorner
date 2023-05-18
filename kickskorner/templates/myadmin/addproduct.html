@@ -1,126 +1,171 @@
 {% extends 'myadmin/dashboard.html' %}
+{% load static %}
+
+
+{% block admin-navbar %}
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <div class="breadcrumbs-area clearfix">
+                <h4 class="page-title pull-left">Dashboard</h4>
+                <ul class="breadcrumbs pull-left">
+                    <li><a href="{% url 'products' %}">Products</a></li>
+                    <li><span>Add Products</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6 clearfix">
+            <div class="user-profile pull-right">
+                <img class="avatar user-thumb" src="{% static 'admin-assets/images/author/avatar.jpg' %}" alt="avatar">
+                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Suman Sapkota<i
+                        class="fa fa-angle-down"></i></h4>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Message</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="{% url 'admin_login' %}">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock admin-navbar %}
 
 
 {% block main-content %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="card-body ">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
 
-<div class="card-body ">
-    <h4 class="header-title">Add Products</h4>
-    <div class="form-group">
-        <div class="col-sm-6">
-            <label for="example-text-input" class="col-form-label">Product Name</label>
-            <input class="form-control" type="text" id="example-text-input">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-6">
-            <label for="example-text-input" class="col-form-label">Slug</label>
-            <input class="form-control" type="text" id="example-text-input">
-        </div>
-    </div>
-    <div class="form-group col-sm-6">
-        <label for="example-url-input" class="col-form-label">Description</label>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Selling Price</label>
-            <input class="form-control" type="text" id="example-text-input">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Discounted Price</label>
-            <input class="form-control" type="text" id="example-text-input">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Product Detail Ribbon</label>
-            <input class="form-control" type="text" id="example-text-input">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Ribbon</label>
-            <input class="form-control" type="text" id="example-text-input">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Image1</label>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        <h4 class=" header-title">Add Products</h4>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <label for="example-text-input" class="col-form-label">Product Name</label>
+                <input name="product_name" class="form-control" type="text" id="example-text-input" required>
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Image2</label>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        <div class="form-group">
+            <div class="col-sm-6">
+                <label for="example-text-input" class="col-form-label">Slug</label>
+                <input name="slug" class="form-control" type="text" id="example-text-input" required>
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Image3</label>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        <div class="form-group col-sm-6">
+            <label for="example-url-input" class="col-form-label">Description</label>
+            <textarea name="description" class="form-control" aria-label="With textarea" required></textarea>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="example-text-input" class="col-form-label">Selling Price</label>
+                <input name="selling_price" class="form-control" type="number" id="example-text-input" required>
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Image4</label>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="example-text-input" class="col-form-label">Discounted Price</label>
+                <input name="discounted_price" class="form-control" type="text" id="example-text-input">
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Image5</label>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="example-text-input" class="col-form-label">Product Detail Ribbon</label>
+                <input name="product_detail_ribbon" class="form-control" type="text" id="example-text-input">
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Image6</label>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="example-text-input" class="col-form-label">Ribbon</label>
+                <input name="ribbon" class="form-control" type="text" id="example-text-input" required>
             </div>
         </div>
-    </div>
-    <div class="form-group col-sm-3">
-        <label for="example-number-input" class="col-form-label">Stock</label>
-        <input class="form-control" type="number" id="example-number-input">
-    </div>
-    <div class="form-group col-sm-3">
-        <div>
-            <i class="text-success fa-sharp fa-regular fa-circle-check"></i>
-            Is Available
-        </div>
-    </div>
-    <div class="form-group col-sm-3">
-        <label class="col-form-label">Category</label>
-        <select class="custom-select">
-            <option selected="selected">Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-    </div>
-    <button type="button" class="btn btn-success mb-3">Save</button>
-    <button type="button" class="btn btn-success mb-3">Save and add another</button>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="example-text-input" class="col-form-label">Image1</label>
+                <div class="custom-file">
+                    <input name="image1" type="file" class="form-control-file" required>
 
-</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="example-text-input" class="col-form-label">Image2</label>
+                <div class="custom-file">
+                    <input name="image2" type="file" class="form-control-file" required>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="example-text-input" class="col-form-label">Image3</label>
+                <div class="custom-file">
+                    <input name="image3" type="file" class="form-control-file" required>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="example-text-input" class="col-form-label">Image4</label>
+                <div class="custom-file">
+                    <input name="image4" type="file" class="form-control-file" required>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="example-text-input" class="col-form-label">Image5</label>
+                <div class="custom-file">
+                    <input name="image5" type="file" class="form-control-file" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+                <label for="example-text-input" class="col-form-label">Image6</label>
+                <div class="custom-file">
+                    <input name="image6" type="file" class="form-control-file" required>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-sm-3">
+            <label for="example-number-input" class="col-form-label">Stock</label>
+            <input name="stock" class="form-control" type="number" id="example-number-input" required>
+        </div>
+        <div class="form-group col-sm-3">
+            <div>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked required>
+                Is Available
+            </div>
+        </div>
+        <div class="form-group col-sm-3">
+
+            <label class="col-form-label">Category</label>&nbsp; &nbsp;&nbsp;
+            <a href="{% url 'addcategory' %}"><i class="text-success ti-plus"></i></a>
+            <select name="category" class="custom-select" required>
+                <option selected="selected" disabled>Select</option>
+                <option value="1">Nike</option>
+                <option value="2">Converse</option>
+                <option value="3">Yeezy</option>
+                <option value="3">Jordan</option>
+                <option value="3">Air Max</option>
+                <option value="3">Dunks</option>
+                <option value="3">New Balance</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success mb-3">Save</button>
+        <button type="submit" class="btn btn-success mb-3">Save and add another</button>
+
+    </div>
+</form>
 
 {% endblock main-content %}

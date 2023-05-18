@@ -111,7 +111,7 @@
                                 </ul>
                             </li> -->
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-rocket"></i>
                                     <span>PRODUCTS</span></a>
                                 <ul class="collapse">
                                     <li><a href="{% url 'products' %}">products</a></li>
@@ -119,14 +119,14 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-check-circle"></i>
                                     <span>AUTHORIZATION</span></a>
                                 <ul class="collapse">
                                     <li><a href="table-basic.html">Groups</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-cart-arrow-down"></i>
                                     <span>CARTS
                                     </span></a>
                                 <ul class="collapse">
@@ -135,7 +135,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-list"></i>
                                     <span>CATEGORY
                                     </span></a>
                                 <ul class="collapse">
@@ -143,7 +143,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-user"></i>
                                     <span>ACCOUNTS
                                     </span></a>
                                 <ul class="collapse">
@@ -372,6 +372,7 @@
             </div>
             <!-- header area end -->
             <!-- page title area start -->
+            {% block admin-navbar %}
             <div class="page-title-area">
                 <div class="row align-items-center">
                     <div class="col-sm-6">
@@ -398,6 +399,8 @@
                     </div>
                 </div>
             </div>
+            {% endblock admin-navbar %}
+
             <!-- page title area end -->
             {% block main-content %}
             <div class="main-content-inner">
@@ -701,8 +704,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.
-                </p>
+                <p>©2023 KicksKorner. All right reserved.</p>
             </div>
         </footer>
         <!-- footer area end-->

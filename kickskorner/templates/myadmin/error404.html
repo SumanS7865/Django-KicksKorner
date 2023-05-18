@@ -40,14 +40,14 @@
             <div class="error-content">
                 <h2>404</h2>
                 <p>Ooops! Something went wrong .</p>
-                <a href="index.html">Back to Dashboard</a>
+                <a href="{% url 'dashboard' %}">Back to Dashboard</a>
             </div>
         </div>
     </div>
     <!-- error area end -->
 
     <!-- jquery latest version -->
-    <script src="{% static 'admin-js/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="{% static 'admin-js/js/vendor/jquery-2.2.4.min.js' %}"></script>
     <!-- bootstrap 4 js -->
     <script src="{% static 'admin-js/js/popper.min.js' %}"></script>
     <script src="{% static 'admin-js/js/bootstrap.min.js' %}"></script>
