@@ -4,6 +4,7 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from app.models import Product
 
 
 # Create your views here.
@@ -17,7 +18,7 @@ def admin_login(request):
         if user and user.is_superadmin:
             auth.login(request, user)
             # messages.success(request, 'Your are now logged in.')
-            return redirect("customadmin")
+            return redirect("dashboard")
         else:
             messages.error(request, "invalid login credentials")
             return redirect("admin_login")
@@ -40,7 +41,8 @@ def error404(request):
 
 
 def products(request):
-    return render(request, "myadmin/products.html")
+    products = Product.objects.all()
+    return render(request, "myadmin/products.html", {"products": products})
 
 
 def variations(request):
@@ -61,3 +63,15 @@ def categories(request):
 
 def accounts(request):
     return render(request, "myadmin/accounts.html")
+
+
+def addproduct(request):
+    return render(request, "myadmin/addproduct.html")
+
+
+def addvariation(request):
+    return render(request, "myadmin/addvariation.html")
+
+
+def addcategory(request):
+    return render(request, "myadmin/addcategory.html")

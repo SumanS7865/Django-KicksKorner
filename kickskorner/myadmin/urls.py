@@ -12,4 +12,7 @@ urlpatterns = [
     path("categories", views.categories, name="categories"),
     path("accounts", views.accounts, name="accounts"),
     path("error404", views.error404, name="error404"),
+    path("addproduct", views.addproduct, name="addproduct"),
+    path("addvariation", views.addvariation, name="addvariation"),
+    path("addcategory", views.addcategory, name="addcategory"),
 ]
