@@ -7,19 +7,17 @@ from kickskorner.settings import DEBUG
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-    path('store/', include('app.urls')),
-    path('cart/', include('carts.urls')),
-    path('accounts/', include('members.urls')),
-    path('', include('category.urls')),
-    path('kk-admin/', include('customadmin.urls')),
-
+    path("admin/", admin.site.urls),
+    path("", views.index, name="index"),
+    path("store/", include("app.urls")),
+    path("cart/", include("carts.urls")),
+    path("accounts/", include("members.urls")),
+    path("myadmin/", include("myadmin.urls")),
+    path("", include("category.urls")),
 ]
 # ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 #     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 if DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
-
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

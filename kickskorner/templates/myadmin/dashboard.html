@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>srtdash - ICO Dashboard</title>
+    <title>KicksKorner | Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{% static 'admin-assets/images/icon/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'admin-css/css/bootstrap.min.css' %}">
@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="{% static 'admin-css/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'admin-css/css/slicknav.min.css' %}">
     <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css"
-        media="all" />
+    <link rel="stylesheet" href="{% static 'admin-css/css/export.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- others css -->
     <link rel="stylesheet" href="{% static 'admin-css/css/typography.css' %}">
     <link rel="stylesheet" href="{% static 'admin-css/css/default-css.css' %}">
@@ -41,7 +43,8 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/icon/logo.png" alt="logo"></a>
+                    <a href="{% url 'dashboard' %}"><img src="{% static 'admin-assets/images/icon/logo.png' %}"
+                            alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -51,13 +54,13 @@
                             <li class="active">
                                 <a href="javascript:void(0)" aria-expanded="true"><i
                                         class="ti-dashboard"></i><span>dashboard</span></a>
-                                <ul class="collapse">
+                                <!-- <ul class="collapse">
                                     <li class="active"><a href="index.html">ICO dashboard</a></li>
                                     <li><a href="index2.html">Ecommerce dashboard</a></li>
                                     <li><a href="index3.html">SEO dashboard</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i
                                         class="ti-layout-sidebar-left"></i><span>Sidebar
                                         Types
@@ -98,22 +101,53 @@
                                     <li><a href="form.html">Form</a></li>
                                     <li><a href="grid.html">grid system</a></li>
                                 </ul>
-                            </li>
-                            <li>
+                            </li> -->
+                            <!-- <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i
                                         class="ti-slice"></i><span>icons</span></a>
                                 <ul class="collapse">
                                     <li><a href="fontawesome.html">fontawesome icons</a></li>
                                     <li><a href="themify.html">themify icons</a></li>
                                 </ul>
+                            </li> -->
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>PRODUCTS</span></a>
+                                <ul class="collapse">
+                                    <li><a href="{% url 'products' %}">products</a></li>
+                                    <li><a href="{% url 'variations' %}">Variations</a></li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Tables</span></a>
+                                    <span>AUTHORIZATION</span></a>
                                 <ul class="collapse">
-                                    <li><a href="table-basic.html">basic table</a></li>
-                                    <li><a href="table-layout.html">table layout</a></li>
-                                    <li><a href="datatable.html">datatable</a></li>
+                                    <li><a href="table-basic.html">Groups</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>CARTS
+                                    </span></a>
+                                <ul class="collapse">
+                                    <li><a href="{% url 'cartitems' %}">Cart Items</a></li>
+                                    <li><a href="{% url 'carts' %}">Cart ID</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>CATEGORY
+                                    </span></a>
+                                <ul class="collapse">
+                                    <li><a href="{% url 'categories' %}">Categories</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                                    <span>ACCOUNTS
+                                    </span></a>
+                                <ul class="collapse">
+                                    <li><a href="{% url 'accounts' %}">Accounts</a></li>
                                 </ul>
                             </li>
                             <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
@@ -140,9 +174,7 @@
                                         class="fa fa-exclamation-triangle"></i>
                                     <span>Error</span></a>
                                 <ul class="collapse">
-                                    <li><a href="404.html">Error 404</a></li>
-                                    <li><a href="403.html">Error 403</a></li>
-                                    <li><a href="500.html">Error 500</a></li>
+                                    <li><a href="{% url 'error404' %}">Error 404</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -346,426 +378,324 @@
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="{% url 'dashboard' %}">Home</a></li>
                                 <li><span>Dashboard</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i
+                            <img class="avatar user-thumb" src="{% static 'admin-assets/images/author/avatar.jpg' %}"
+                                alt="avatar">
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Suman Sapkota<i
                                     class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Message</a>
                                 <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
+                                <a class="dropdown-item" href="{% url 'admin_login' %}">Log Out</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- page title area end -->
+            {% block main-content %}
             <div class="main-content-inner">
                 <!-- sales report area start -->
-                <div class="sales-report-area mt-5 mb-5">
+                <div class="sales-report-area sales-style-two">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="single-report mb-xs-30">
-                                <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-btc"></i></div>
-                                    <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Bitcoin</h4>
-                                        <p>24 H</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between pb-2">
-                                        <h2>$ 4567809,987</h2>
-                                        <span>- 45.87</span>
-                                    </div>
-                                </div>
-                                <canvas id="coin_sales1" height="100"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="single-report mb-xs-30">
-                                <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-btc"></i></div>
-                                    <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Bitcoin Dash</h4>
-                                        <p>24 H</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between pb-2">
-                                        <h2>$ 4567809,987</h2>
-                                        <span>- 45.87</span>
-                                    </div>
-                                </div>
-                                <canvas id="coin_sales2" height="100"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-xl-3 col-ml-3 col-md-6 mt-5">
                             <div class="single-report">
-                                <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-eur"></i></div>
+                                <div class="s-sale-inner pt--30 mb-3">
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Euthorium</h4>
-                                        <p>24 H</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between pb-2">
-                                        <h2>$ 4567809,987</h2>
-                                        <span>- 45.87</span>
+                                        <h4 class="header-title mb-0">Product Sold</h4>
+                                        <select class="custome-select border-0 pr-3">
+                                            <option selected="">Last 7 Days</option>
+                                            <option value="0">Last 7 Days</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <canvas id="coin_sales3" height="100"></canvas>
+                                <canvas id="coin_sales4" height="100"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-ml-3 col-md-6 mt-5">
+                            <div class="single-report">
+                                <div class="s-sale-inner pt--30 mb-3">
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">Gross Profit</h4>
+                                        <select class="custome-select border-0 pr-3">
+                                            <option selected="">Last 7 Days</option>
+                                            <option value="0">Last 7 Days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <canvas id="coin_sales5" height="100"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-ml-3 col-md-6  mt-5">
+                            <div class="single-report">
+                                <div class="s-sale-inner pt--30 mb-3">
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">Orders</h4>
+                                        <select class="custome-select border-0 pr-3">
+                                            <option selected="">Last 7 Days</option>
+                                            <option value="0">Last 7 Days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <canvas id="coin_sales6" height="100"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-ml-3 col-md-6 mt-5">
+                            <div class="single-report">
+                                <div class="s-sale-inner pt--30 mb-3">
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">New Coustomers</h4>
+                                        <select class="custome-select border-0 pr-3">
+                                            <option selected="">Last 7 Days</option>
+                                            <option value="0">Last 7 Days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <canvas id="coin_sales7" height="100"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- sales report area end -->
-                <!-- overview area start -->
-                <div class="row">
-                    <div class="col-xl-9 col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="header-title mb-0">Overview</h4>
-                                    <select class="custome-select border-0 pr-3">
-                                        <option selected>Last 24 Hours</option>
-                                        <option value="0">01 July 2018</option>
-                                    </select>
-                                </div>
-                                <div id="verview-shart"></div>
-                            </div>
+                <!-- visitor graph area start -->
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-5">
+                            <h4 class="header-title mb-0">Visitor Graph</h4>
+                            <select class="custome-select border-0 pr-3">
+                                <option selected="">Last 7 Days</option>
+                                <option value="0">Last 7 Days</option>
+                            </select>
                         </div>
+                        <div id="visitor_graph"></div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 coin-distribution">
-                        <div class="card h-full">
-                            <div class="card-body">
-                                <h4 class="header-title mb-0">Coin Distribution</h4>
-                                <div id="coin_distribution"></div>
-                            </div>
+                </div>
+                <!-- visitor graph area end -->
+                <!-- order list area start -->
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h4 class="header-title">Todays Order List</h4>
+                        <div class="table-responsive">
+                            <table class="dbkit-table">
+                                <tbody>
+                                    <tr class="heading-td">
+                                        <td>Product Name</td>
+                                        <td>Product Code</td>
+                                        <td>Order Status</td>
+                                        <td>Client Number</td>
+                                        <td>Zip Code</td>
+                                        <td>View Order</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ladis Sunglass</td>
+                                        <td>#894750374</td>
+                                        <td><span class="pending_dot">Pending</span></td>
+                                        <td>01976 74 92 00</td>
+                                        <td>9241</td>
+                                        <td>View Order</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ladis Sunglass</td>
+                                        <td>#894750374</td>
+                                        <td><span class="shipment_dot">Shipment</span></td>
+                                        <td>01976 74 92 00</td>
+                                        <td>9241</td>
+                                        <td>View Order</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ladis Sunglass</td>
+                                        <td>#894750374</td>
+                                        <td><span class="pending_dot">Pending</span></td>
+                                        <td>01976 74 92 00</td>
+                                        <td>9241</td>
+                                        <td>View Order</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ladis Sunglass</td>
+                                        <td>#894750374</td>
+                                        <td><span class="confirmed _dot">Confirmed </span></td>
+                                        <td>01976 74 92 00</td>
+                                        <td>9241</td>
+                                        <td>View Order</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ladis Sunglass</td>
+                                        <td>#894750374</td>
+                                        <td><span class="pending_dot">Pending</span></td>
+                                        <td>01976 74 92 00</td>
+                                        <td>9241</td>
+                                        <td>View Order</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination_area pull-right mt-5">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <!-- overview area end -->
-                <!-- market value area start -->
-                <div class="row mt-5 mb-5">
-                    <div class="col-12">
+                <!-- order list area end -->
+                <div class="row">
+                    <!-- product sold area start -->
+                    <div class="col-xl-8 col-lg-7 col-md-12 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-center">
-                                    <h4 class="header-title mb-0">Market Value And Trends</h4>
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h4 class="header-title mb-0">Product Slod</h4>
                                     <select class="custome-select border-0 pr-3">
-                                        <option selected>Last 24 Hours</option>
-                                        <option value="0">01 July 2018</option>
+                                        <option selected="">Today</option>
+                                        <option value="0">Last 7 Days</option>
                                     </select>
                                 </div>
-                                <div class="market-status-table mt-4">
-                                    <div class="table-responsive">
-                                        <table class="dbkit-table">
+                                <div class="table-responsive">
+                                    <table class="dbkit-table">
+                                        <tbody>
                                             <tr class="heading-td">
-                                                <td class="mv-icon">Logo</td>
-                                                <td class="coin-name">Coin Name</td>
-                                                <td class="buy">Buy</td>
-                                                <td class="sell">Sells</td>
-                                                <td class="trends">Trends</td>
-                                                <td class="attachments">Attachments</td>
-                                                <td class="stats-chart">Stats</td>
+                                                <td>Product Name</td>
+                                                <td>Revenue</td>
+                                                <td>Sold</td>
+                                                <td>Discount</td>
                                             </tr>
                                             <tr>
-                                                <td class="mv-icon"><img src="assets/images/icon/market-value/icon1.png"
-                                                        alt="icon">
-                                                </td>
-                                                <td class="coin-name">Dashcoin</td>
-                                                <td class="buy">30% <img
-                                                        src="assets/images/icon/market-value/triangle-down.png"
-                                                        alt="icon"></td>
-                                                <td class="sell">20% <img
-                                                        src="assets/images/icon/market-value/triangle-up.png"
-                                                        alt="icon"></td>
-                                                <td class="trends"><img
-                                                        src="assets/images/icon/market-value/trends-up-icon.png"
-                                                        alt="icon"></td>
-                                                <td class="attachments">$ 56746,857</td>
-                                                <td class="stats-chart">
-                                                    <canvas id="mvaluechart"></canvas>
-                                                </td>
+                                                <td>Ladis Sunglass</td>
+                                                <td>$56</td>
+                                                <td>$160</td>
+                                                <td>$20</td>
                                             </tr>
                                             <tr>
-                                                <td class="mv-icon">
-                                                    <div class="mv-icon"><img
-                                                            src="assets/images/icon/market-value/icon2.png" alt="icon">
-                                                    </div>
-                                                </td>
-                                                <td class="coin-name">LiteCoin</td>
-                                                <td class="buy">30% <img
-                                                        src="assets/images/icon/market-value/triangle-down.png"
-                                                        alt="icon"></td>
-                                                <td class="sell">20% <img
-                                                        src="assets/images/icon/market-value/triangle-up.png"
-                                                        alt="icon"></td>
-                                                <td class="trends"><img
-                                                        src="assets/images/icon/market-value/trends-down-icon.png"
-                                                        alt="icon"></td>
-                                                <td class="attachments">$ 56746,857</td>
-                                                <td class="stats-chart">
-                                                    <canvas id="mvaluechart2"></canvas>
-                                                </td>
+                                                <td>Ladis Sunglass</td>
+                                                <td>$26</td>
+                                                <td>$500</td>
+                                                <td>$20</td>
                                             </tr>
                                             <tr>
-                                                <td class="mv-icon">
-                                                    <div class="mv-icon"><img
-                                                            src="assets/images/icon/market-value/icon3.png" alt="icon">
-                                                    </div>
-                                                </td>
-                                                <td class="coin-name">Euthorium</td>
-                                                <td class="buy">30% <img
-                                                        src="assets/images/icon/market-value/triangle-down.png"
-                                                        alt="icon"></td>
-                                                <td class="sell">20% <img
-                                                        src="assets/images/icon/market-value/triangle-up.png"
-                                                        alt="icon"></td>
-                                                <td class="trends"><img
-                                                        src="assets/images/icon/market-value/trends-up-icon.png"
-                                                        alt="icon"></td>
-                                                <td class="attachments">$ 56746,857</td>
-                                                <td class="stats-chart">
-                                                    <canvas id="mvaluechart3"></canvas>
-                                                </td>
+                                                <td>Ladis Sunglass</td>
+                                                <td>$26</td>
+                                                <td>$500</td>
+                                                <td>$20</td>
                                             </tr>
                                             <tr>
-                                                <td class="mv-icon">
-                                                    <div class="mv-icon"><img
-                                                            src="assets/images/icon/market-value/icon4.png" alt="icon">
-                                                    </div>
-                                                </td>
-                                                <td class="coin-name">Bitcoindash</td>
-                                                <td class="buy">30% <img
-                                                        src="assets/images/icon/market-value/triangle-down.png"
-                                                        alt="icon"></td>
-                                                <td class="sell">20% <img
-                                                        src="assets/images/icon/market-value/triangle-up.png"
-                                                        alt="icon"></td>
-                                                <td class="trends"><img
-                                                        src="assets/images/icon/market-value/trends-up-icon.png"
-                                                        alt="icon"></td>
-                                                <td class="attachments">$ 56746,857</td>
-                                                <td class="stats-chart">
-                                                    <canvas id="mvaluechart4"></canvas>
-                                                </td>
+                                                <td>Ladis Sunglass</td>
+                                                <td>$56</td>
+                                                <td>$250</td>
+                                                <td>$10</td>
                                             </tr>
-                                        </table>
-                                    </div>
+                                            <tr>
+                                                <td>Ladis Sunglass</td>
+                                                <td>$56</td>
+                                                <td>$125</td>
+                                                <td>$50</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- market value area end -->
-                <!-- row area start -->
-                <div class="row">
-                    <!-- Live Crypto Price area start -->
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title">Live Crypto Price</h4>
-                                <div class="cripto-live mt-5">
+                                <div class="pagination_area pull-right mt-5">
                                     <ul>
-                                        <li>
-                                            <div class="icon b">b</div> Bitcoin<span><i
-                                                    class="fa fa-long-arrow-up"></i>$876909.00</span>
-                                        </li>
-                                        <li>
-                                            <div class="icon l">l</div> Litecoin<span><i
-                                                    class="fa fa-long-arrow-up"></i>$29780.00</span>
-                                        </li>
-                                        <li>
-                                            <div class="icon d">d</div> Dashcoin<span><i
-                                                    class="fa fa-long-arrow-up"></i>$13276.00</span>
-                                        </li>
-                                        <li>
-                                            <div class="icon b">b</div> Bitcoindash<span><i
-                                                    class="fa fa-long-arrow-down"></i>$5684.890</span>
-                                        </li>
-                                        <li>
-                                            <div class="icon e">e</div> Euthorium<span><i
-                                                    class="fa fa-long-arrow-down"></i>$3890.98</span>
-                                        </li>
-                                        <li>
-                                            <div class="icon t">b</div> Tcoin<span><i
-                                                    class="fa fa-long-arrow-up"></i>$750.789</span>
-                                        </li>
-                                        <li>
-                                            <div class="icon b">b</div> Bitcoin<span><i
-                                                    class="fa fa-long-arrow-up"></i>$325.037</span>
-                                        </li>
+                                        <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Live Crypto Price area end -->
-                    <!-- trading history area start -->
-                    <div class="col-lg-8 mt-sm-30 mt-xs-30">
+                    <!-- product sold area end -->
+                    <!-- team member area start -->
+                    <div class="col-xl-4 col-lg-5 col-md-12 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-center">
-                                    <h4 class="header-title">Trading History</h4>
-                                    <div class="trd-history-tabs">
-                                        <ul class="nav" role="tablist">
-                                            <li>
-                                                <a class="active" data-toggle="tab" href="#buy_order" role="tab">Buy
-                                                    Order</a>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="tab" href="#sell_order" role="tab">Sell Order</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <select class="custome-select border-0 pr-3">
-                                        <option selected>Last 24 Hours</option>
-                                        <option value="0">01 July 2018</option>
-                                    </select>
-                                </div>
-                                <div class="trad-history mt-4">
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="buy_order" role="tabpanel">
-                                            <div class="table-responsive">
-                                                <table class="dbkit-table">
-                                                    <tr class="heading-td">
-                                                        <td>Trading ID</td>
-                                                        <td>Time</td>
-                                                        <td>Status</td>
-                                                        <td>Amount</td>
-                                                        <td>Last Trade</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>78211</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$758.90</td>
-                                                        <td>$05245.090</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>782782</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$77878.90</td>
-                                                        <td>$7778.090</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>89675978</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$0768.90</td>
-                                                        <td>$0945.090</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="sell_order" role="tabpanel">
-                                            <div class="table-responsive">
-                                                <table class="dbkit-table">
-                                                    <tr class="heading-td">
-                                                        <td>Trading ID</td>
-                                                        <td>Time</td>
-                                                        <td>Status</td>
-                                                        <td>Amount</td>
-                                                        <td>Last Trade</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>8964978</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$445.90</td>
-                                                        <td>$094545.090</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>89675978</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$78.90</td>
-                                                        <td>$074852945.090</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>78527878</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$0768.90</td>
-                                                        <td>$65465.090</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- trading history area end -->
-                </div>
-                <!-- row area end -->
-                <div class="row mt-5">
-                    <!-- latest news area start -->
-                    <div class="col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title">Latest News</h4>
-                                <div class="letest-news mt-5">
-                                    <div class="single-post mb-xs-40 mb-sm-40">
-                                        <div class="lts-thumb">
-                                            <img src="assets/images/blog/post-thumb1.jpg" alt="post thumb">
-                                        </div>
-                                        <div class="lts-content">
-                                            <span>Admin Post</span>
-                                            <h2><a href="blog.html">Sed ut perspiciatis unde omnis iste.</a></h2>
-                                            <p>There are many variations of passages of Lorem Ipsum available, but the
-                                                majority have suffered alteration in some...</p>
-                                        </div>
-                                    </div>
-                                    <div class="single-post">
-                                        <div class="lts-thumb">
-                                            <img src="assets/images/blog/post-thumb2.jpg" alt="post thumb">
-                                        </div>
-                                        <div class="lts-content">
-                                            <span>Admin Post</span>
-                                            <h2><a href="blog.html">Sed ut perspiciatis unde omnis iste.</a></h2>
-                                            <p>There are many variations of passages of Lorem Ipsum available, but the
-                                                majority have suffered alteration in some...</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- latest news area end -->
-                    <!-- exchange area start -->
-                    <div class="col-xl-6 mt-md-30 mt-xs-30 mt-sm-30">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title">Exchange</h4>
-                                <div class="exhcange-rate mt-5">
-                                    <form action="#">
-                                        <div class="input-form">
-                                            <input type="text" value="0.76834">
-                                            <span>BTC</span>
-                                        </div>
-                                        <div class="exchange-devider">To</div>
-                                        <div class="input-form">
-                                            <input type="text" value="5689.846">
-                                            <span>USD</span>
-                                        </div>
-                                        <div class="exchange-btn">
-                                            <button type="submit">Exchange Now</button>
-                                        </div>
+                                <div class="d-sm-flex flex-wrap justify-content-between mb-4 align-items-center">
+                                    <h4 class="header-title mb-0">Team Member</h4>
+                                    <form class="team-search">
+                                        <input type="text" name="search" placeholder="Search Here">
                                     </form>
                                 </div>
+                                <div class="member-box">
+                                    <div class="s-member">
+                                        <div class="media align-items-center">
+                                            <img src="assets/images/team/team-author1.jpg"
+                                                class="d-block ui-w-30 rounded-circle" alt="">
+                                            <div class="media-body ml-5">
+                                                <p>Amir Hamza</p><span>Manager</span>
+                                            </div>
+                                            <div class="tm-social">
+                                                <a href="#"><i class="fa fa-phone"></i></a>
+                                                <a href="#"><i class="fa fa-envelope"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="s-member">
+                                        <div class="media align-items-center">
+                                            <img src="assets/images/team/team-author2.jpg"
+                                                class="d-block ui-w-30 rounded-circle" alt="">
+                                            <div class="media-body ml-5">
+                                                <p>Anamul Kabir</p><span>UI design</span>
+                                            </div>
+                                            <div class="tm-social">
+                                                <a href="#"><i class="fa fa-phone"></i></a>
+                                                <a href="#"><i class="fa fa-envelope"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="s-member">
+                                        <div class="media align-items-center">
+                                            <img src="assets/images/team/team-author3.jpg"
+                                                class="d-block ui-w-30 rounded-circle" alt="">
+                                            <div class="media-body ml-5">
+                                                <p>Animesh Mondol</p><span>UI design</span>
+                                            </div>
+                                            <div class="tm-social">
+                                                <a href="#"><i class="fa fa-phone"></i></a>
+                                                <a href="#"><i class="fa fa-envelope"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="s-member">
+                                        <div class="media align-items-center">
+                                            <img src="assets/images/team/team-author4.jpg"
+                                                class="d-block ui-w-30 rounded-circle" alt="">
+                                            <div class="media-body ml-5">
+                                                <p>Faruk Hasan</p><span>UI design</span>
+                                            </div>
+                                            <div class="tm-social">
+                                                <a href="#"><i class="fa fa-phone"></i></a>
+                                                <a href="#"><i class="fa fa-envelope"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="s-member">
+                                        <div class="media align-items-center">
+                                            <img src="assets/images/team/team-author5.jpg"
+                                                class="d-block ui-w-30 rounded-circle" alt="">
+                                            <div class="media-body ml-5">
+                                                <p>Sagor Chandra</p><span>Motion Designer</span>
+                                            </div>
+                                            <div class="tm-social">
+                                                <a href="#"><i class="fa fa-phone"></i></a>
+                                                <a href="#"><i class="fa fa-envelope"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- exchange area end -->
+                    <!-- team member area end -->
                 </div>
-                <!-- row area start-->
             </div>
+            {% endblock main-content %}
         </div>
         <!-- main content area end -->
         <!-- footer area start-->
@@ -957,14 +887,14 @@
     </div>
     <!-- offset area end -->
     <!-- jquery latest version -->
-    <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="{% static 'admin-js/js/vendor/jquery-2.2.4.min.js' %}"></script>
     <!-- bootstrap 4 js -->
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/metisMenu.min.js"></script>
-    <script src="assets/js/jquery.slimscroll.min.js"></script>
-    <script src="assets/js/jquery.slicknav.min.js"></script>
+    <script src="{% static 'admin-js/js/popper.min.js' %}"></script>
+    <script src="{% static 'admin-js/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin-js/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'admin-js/js/metisMenu.min.js' %}"></script>
+    <script src="{% static 'admin-js/js/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'admin-js/js/jquery.slicknav.min.js' %}"></script>
 
     <!-- start chart js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
@@ -977,12 +907,14 @@
         ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
     </script>
     <!-- all line chart activation -->
-    <script src="assets/js/line-chart.js"></script>
+    <script src="{% static 'admin-js/js/line-chart.js' %}"></script>
     <!-- all pie chart -->
-    <script src="assets/js/pie-chart.js"></script>
+    <script src="{% static 'admin-js/js/pie-chart.js' %}"></script>
+    <!-- all bar chart activation -->
+    <script src="{% static 'admin-js/js/bar-chart.js' %}"></script>
     <!-- others plugins -->
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/scripts.js"></script>
+    <script src="{% static 'admin-js/js/plugins.js' %}"></script>
+    <script src="{% static 'admin-js/js/scripts.js' %}"></script>
 </body>
 
 </html>

@@ -5,9 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login</title>
+    <title>KicksKorner | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="{% static 'admin-assets/images/icon/favicon.ico' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/img/logo/logo.png' %}">
     <link rel="stylesheet" href="{% static 'admin-css/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'admin-css/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'admin-css/css/themify-icons.css' %}">
@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="{% static 'admin-css/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'admin-css/css/slicknav.min.css' %}">
     <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css"
-        media="all" />
+    <link rel="stylesheet" href="{% static 'admin-css/css/export.css' %}">
     <!-- others css -->
     <link rel="stylesheet" href="{% static 'admin-css/css/typography.css' %}">
     <link rel="stylesheet" href="{% static 'admin-css/css/default-css.css' %}">
@@ -31,12 +30,12 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- preloader area start -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="loader"></div>
-    </div>
+    </div> -->
     <!-- preloader area end -->
     <!-- login area start -->
-    <div class="login-area login-s2">
+    <div class="login-area">
         <div class="container">
             <div class="login-box ptb--100">
                 <form>
@@ -71,6 +70,14 @@
                         </div>
                         <div class="submit-btn-area">
                             <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>
+                            <div class="login-other row mt-4">
+                                <div class="col-6">
+                                    <a class="fb-login" href="#">Log in with <i class="fa fa-facebook"></i></a>
+                                </div>
+                                <div class="col-6">
+                                    <a class="google-login" href="#">Log in with <i class="fa fa-google"></i></a>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-footer text-center mt-5">
                             <p class="text-muted">Don't have an account? <a href="register.html">Sign up</a></p>
@@ -80,6 +87,7 @@
             </div>
         </div>
     </div>
+    <!-- login area end -->
     <!-- login area end -->
 
     <!-- jquery latest version -->
