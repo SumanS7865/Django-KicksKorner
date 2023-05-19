@@ -152,14 +152,10 @@
             <label class="col-form-label">Category</label>&nbsp; &nbsp;&nbsp;
             <a href="{% url 'addcategory' %}"><i class="text-success ti-plus"></i></a>
             <select name="category" class="custom-select" required>
-                <option selected="selected" disabled>Select</option>
-                <option value="1">Nike</option>
-                <option value="2">Converse</option>
-                <option value="3">Yeezy</option>
-                <option value="3">Jordan</option>
-                <option value="3">Air Max</option>
-                <option value="3">Dunks</option>
-                <option value="3">New Balance</option>
+                <option disabled selected>Select</option>
+                {% for category in categories %}
+                <option>{{ category.category_name }}</option>
+                {% endfor %}
             </select>
         </div>
         <button type="submit" class="btn btn-success mb-3">Save</button>

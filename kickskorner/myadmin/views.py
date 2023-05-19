@@ -50,6 +50,7 @@ def products(request):
 
 
 def addproduct(request):
+    categories = Category.objects.all()
     if request.method == "POST":
         # Process form submission
         product_name = request.POST["product_name"]
@@ -66,10 +67,10 @@ def addproduct(request):
         image5 = request.FILES["image5"]
         image6 = request.FILES["image6"]
         stock = request.POST["stock"]
-        category_id = request.POST["category"]
+        category = request.POST["category"]
 
         category = get_object_or_404(
-            Category, id=category_id
+            Category, category_name=category
         )  # Retrieve the Category instance
 
         product = Product(
@@ -93,7 +94,18 @@ def addproduct(request):
 
         messages.success(request, "Product added successfully.")
         return redirect("addproduct")
-    return render(request, "myadmin/addproduct.html")
+    context = {
+        "categories": categories,
+    }
+    return render(request, "myadmin/addproduct.html", context)
+
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    product_name = product.product_name
+    product.delete()
+    messages.success(request, f"'{product_name}' has been deleted successfully.")
+    return redirect("products")
 
 
 def variations(request):
@@ -138,6 +150,10 @@ def accounts(request):
 
 def addvariation(request):
     return render(request, "myadmin/addvariation.html")
+
+
+def invoice(request):
+    return render(request, "myadmin/invoice.html")
 
 
 def addcategory(request):
