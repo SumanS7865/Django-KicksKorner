@@ -2,71 +2,85 @@
 {% load static %}
 
 {% block admin-navbar %}
-<div class="page-title-area">
-    <div class="row align-items-center">
-        <div class="col-sm-6">
-            <div class="breadcrumbs-area clearfix">
-                <h4 class="page-title pull-left">Dashboard</h4>
-                <ul class="breadcrumbs pull-left">
-                    <li><a href="{% url 'variations' %}">Variation</a></li>
-                    <li><span>Add Variation</span></li>
-                </ul>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="card-body ">
+        {% if messages %}
+        <div class="alert alert-success" role="alert">
+            <div class="messages">
+                {% for message in messages %}
+                {% if message.tags %} {% endif %}{{ message }}
+                {% endfor %}
             </div>
         </div>
-        <div class="col-sm-6 clearfix">
-            <div class="user-profile pull-right">
-                <img class="avatar user-thumb" src="{% static 'admin-assets/images/author/avatar.jpg' %}" alt="avatar">
-                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Suman Sapkota<i
-                        class="fa fa-angle-down"></i></h4>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Message</a>
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a class="dropdown-item" href="{% url 'admin_login' %}">Log Out</a>
+        {% endif %}
+        <div class="page-title-area">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumbs-area clearfix">
+                        <h4 class="page-title pull-left">Dashboard</h4>
+                        <ul class="breadcrumbs pull-left">
+                            <li><a href="{% url 'variations' %}">Variation</a></li>
+                            <li><span>Add Variation</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 clearfix">
+                    <div class="user-profile pull-right">
+                        <img class="avatar user-thumb" src="{% static 'admin-assets/images/author/avatar.jpg' %}"
+                            alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Suman Sapkota<i
+                                class="fa fa-angle-down"></i></h4>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Message</a>
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="{% url 'admin_login' %}">Log Out</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-{% endblock admin-navbar %}
+        {% endblock admin-navbar %}
 
-{% block main-content %}
+        {% block main-content %}
 
-<div class="card-body ">
-    <h4 class="header-title">Add Variations</h4>
-    <div class="form-group col-sm-3">
-        <label class="col-form-label">Products</label>
-        <select class="custom-select">
-            <option selected="selected">Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-    </div>
-    <div class="form-group col-sm-3">
-        <label class="col-form-label">Variation Category</label>
-        <select class="custom-select">
-            <option selected="selected">Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-3">
-            <label for="example-text-input" class="col-form-label">Variation Value</label>
-            <input class="form-control" type="text" id="example-text-input">
+        <div class="card-body ">
+            <h4 class="header-title">Add Variations</h4>
+            <div class="form-group col-sm-3">
+                <label class="col-form-label">Products</label>&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'addproduct' %}"><i class="text-success ti-plus"></i></a>
+                <select name="product" class="custom-select" required>
+                    <option disabled selected>Select</option>
+                    {% for product in products %}
+                    <option>{{ product.product_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="col-form-label">Variation Category</label>
+                <select name="variation_category" class="custom-select" required>
+                    <option disabled selected>Select</option>
+                    {% for variation_category in variation_categorys %}
+                    <option>{{ variation_category.variation_category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <label for="example-text-input" class="col-form-label">Variation Value</label>
+                    <input name="variation_value" class="form-control" type="text" id="example-text-input">
+                </div>
+            </div>
+            <div class="form-group col-sm-3">
+                <div>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked required>
+                    Is Available
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mb-3">Save</button>
+            <button type="submit" class="btn btn-success mb-3">Save and add another</button>
+
+
         </div>
-    </div>
-    <div class="form-group col-sm-3">
-        <div class="custom-control custom-checkbox">
-            <input type="checkbox" checked class="custom-control-input" id="customCheck1">
-            <label class="custom-control-label" for="customCheck1">Is Available</label>
-        </div>
-    </div>
-    <button type="button" class="btn btn-success mb-3">Save</button>
-    <button type="button" class="btn btn-success mb-3">Save and add another</button>
 
-
-</div>
-
-{% endblock main-content %}
+        {% endblock main-content %}

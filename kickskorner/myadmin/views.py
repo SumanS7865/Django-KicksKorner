@@ -108,12 +108,93 @@ def delete_product(request, product_id):
     return redirect("products")
 
 
+def categories(request):
+    categories = Category.objects.all()
+    context = {
+        "categories": categories,
+    }
+    return render(request, "myadmin/categories.html", context)
+
+
+def addcategory(request):
+    if request.method == "POST":
+        # Process form submission
+        category_name = request.POST["category_name"]
+        slug = slugify(category_name)
+        description = request.POST["description"]
+        cat_image = request.FILES["cat_image"]
+
+        product = Category(
+            category_name=category_name,
+            slug=slug,
+            description=description,
+            cat_image=cat_image,
+        )
+        product.save()
+
+        messages.success(request, "Category added successfully.")
+        return redirect("addcategory")
+
+    return render(request, "myadmin/addcategory.html")
+
+
+def delete_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    category_name = category.category_name
+    category.delete()
+    messages.success(request, f"'{category_name}' has been deleted successfully.")
+    return redirect("categories")
+
+
 def variations(request):
     variations = Variation.objects.all()
     context = {
         "variations": variations,
     }
     return render(request, "myadmin/variations.html", context)
+
+
+def addvariation(request):
+    products = Product.objects.all()
+    variation_categorys = Variation.objects.all()
+    if request.method == "POST":
+        product_name = request.POST["product"]
+        variation_category = request.POST["variation_category"]
+        variation_value = request.POST["variation_value"]
+
+        product = get_object_or_404(Product, product_name=product_name)
+        variation_category = Variation.objects.filter(
+            variation_category=variation_category
+        ).first()
+
+        if variation_category is None:
+            # Handle the case where the variation category doesn't exist
+            messages.error(request, "Invalid variation category.")
+            return redirect("addvariation")
+
+        variation = Variation(
+            product=product,
+            variation_category=variation_category,
+            variation_value=variation_value,
+        )
+        variation.save()
+
+        messages.success(request, "Variation added successfully.")
+        return redirect("addvariation")
+
+    context = {
+        "products": products,
+        "variation_categorys": variation_categorys,
+    }
+    return render(request, "myadmin/addvariation.html", context)
+
+
+def delete_variation(request, variation_id):
+    variation = get_object_or_404(Variation, id=variation_id)
+    product = variation.product
+    variation.delete()
+    messages.success(request, f"'{product}' variation has been deleted successfully.")
+    return redirect("variations")
 
 
 def cartitems(request):
@@ -132,14 +213,6 @@ def carts(request):
     return render(request, "myadmin/carts.html", context)
 
 
-def categories(request):
-    categories = Category.objects.all()
-    context = {
-        "categories": categories,
-    }
-    return render(request, "myadmin/categories.html", context)
-
-
 def accounts(request):
     accounts = Account.objects.all()
     context = {
@@ -148,13 +221,5 @@ def accounts(request):
     return render(request, "myadmin/accounts.html", context)
 
 
-def addvariation(request):
-    return render(request, "myadmin/addvariation.html")
-
-
 def invoice(request):
     return render(request, "myadmin/invoice.html")
-
-
-def addcategory(request):
-    return render(request, "myadmin/addcategory.html")

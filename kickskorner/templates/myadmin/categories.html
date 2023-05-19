@@ -2,6 +2,15 @@
 
 
 {% block main-content %}
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="messages">
+        {% for message in messages %}
+        {% if message.tags %} {% endif %}{{ message }}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
 <div class="main-content-inner">
     <div class="row">
         <!-- table primary start -->
@@ -32,9 +41,9 @@
                                             <a href=""><i class="text-success fa-solid fa-pen-to-square"></i> &nbsp;
                                                 &nbsp;</a>
                                             <button class="btn btn-light" data-toggle="modal" type="button"
-                                                data-target="#exampleModalLong"><i
+                                                data-target="#exampleModalLong-{{forloop.counter}}"><i
                                                     class="text-danger ti-trash"></i></button>
-                                            <div class="modal fade" id="exampleModalLong">
+                                            <div class="modal fade" id="exampleModalLong-{{forloop.counter}}">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -43,16 +52,19 @@
                                                                 data-dismiss="modal"><span>&times;</span></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p>Are you sure you want to delete the selected product? All
-                                                                of the following objects and their related items will be
+                                                            <p>Are you sure you want to delete the selected Category?
+                                                                All
+                                                                of the following objects and their related items
+                                                                will be
                                                                 deleted
                                                             </p>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-primary"
                                                                 data-dismiss="modal">No, take me back</button>
-                                                            <button type="button" class="btn btn-danger">Yes, I'm
-                                                                sure</button>
+                                                            <a href="{% url 'delete_category' category.id %}"
+                                                                class="btn btn-danger">Yes, I'm
+                                                                sure</a>
                                                         </div>
                                                     </div>
                                                 </div>
