@@ -51,6 +51,16 @@ class Slider(models.Model):
         return self.title1
 
 
+class Staff(models.Model):
+    staff_name = models.CharField(max_length=100, blank=True)
+    role = models.CharField(max_length=100, blank=True)
+    image = models.ImageField(upload_to="photos/staff", blank=True)
+    link = models.CharField(max_length=200, blank=True)
+
+    def __str__(self):
+        return self.staff_name
+
+
 class VariationManager(models.Manager):
     def colors(self):
         return super(VariationManager, self).filter(

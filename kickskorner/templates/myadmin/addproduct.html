@@ -34,7 +34,7 @@
 {% block main-content %}
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="card-body ">
+    <div class="card-body">
         {% if messages %}
         <div class="alert alert-success" role="alert">
             <div class="messages">
@@ -45,17 +45,17 @@
         </div>
         {% endif %}
 
-        <h4 class=" header-title">Add Products</h4>
+        <h4 class="header-title">Add Products</h4>
         <div class="form-group">
             <div class="col-sm-6">
-                <label for="example-text-input" class="col-form-label">Product Name</label>
-                <input name="product_name" class="form-control" type="text" id="example-text-input" required>
+                <label for="product_name" class="col-form-label">Product Name</label>
+                <input name="product_name" class="form-control" type="text" id="product_name" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-6">
-                <label for="example-text-input" class="col-form-label">Slug</label>
-                <input name="slug" class="form-control" type="text" id="example-text-input" required>
+                <label for="slug" class="col-form-label">Slug</label>
+                <input name="slug" class="form-control" type="text" id="slug" required>
             </div>
         </div>
         <div class="form-group col-sm-6">
@@ -64,67 +64,63 @@
         </div>
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="example-text-input" class="col-form-label">Selling Price</label>
-                <input name="selling_price" class="form-control" type="number" id="example-text-input" required>
+                <label for="selling_price" class="col-form-label">Selling Price</label>
+                <input name="selling_price" class="form-control" type="number" id="selling_price" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="example-text-input" class="col-form-label">Discounted Price</label>
-                <input name="discounted_price" class="form-control" type="text" id="example-text-input">
+                <label for="discounted_price" class="col-form-label">Discounted Price</label>
+                <input name="discounted_price" class="form-control" type="text" id="discounted_price">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="example-text-input" class="col-form-label">Product Detail Ribbon</label>
-                <input name="product_detail_ribbon" class="form-control" type="text" id="example-text-input">
+                <label for="product_detail_ribbon" class="col-form-label">Product Detail Ribbon</label>
+                <input name="product_detail_ribbon" class="form-control" type="text" id="product_detail_ribbon">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="example-text-input" class="col-form-label">Ribbon</label>
-                <input name="ribbon" class="form-control" type="text" id="example-text-input" required>
+                <label for="ribbon" class="col-form-label">Ribbon</label>
+                <input name="ribbon" class="form-control" type="text" id="ribbon" required>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="example-text-input" class="col-form-label">Image1</label>
+                <label for="image1" class="col-form-label">Image1</label>
                 <div class="custom-file">
                     <input name="image1" type="file" class="form-control-file" required>
-
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="example-text-input" class="col-form-label">Image2</label>
+                <label for="image2" class="col-form-label">Image2</label>
                 <div class="custom-file">
                     <input name="image2" type="file" class="form-control-file" required>
-
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="example-text-input" class="col-form-label">Image3</label>
+                <label for="image3" class="col-form-label">Image3</label>
                 <div class="custom-file">
                     <input name="image3" type="file" class="form-control-file" required>
-
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="example-text-input" class="col-form-label">Image4</label>
+                <label for="image4" class="col-form-label">Image4</label>
                 <div class="custom-file">
                     <input name="image4" type="file" class="form-control-file" required>
-
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="example-text-input" class="col-form-label">Image5</label>
+                <label for="image5" class="col-form-label">Image5</label>
                 <div class="custom-file">
                     <input name="image5" type="file" class="form-control-file" required>
                 </div>
@@ -132,16 +128,15 @@
         </div>
         <div class="form-group">
             <div class="col-sm-3">
-                <label for="example-text-input" class="col-form-label">Image6</label>
+                <label for="image6" class="col-form-label">Image6</label>
                 <div class="custom-file">
                     <input name="image6" type="file" class="form-control-file" required>
-
                 </div>
             </div>
         </div>
         <div class="form-group col-sm-3">
-            <label for="example-number-input" class="col-form-label">Stock</label>
-            <input name="stock" class="form-control" type="number" id="example-number-input" required>
+            <label for="stock" class="col-form-label">Stock</label>
+            <input name="stock" class="form-control" type="number" id="stock" required>
         </div>
         <div class="form-group col-sm-3">
             <div>
@@ -150,7 +145,6 @@
             </div>
         </div>
         <div class="form-group col-sm-3">
-
             <label class="col-form-label">Category</label>&nbsp; &nbsp;&nbsp;
             <a href="{% url 'addcategory' %}"><i class="text-success ti-plus"></i></a>
             <select name="category" class="custom-select" required>
@@ -165,5 +159,22 @@
 
     </div>
 </form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Handle input change event for product name
+        $('#product_name').on('input', function () {
+            // Get the product name value
+            var productName = $(this).val();
+
+            // Remove special characters, replace spaces with dashes, and convert to lowercase for slug
+            var slug = productName.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-|-$/g, '');
+
+            // Set the slug input value
+            $('#slug').val(slug);
+        });
+    });
+</script>
 
 {% endblock main-content %}

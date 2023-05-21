@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
-from .models import Product, Slider
+from .models import Product, Slider, Staff
 from category.models import Category
 from carts.models import CartItem
 from carts.views import _cart_id
@@ -14,9 +14,11 @@ def store(request):
     page = request.GET.get("page")
     paged_products = paginator.get_page(page)
     sliders = Slider.objects.all()
+    staffs = Staff.objects.all()
     context = {
         "products": paged_products,
         "sliders": sliders,
+        "staffs": staffs,
     }
 
     return render(request, "store/store.html", context)

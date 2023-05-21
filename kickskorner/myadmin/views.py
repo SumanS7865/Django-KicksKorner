@@ -4,7 +4,7 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from app.models import Product, Variation
+from app.models import Product, Variation, Slider, Staff
 from carts.models import Cart, CartItem
 from category.models import *
 from members.models import *
@@ -213,6 +213,22 @@ def carts(request):
         "carts": carts,
     }
     return render(request, "myadmin/carts.html", context)
+
+
+def sliders(request):
+    sliders = Slider.objects.all()
+    context = {
+        "sliders": sliders,
+    }
+    return render(request, "myadmin/sliders.html", context)
+
+
+def staffs(request):
+    staffs = Staff.objects.all()
+    context = {
+        "staffs": staffs,
+    }
+    return render(request, "myadmin/staffs.html", context)
 
 
 def accounts(request):

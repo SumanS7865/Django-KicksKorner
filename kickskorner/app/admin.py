@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Variation, Slider
+from .models import Product, Variation, Slider, Staff
 
 # Register your models here.
 
@@ -23,6 +23,14 @@ class VariationAdmin(admin.ModelAdmin):
     list_filter = ("product", "variation_category", "variation_value")
 
 
+class StaffAdmin(admin.ModelAdmin):
+    list_display = (
+        "staff_name",
+        "role",
+    )
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Variation, VariationAdmin)
 admin.site.register(Slider)
+admin.site.register(Staff, StaffAdmin)
