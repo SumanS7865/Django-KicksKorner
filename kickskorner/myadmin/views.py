@@ -132,7 +132,9 @@ def addcategory(request):
         )
         product.save()
 
-        messages.success(request, "Category added successfully.")
+        messages.success(
+            request, f"'{category_name}' added successfully in the Category field."
+        )
         return redirect("addcategory")
 
     return render(request, "myadmin/addcategory.html")

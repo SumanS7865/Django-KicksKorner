@@ -6,7 +6,8 @@
 <link href="{% static 'css/product_page.css' %}" rel="stylesheet">
 {% endblock specific-css %}
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 {% block maincontent %}
 <main>
@@ -28,7 +29,8 @@
                     </div>
                     <div class="slider-two">
                         <div class="owl-carousel owl-theme thumbs">
-                            <div style="background-image: url({{single_product.image1.url}});" class="item active"></div>
+                            <div style="background-image: url({{single_product.image1.url}});" class="item active">
+                            </div>
                             <div style="background-image: url({{single_product.image2.url}});" class="item"></div>
                             <div style="background-image: url({{single_product.image3.url}});" class="item"></div>
                             <div style="background-image: url({{single_product.image4.url}});" class="item"></div>
@@ -53,7 +55,9 @@
                     <!-- /page_header -->
                     <div class="prod_info">
                         <h1>{{single_product.product_name}}</h1>
-                        <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i><em>4 reviews</em></span>
+                        <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
+                                class="icon-star voted"></i><i class="icon-star voted"></i><i
+                                class="icon-star"></i><em>4 reviews</em></span>
                         <p><small>{{single_product.product_name}}</small><br>{{single_product.description}}</p>
                         <div class="prod_options">
                             <div class="row">
@@ -63,7 +67,10 @@
                                         <select id="selectcolor" name="color" class="wide form-control" required>
                                             <option value="null" disabled selected>Select</option>
                                             {% for i in single_product.variation_set.colors %}
-                                            <option value="{{i.variation_value | lower}}">{{i.variation_value | capfirst}}</option>
+
+                                            <option value="{{i.variation_value | lower}}">
+                                                {{i.variation_value | capfirst}}
+                                            </option>
                                             {% endfor %}
                                         </select>
                                         <span id="colormsg" style="display:none;">Please select color</span>
@@ -71,10 +78,8 @@
                                 </div>
                             </div>
                             <script>
-                                function validate()
-                                {
-                                    if(document.getElementById('selectcolor').value == "null")
-                                    {
+                                function validate() {
+                                    if (document.getElementById('selectcolor').value == "null") {
                                         document.getElementById('colormsg').style.display = 'block';
                                         return false;
                                     }
@@ -97,41 +102,46 @@
                             </div>
 
                             <script>
-                                function validate()
-                                {
-                                    if(document.getElementById('selectsize').value == "null")
-                                    {
+                                function validate() {
+                                    if (document.getElementById('selectcolor').value == "null") {
+                                        document.getElementById('colormsg').style.display = 'block';
+                                        return false;
+                                    }
+                                    if (document.getElementById('selectsize').value == "null") {
                                         document.getElementById('sizemsg').style.display = 'block';
                                         return false;
                                     }
                                     return true;
                                 }
                             </script>
-                            
+
                         </div>
                         <div class="row">
                             <div class="col-lg-5 col-md-6">
-                                <div class="price_main"><span class="new_price">Rs. {{single_product.selling_price}}</span>
+                                <div class="price_main"><span class="new_price">Rs.
+                                        {{single_product.selling_price}}</span>
                                     <span class="percentage">{{single_product.product_detail_ribbon}}</span>
-                                    <span class="old_price">{{single_product.discounted_price}}</span></div>
+                                    <span class="old_price">{{single_product.discounted_price}}</span>
+                                </div>
                             </div>
-                            {% if single_product.stock <= 0 %}
-                            <h4 class="text-danger" style="margin-top:25px;">Out of Stock</h4>
-                            <hr>
-                            {% else %}
-                            <div class="col-lg-4 col-md-6">
-                                <div class="btn_add_to_cart"><button type="submit" class="btn_1">Add to Cart</button></div>
-                            </div>
-                            {% endif %}
+                            {% if single_product.stock <= 0 %} <h4 class="text-danger" style="margin-top:25px;">Out of
+                                Stock</h4>
+                                <hr>
+                                {% else %}
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="btn_add_to_cart"><button type="submit" class="btn_1">Add to
+                                            Cart</button></div>
+                                </div>
+                                {% endif %}
                         </div>
-                    <!-- /prod_info -->
-                    <div class="product_actions">
-                        <ul>
-                            <li>
-                                <a href="#"><i class="ti-heart"></i><span>Add to Wishlist</span></a>
-                            </li>
-                        </ul>
-                    </div>
+                        <!-- /prod_info -->
+                        <div class="product_actions">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="ti-heart"></i><span>Add to Wishlist</span></a>
+                                </li>
+                            </ul>
+                        </div>
                 </form>
                 <!-- /product_actions -->
             </div>
@@ -139,7 +149,7 @@
         <!-- /row -->
     </div>
     <!-- /container -->
-    
+
 
     <div class="container margin_60_35">
         <div class="main_title">
@@ -154,11 +164,14 @@
                     <span class="ribbon new">{{product.ribbon}}</span>
                     <figure>
                         <a href="{{product.get_url}}">
-                            <img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}" alt="">
-                            <img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}" alt="">
+                            <img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}"
+                                alt="">
+                            <img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}"
+                                alt="">
                         </a>
                     </figure>
-                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
+                            class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
                     <a href="{{product.get_url}}">
                         <h3>{{ product.product_name }}</h3>
                     </a>
@@ -167,11 +180,16 @@
                         <span class="old_price">{{ product.discounted_price }}</span>
                     </div>
                     <ul>
-                        <li><a href="" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                        <li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="View Details"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                          </svg><span>Add to cart</span></a></li>
+                        <li><a href="" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+                                title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                        <li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip"
+                                data-bs-placement="left" title="View Details"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                    <path
+                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                </svg><span>Add to cart</span></a></li>
                     </ul>
                 </div>
                 <!-- /grid_item -->
@@ -220,7 +238,9 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
 
 
 

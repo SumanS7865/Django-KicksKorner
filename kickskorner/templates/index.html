@@ -1,603 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
-	{% load static %}
+{% load static %}
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Ansonika">
-    <title>{% block title %} KicksKorner {% endblock %}</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="Ansonika">
+	<title>{% block title %} KicksKorner {% endblock %}</title>
 
-    <!-- Favicons-->
-    <link rel="shortcut icon" href="{% static 'assets/img/logo/logo.png' %}" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="{% static 'assets/img/apple-touch-icon-57x57-precomposed.png' %}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{% static 'assets/img/apple-touch-icon-72x72-precomposed.png' %}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{% static 'assets/img/apple-touch-icon-114x114-precomposed.png' %}">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{% static 'assets/img/apple-touch-icon-144x144-precomposed.png' %}">
-	
-    <!-- GOOGLE WEB FONT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<!-- Favicons-->
+	<link rel="shortcut icon" href="{% static 'assets/img/logo/logo.png' %}" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon"
+		href="{% static 'assets/img/apple-touch-icon-57x57-precomposed.png' %}">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
+		href="{% static 'assets/img/apple-touch-icon-72x72-precomposed.png' %}">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
+		href="{% static 'assets/img/apple-touch-icon-114x114-precomposed.png' %}">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
+		href="{% static 'assets/img/apple-touch-icon-144x144-precomposed.png' %}">
+
+	<!-- GOOGLE WEB FONT -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
-    <!-- BASE CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<!-- BASE CSS -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
 
 	{% block specific-css %}
 	<!-- SPECIFIC CSS -->
-    <link href="{% static 'css/home_1.css' %}" rel="stylesheet">
+	<link href="{% static 'css/home_1.css' %}" rel="stylesheet">
 	{% endblock specific-css %}
 
-    <!-- MY CUSTOM CSS -->
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+	<!-- MY CUSTOM CSS -->
+	<link href="{% static 'css/custom.css' %}" rel="stylesheet">
 
 </head>
 
 <body>
-	
+
 	<div id="page">
 
 
-	<header class="version_1">
-		<div class="layer"></div><!-- Mobile menu overlay mask -->
-		<div class="main_header">
-			<div class="container">
-				<div class="row small-gutters">
-					<div class="col-xl-3 col-lg-3 d-lg-flex align-items-center">
-						<div id="logo">
-							<a href="{% url 'index' %}"><img src="{% static 'assets/img/logo/logo.png' %}" alt="Kicks Korner" width="100" height="100%"></a>
-						</div>
-					</div>
-					<nav class="col-xl-6 col-lg-7">
-						<a class="open_close" href="javascript:void(0);">
-							<div class="hamburger hamburger--spin">
-								<div class="hamburger-box">
-									<div class="hamburger-inner"></div>
-								</div>
+		<header class="version_1">
+			<div class="layer"></div><!-- Mobile menu overlay mask -->
+			<div class="main_header">
+				<div class="container">
+					<div class="row small-gutters">
+						<div class="col-xl-3 col-lg-3 d-lg-flex align-items-center">
+							<div id="logo">
+								<a href="{% url 'index' %}"><img src="{% static 'assets/img/logo/logo.png' %}"
+										alt="Kicks Korner" width="100" height="100%"></a>
 							</div>
-						</a>
-						<!-- Mobile menu button -->
-						<div class="main-menu">
-							<div id="header_menu">
-								<a href="index.html"><img src="{% static 'assets/img/logo_black.svg' %}" alt="" width="100" height="35"></a>
-								<a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
-							</div>
-							<ul class=header__ul">
-								<li class="header__li">
-									<a class="header__a" href="{% url 'index' %}">Home</a>
-								</li>
-								<li class="header__li">
-									<a class="header__a" href="{% url 'store' %}">Browse</a>
-								</li>
-								<li class="header__li">
-									<a class="header__a" href="{% url 'about' %}">About Us</a>
-								</li>
-								<li class="header__li">
-									<a class="header__a" href="{% url 'contact' %}">Contact Us</a>
-								</li>
-								<li class="header__li">
-									<a class="header__a" href="http://127.0.0.1:8000/admin/">Admin Pannel</a>
-								</li>
-							</ul>
 						</div>
-						<!--/main-menu -->
-					</nav>
-					{% if user.id is None  %}
-					<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
-						<a class="phone_top" href="tel://9438843343"><strong>Welcome, guest!</strong></a>
-					</div>
-					{% else %}
-					<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
-						<a class="phone_top" href="tel://9438843343"><strong>Welcome,{{user.first_name}}!</strong></a>
-					</div>
-					{% endif %}
-				</div>
-				<!-- /row -->
-			</div>
-		</div>
-		<!-- /main_header -->
-
-		<div class="main_nav Sticky">
-			<div class="container">
-				<div class="row small-gutters">
-					<div class="col-xl-3 col-lg-3 col-md-3">
-						<nav class="categories">
-							<ul class="clearfix">
-								<li><span>
-										<a href="#">
-											<span class="hamburger hamburger--spin">
-												<span class="hamburger-box">
-													<span class="hamburger-inner"></span>
-												</span>
-											</span>
-											Categories
-										</a>
-									</span>
-									<div id="menu">
-										<ul>
-											{% for category in links %}
-											<li><a href="{{category.get_url}}">{{ category.category_name }}</a>
-											</li>
-											{% endfor %}
-										</ul>
+						<nav class="col-xl-6 col-lg-7">
+							<a class="open_close" href="javascript:void(0);">
+								<div class="hamburger hamburger--spin">
+									<div class="hamburger-box">
+										<div class="hamburger-inner"></div>
 									</div>
-								</li>
-							</ul>
+								</div>
+							</a>
+							<!-- Mobile menu button -->
+							<div class="main-menu">
+								<div id="header_menu">
+									<a href="index.html"><img src="{% static 'assets/img/logo_black.svg' %}" alt=""
+											width="100" height="35"></a>
+									<a href="#" class="open_close" id="close_in"><i class="ti-close"></i></a>
+								</div>
+								<ul class=header__ul">
+									<li class="header__li">
+										<a class="header__a" href="{% url 'index' %}">Home</a>
+									</li>
+									<li class="header__li">
+										<a class="header__a" href="{% url 'store' %}">Browse</a>
+									</li>
+									<li class="header__li">
+										<a class="header__a" href="{% url 'about' %}">About Us</a>
+									</li>
+									<li class="header__li">
+										<a class="header__a" href="{% url 'contact' %}">Contact Us</a>
+									</li>
+									<li class="header__li">
+										<a class="header__a" href="http://127.0.0.1:8000/admin/">Admin Pannel</a>
+									</li>
+								</ul>
+							</div>
+							<!--/main-menu -->
 						</nav>
+						{% if user.id is None %}
+						<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
+							<a class="phone_top" href="tel://9438843343"><strong>Welcome, guest!</strong></a>
+						</div>
+						{% else %}
+						<div class="col-xl-3 col-lg-2 d-lg-flex align-items-center justify-content-end text-end">
+							<a class="phone_top"
+								href="tel://9438843343"><strong>Welcome,{{user.first_name}}!</strong></a>
+						</div>
+						{% endif %}
 					</div>
-					<div class="col-xl-6 col-lg-7 col-md-6 d-none d-md-block">
-						<form action="{% url 'search' %}" method="GET">
-							<div class="custom-search-input">
-								<input type="text" placeholder="Search over 10.000 products" name="keyword">
-								<button type="submit"><i class="header-icon_search_custom"></i></button>
-							</div>
-						</form>
-					</div>
-					<div class="col-xl-3 col-lg-2 col-md-3">
-						<ul class="top_tools">
-							<li>
-								<div class="dropdown dropdown-cart">
-									<a href="{% url 'cart' %}" class="cart_bt">
-										<strong>{{cart_count}}<span></span>
-										</strong>
+					<!-- /row -->
+				</div>
+			</div>
+			<!-- /main_header -->
+
+			<div class="main_nav Sticky">
+				<div class="container">
+					<div class="row small-gutters">
+						<div class="col-xl-3 col-lg-3 col-md-3">
+							<nav class="categories">
+								<ul class="clearfix">
+									<li><span>
+											<a href="#">
+												<span class="hamburger hamburger--spin">
+													<span class="hamburger-box">
+														<span class="hamburger-inner"></span>
+													</span>
+												</span>
+												Categories
+											</a>
+										</span>
+										<div id="menu">
+											<ul>
+												{% for category in links %}
+												<li><a href="{{category.get_url}}">{{ category.category_name }}</a>
+												</li>
+												{% endfor %}
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</nav>
+						</div>
+						<div class="col-xl-6 col-lg-7 col-md-6 d-none d-md-block">
+							<form action="{% url 'search' %}" method="GET">
+								<div class="custom-search-input">
+									<input type="text" placeholder="Search over 10.000 products" name="keyword">
+									<button type="submit"><i class="header-icon_search_custom"></i></button>
+								</div>
+							</form>
+						</div>
+						<div class="col-xl-3 col-lg-2 col-md-3">
+							<ul class="top_tools">
+								<li>
+									<div class="dropdown dropdown-cart">
+										<a href="{% url 'cart' %}" class="cart_bt">
+											<strong>{{cart_count}}<span></span>
+											</strong>
+										</a>
+										<div class="dropdown-menu">
+											<ul>
+												{% for cart_item in cart_items %}
+												<li>
+													<a href="{{cart_item.product.get_url}}">
+														<figure><img src="{{cart_item.product.image1.url}}"
+																data-src="{{cart_item.product.image1.url}}" alt=""
+																width="50" height="50" class="lazy"></figure>
+														<strong>
+															<span>{{cart_item.product.product_name}}</span>
+															Rs. {{cart_item.product.selling_price}}</strong>
+													</a>
+													<a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id %}"
+														class="action"><i class="ti-trash"></i></a>
+												</li>
+												{% endfor %}
+											</ul>
+											<div class="total_drop">
+												<div class="clearfix"><strong>Total</strong><span>Rs. {{total}}</span>
+												</div>
+												<a href="{% url 'cart' %}" class="btn_1 outline">View Cart</a><a
+													href="checkout.html" class="btn_1">Checkout</a>
+											</div>
+										</div>
+									</div>
+									<!-- /dropdown-cart-->
+								</li>
+								<li>
+									<a href="#0" class="wishlist"><span>Wishlist</span></a>
+								</li>
+								<li>
+									{% if user.id is None %}
+									<div class="dropdown dropdown-access">
+										<a href="{% url 'register' %}" class="access_link"><span>Account</span></a>
+										<div class="dropdown-menu">
+											<a href="{% url 'register' %}" class="btn_1">Sign In or Sign Up</a>
+											<ul>
+												<li>
+													<a href="{% url 'register' %}"><i class="ti-package"></i>My
+														Orders</a>
+												</li>
+												<li>
+													<a href="{% url 'register' %}"><i class="ti-user"></i>My Profile</a>
+												</li>
+												<!-- <li>
+												<a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
+											</li> -->
+											</ul>
+										</div>
+									</div>
+									<!-- /dropdown-access-->
+									{% else %}
+									<div class="dropdown dropdown-access">
+										<a href="#" class="access_link"><span>Account</span></a>
+										<div class="dropdown-menu">
+											<a href="{% url 'logout' %}" class="btn_1">Logout</a>
+											<ul>
+												<li>
+													<a href="#"><i class="ti-package"></i>My Orders</a>
+												</li>
+												<li>
+													<a href="#"><i class="ti-user"></i>My Profile</a>
+												</li>
+												<!-- <li>
+												<a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
+											</li> -->
+											</ul>
+										</div>
+									</div>
+									{% endif %}
+								</li>
+								<li>
+									<a href="javascript:void(0);" class="btn_search_mob"><span>Search</span></a>
+								</li>
+								<li>
+									<a href="#menu" class="btn_cat_mob">
+										<div class="hamburger hamburger--spin" id="hamburger">
+											<div class="hamburger-box">
+												<div class="hamburger-inner"></div>
+											</div>
+										</div>
+										Categories
 									</a>
-									<div class="dropdown-menu">
-										<ul>
-											{% for cart_item in cart_items %}
-											<li>
-												<a href="{{cart_item.product.get_url}}">
-													<figure><img src="{{cart_item.product.image1.url}}" data-src="{{cart_item.product.image1.url}}" alt="" width="50" height="50" class="lazy"></figure>
-													<strong>
-														<span>{{cart_item.product.product_name}}</span>
-														Rs. {{cart_item.product.selling_price}}</strong>
-												</a>
-												<a href="{% url 'remove_cart_item' cart_item.product.id cart_item.id %}" class="action"><i class="ti-trash"></i></a>
-											</li>
-											{% endfor %}
-										</ul>
-										<div class="total_drop">
-											<div class="clearfix"><strong>Total</strong><span>Rs. {{total}}</span></div>
-											<a href="{% url 'cart' %}" class="btn_1 outline">View Cart</a><a href="checkout.html" class="btn_1">Checkout</a>
-										</div>
-									</div>
-								</div>
-								<!-- /dropdown-cart-->
-							</li>
-							<li>
-								<a href="#0" class="wishlist"><span>Wishlist</span></a>
-							</li>
-							<li>
-								{% if user.id is None %}
-								<div class="dropdown dropdown-access">
-									<a href="{% url 'register' %}" class="access_link"><span>Account</span></a>
-									<div class="dropdown-menu">
-										<a href="{% url 'register' %}" class="btn_1">Sign In or Sign Up</a>
-										<ul>
-											<li>
-												<a href="{% url 'register' %}"><i class="ti-package"></i>My Orders</a>
-											</li>
-											<li>
-												<a href="{% url 'register' %}"><i class="ti-user"></i>My Profile</a>
-											</li>
-											<!-- <li>
-												<a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
-											</li> -->
-										</ul>
-									</div>
-								</div>
-								<!-- /dropdown-access-->
-								{% else %}
-								<div class="dropdown dropdown-access">
-									<a href="#" class="access_link"><span>Account</span></a>
-									<div class="dropdown-menu">
-										<a href="{% url 'logout' %}" class="btn_1">Logout</a>
-										<ul>
-											<li>
-												<a href="#"><i class="ti-package"></i>My Orders</a>
-											</li>
-											<li>
-												<a href="#"><i class="ti-user"></i>My Profile</a>
-											</li>
-											<!-- <li>
-												<a href="help.html"><i class="ti-help-alt"></i>Help and Faq</a>
-											</li> -->
-										</ul>
-									</div>
-								</div>
-								{% endif %}
-							</li>
-							<li>
-								<a href="javascript:void(0);" class="btn_search_mob"><span>Search</span></a>
-							</li>
-							<li>
-								<a href="#menu" class="btn_cat_mob">
-									<div class="hamburger hamburger--spin" id="hamburger">
-										<div class="hamburger-box">
-											<div class="hamburger-inner"></div>
-										</div>
-									</div>
-									Categories
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<div class="search_mob_wp">
-				<input type="text" class="form-control" placeholder="Search over 10.000 products">
-				<input type="submit" class="btn_1 full-width" value="Search">
-			</div>
-			<!-- /search_mobile -->
-		</div>
-		<!-- /main_nav -->
-	</header>
-	<!-- /header -->
-	{% block maincontent %}
-	<main>
-		<div id="carousel-home">
-			<div class="owl-carousel owl-theme">
-				<div class="owl-slide cover" style="background-image: url(../static/assets/img/slides/1.jpg);">
-					<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-						<div class="container">
-							<div class="row justify-content-center justify-content-md-end">
-								<div class="col-lg-6 static">
-									<div class="slide-text text-end white">
-										<h2 class="owl-slide-animated owl-slide-title">Attack Air<br>Max 720 Sage Low</h2>
-										<p class="owl-slide-animated owl-slide-subtitle">
-											Limited items available at this price
-										</p>
-										<div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="{% url 'store' %}" role="button">Shop Now</a></div>
-									</div>
-								</div>
-							</div>
+								</li>
+							</ul>
 						</div>
 					</div>
+					<!-- /row -->
 				</div>
-				<!--/owl-slide-->
-				<div class="owl-slide cover" style="background-image: url(../static/assets/img/slides/2.jpg);">
-					<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-						<div class="container">
-							<div class="row justify-content-center justify-content-md-start">
-								<div class="col-lg-6 static">
-									<div class="slide-text white">
-										<h2 class="owl-slide-animated owl-slide-title"> Air Jordan 4<br>Kaws Cool Grey</h2>
-										<p class="owl-slide-animated owl-slide-subtitle">
-											Limited items available at this price
-										</p>
-										<div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="http://127.0.0.1:8000/store/category/jordan/" role="button">Shop Now</a></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div class="search_mob_wp">
+					<input type="text" class="form-control" placeholder="Search over 10.000 products">
+					<input type="submit" class="btn_1 full-width" value="Search">
 				</div>
-				<!--/owl-slide-->
-				<div class="owl-slide cover" style="background-image: url(../static/assets/img/slides/3.jpg);">
-					<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-						<div class="container">
-							<div class="row justify-content-center justify-content-md-start">
-								<div class="col-lg-12 static">
-									<div class="slide-text text-center white">
-										<h2 class="owl-slide-animated owl-slide-title">Travis scott<br>Nike SB Dunk low</h2>
-										<p class="owl-slide-animated owl-slide-subtitle">
-											Lightweight cushioning and durable support with a Phylon midsole
-										</p>
-										<div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="http://127.0.0.1:8000/store/category/jordan/" role="button">Shop Now</a></div>
+				<!-- /search_mobile -->
+			</div>
+			<!-- /main_nav -->
+		</header>
+		<!-- /header -->
+		{% block maincontent %}
+		<main>
+			{% for slider in sliders %}
+			<div id="carousel-home">
+				<div class="owl-carousel owl-theme">
+					<div class="owl-slide cover" style="background-image: url({{slider.image1.url}});">
+						<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+							<div class="container">
+								<div class="row justify-content-center justify-content-md-end">
+									<div class="col-lg-6 static">
+										<div class="slide-text text-end white">
+											<h2 class="owl-slide-animated owl-slide-title">{{slider.title1}}</h2>
+											<p class="owl-slide-animated owl-slide-subtitle">
+												{{slider.description1}}
+											</p>
+											<div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
+													href="{% url 'store' %}" role="button">Shop Now</a></div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!--/owl-slide-->
-				</div>
-			</div>
-			<div id="icon_drag_mobile"></div>
-		</div>
-		<!--/carousel-->
-		
-		<div class="container margin_60_35">
-			<div class="main_title">
-				<h2>Top Selling</h2>
-				<span>Products</span>
-				<p>Top selling products of all time</p>
-			</div>
-			<div class="row small-gutters">
-				{% for product in products %}
-				<div class="col-6 col-md-4 col-xl-3">
-					<div class="grid_item">
-						<span class="ribbon new">{{product.ribbon}}</span>
-						<figure>
-							<a href="{{product.get_url}}">
-								<img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}" alt="">
-								<img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}" alt="">
-							</a>
-						</figure>
-						<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-						<a href="{{product.get_url}}">
-							<h3>{{ product.product_name }}</h3>
-						</a>
-						<div class="price_box">
-							<span class="new_price">Rs. {{ product.selling_price }}</span>
-							<span class="old_price">{{ product.discounted_price }}</span>
-						</div>
-						<ul>
-							<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-							<li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="View Details"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-								<path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-								<path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-							  </svg><span>Add to cart</span></a></li>
-						</ul>
-					</div>
-					<!-- /grid_item -->
-				</div>
-				{% endfor %}
-				<!-- /col -->
-			</div>
-			<!-- /row -->
-			<div class="pagination__wrapper">
-				{% if products.has_other_pages %}
-				<ul class="pagination">
-					{% if products.has_previous %}
-					<li><a href="?page={{products.previous_page_number}}" class="prev" title="previous page">&#10094;</a></li>
-					{% else %}
-					<li><a href="#" class="prev disabled" title="previous page">&#10094;</a></li>
-				{% endif %}
-	
-					{% for i in products.paginator.page_range %}
-						{% if products.number == i %}
-					<li>
-						<a href="" class="active">{{i}}</a>
-					</li>
-						{% else %}
-					<li>
-					<a href="?page={{i}}" class="">{{i}}</a>
-						{% endif %}
-					</li>
-					{% endfor %}
-	
-					{% if products.has_next %}
-						<li><a href="?page={{products.next_page_number}}" class="next" title="next page">&#10095;</a></li>
-					{% else %}
-						<li><a href="" class="next disabled" title="next page">&#10095;</a></li>
-					{% endif %}
-				</ul>
-				{% endif %}
-			</div>
-		</div>
-		<!-- /container -->
-
-		<div class="featured lazy" data-bg="url({% static 'assets/img/23.jpg' %})">
-			<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
-				<div class="container margin_60">
-					<div class="row justify-content-center justify-content-md-start">
-						<div class="col-lg-6 wow" data-wow-offset="150">
-							<h3>Air jordan 4<br>kaws cool grey</h3>
-							<p>Lightweight cushioning and durable support with a Phylon midsole</p>
-							<div class="feat_text_block">
-								<div class="price_box">
-									<span class="new_price">Rs. 5600</span>
-									<span class="old_price">Rs. 7000</span>
+					<div class="owl-slide cover" style="background-image: url({{slider.image2.url}});">
+						<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+							<div class="container">
+								<div class="row justify-content-center justify-content-md-start">
+									<div class="col-lg-6 static">
+										<div class="slide-text white">
+											<h2 class="owl-slide-animated owl-slide-title">{{slider.title2}}</h2>
+											<p class="owl-slide-animated owl-slide-subtitle">
+												{{slider.description2}}
+											</p>
+											<div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
+													href="http://127.0.0.1:8000/store/category/jordan/"
+													role="button">Shop Now</a></div>
+										</div>
+									</div>
 								</div>
-								<a class="btn_1" href="{% url 'store' %}" role="button">Shop Now</a>
+							</div>
+						</div>
+					</div>
+					<!--/owl-slide-->
+					<div class="owl-slide cover" style="background-image: url({{slider.image3.url}});">
+						<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+							<div class="container">
+								<div class="row justify-content-center justify-content-md-start">
+									<div class="col-lg-12 static">
+										<div class="slide-text text-center white">
+											<h2 class="owl-slide-animated owl-slide-title">{{slider.title3}}</h2>
+											<p class="owl-slide-animated owl-slide-subtitle">
+												{{slider.description3}}
+											</p>
+											<div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
+													href="http://127.0.0.1:8000/store/category/jordan/"
+													role="button">Shop Now</a></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--/owl-slide-->
+					</div>
+				</div>
+				<div id="icon_drag_mobile"></div>
+			</div>
+			{% endfor %}
+			<!--/carousel-->
+
+			<div class="container margin_60_35">
+				<div class="main_title">
+					<h2>Top Selling</h2>
+					<span>Products</span>
+					<p>Top selling products of all time</p>
+				</div>
+				<div class="row small-gutters">
+					{% for product in products %}
+					<div class="col-6 col-md-4 col-xl-3">
+						<div class="grid_item">
+							<span class="ribbon new">{{product.ribbon}}</span>
+							<figure>
+								<a href="{{product.get_url}}">
+									<img class="img-fluid lazy" src="{{product.image1.url}}"
+										data-src="{{product.image1.url}}" alt="">
+									<img class="img-fluid lazy" src="{{product.image2.url}}"
+										data-src="{{product.image2.url}}" alt="">
+								</a>
+							</figure>
+							<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
+									class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i>
+							</div>
+							<a href="{{product.get_url}}">
+								<h3>{{ product.product_name }}</h3>
+							</a>
+							<div class="price_box">
+								<span class="new_price">Rs. {{ product.selling_price }}</span>
+								<span class="old_price">{{ product.discounted_price }}</span>
+							</div>
+							<ul>
+								<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+										title="Add to favorites"><i class="ti-heart"></i><span>Add to
+											favorites</span></a></li>
+								<li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip"
+										data-bs-placement="left" title="View Details"><svg
+											xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+											fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+											<path
+												d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+											<path
+												d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+										</svg><span>Add to cart</span></a></li>
+							</ul>
+						</div>
+						<!-- /grid_item -->
+					</div>
+					{% endfor %}
+					<!-- /col -->
+				</div>
+				<!-- /row -->
+				<div class="pagination__wrapper">
+					{% if products.has_other_pages %}
+					<ul class="pagination">
+						{% if products.has_previous %}
+						<li><a href="?page={{products.previous_page_number}}" class="prev"
+								title="previous page">&#10094;</a></li>
+						{% else %}
+						<li><a href="#" class="prev disabled" title="previous page">&#10094;</a></li>
+						{% endif %}
+
+						{% for i in products.paginator.page_range %}
+						{% if products.number == i %}
+						<li>
+							<a href="" class="active">{{i}}</a>
+						</li>
+						{% else %}
+						<li>
+							<a href="?page={{i}}" class="">{{i}}</a>
+							{% endif %}
+						</li>
+						{% endfor %}
+
+						{% if products.has_next %}
+						<li><a href="?page={{products.next_page_number}}" class="next" title="next page">&#10095;</a>
+						</li>
+						{% else %}
+						<li><a href="" class="next disabled" title="next page">&#10095;</a></li>
+						{% endif %}
+					</ul>
+					{% endif %}
+				</div>
+			</div>
+			<!-- /container -->
+
+			<div class="featured lazy" data-bg="url({% static 'assets/img/23.jpg' %})">
+				<div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+					<div class="container margin_60">
+						<div class="row justify-content-center justify-content-md-start">
+							<div class="col-lg-6 wow" data-wow-offset="150">
+								<h3>Air jordan 4<br>kaws cool grey</h3>
+								<p>Lightweight cushioning and durable support with a Phylon midsole</p>
+								<div class="feat_text_block">
+									<div class="price_box">
+										<span class="new_price">Rs. 5600</span>
+										<span class="old_price">Rs. 7000</span>
+									</div>
+									<a class="btn_1" href="{% url 'store' %}" role="button">Shop Now</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- /featured -->
+			<!-- /featured -->
 
-		<div class="container margin_60_35">
-			<div class="main_title">
-				<h2>Featured</h2>
-				<span>Products</span>
-				<p>Top Featured Shoes You Might Like</p>
-			</div>
-			<div class="owl-carousel owl-theme products_carousel">
-				{% for product in products %}
-				<div class="item">
-					<div class="grid_item">
-						<span class="ribbon new">{{product.ribbon}}</span>
-						<figure>
+			<div class="container margin_60_35">
+				<div class="main_title">
+					<h2>Featured</h2>
+					<span>Products</span>
+					<p>Top Featured Shoes You Might Like</p>
+				</div>
+				<div class="owl-carousel owl-theme products_carousel">
+					{% for product in products %}
+					<div class="item">
+						<div class="grid_item">
+							<span class="ribbon new">{{product.ribbon}}</span>
+							<figure>
+								<a href="{{product.get_url}}">
+									<img class="img-fluid lazy" src="{{product.image1.url}}"
+										data-src="{{product.image1.url}}" alt="">
+									<img class="img-fluid lazy" src="{{product.image2.url}}"
+										data-src="{{product.image2.url}}" alt="">
+								</a>
+							</figure>
+							<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
+									class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i>
+							</div>
 							<a href="{{product.get_url}}">
-								<img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}" alt="">
-								<img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}" alt="">
+								<h3>{{ product.product_name }}</h3>
 							</a>
-						</figure>
-						<div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
-						<a href="{{product.get_url}}">
-							<h3>{{ product.product_name }}</h3>
-						</a>
-						<div class="price_box">
-							<span class="new_price">Rs. {{ product.selling_price }}</span>
-							<span class="old_price">{{ product.discounted_price }}</span>
-						</div>
-						<ul>
-							<li><a href="" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-							<li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="View Details"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-								<path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-								<path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-							  </svg><span>Add to cart</span></a></li>
-						</ul>
-					</div>
-					<!-- /grid_item -->
-				</div>
-				{% endfor %}
-				<!-- /item -->
-			</div>
-			<!-- /products_carousel -->
-		</div>
-		<!-- /container -->
-
-		<div class="bg_gray">
-			<div class="container margin_30">
-				<div id="brands" class="owl-carousel owl-theme">
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/1.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/2.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/3.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/converse.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/new-balance.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/yeezy.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item --> 
-				</div><!-- /carousel -->
-			</div><!-- /container -->
-		</div>
-		<br><br><br><br>
-		<!-- /bg_gray -->
-
-	</main>
-	{% endblock maincontent %}
-	<!-- /main -->
-
-
-{% block footer %}
-	<footer class="revealed">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<h3 data-bs-target="#collapse_1">Quick Links</h3>
-					<div class="collapse dont-collapse-sm links" id="collapse_1">
-						<ul>
-							<li><a href="{% url 'about' %}">About us</a></li>
-							<li><a href="help.html">Faq</a></li>
-							<li><a href="help.html">Help</a></li>
-							<li><a href="{% url 'contact' %}">Contacts</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3 data-bs-target="#collapse_2">Categories</h3>
-					<div class="collapse dont-collapse-sm links" id="collapse_2 menu">
-						<ul>
-							{% for category in links %}
-							<li><a href="{{category.get_url}}">{{ category.category_name }}</a>
-							</li>
-							{% endfor %}
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-						<h3 data-bs-target="#collapse_3">Contacts</h3>
-					<div class="collapse dont-collapse-sm contacts" id="collapse_3">
-						<ul>
-							<li><i class="ti-home"></i>Gaindakot - 4 <br>Nawalpur - Nepal</li>
-							<li><i class="ti-headphone-alt"></i>+977 9846946584</li>
-							<li><i class="ti-email"></i><a href="#0">kickskornerofficial@gmail.com</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-						<h3 data-bs-target="#collapse_4">Keep in touch</h3>
-					<div class="collapse dont-collapse-sm" id="collapse_4">
-						<div id="newsletter">
-						    <div class="form-group">
-						        <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email">
-						        <button type="submit" id="submit-newsletter"><i class="ti-angle-double-right"></i></button>
-						    </div>
-						</div>
-						<div class="follow_us">
-							<h5>Follow Us</h5>
+							<div class="price_box">
+								<span class="new_price">Rs. {{ product.selling_price }}</span>
+								<span class="old_price">{{ product.discounted_price }}</span>
+							</div>
 							<ul>
-								<li><a href="https://twitter.com/Suman_sapkota7"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{% static 'assets/img/twitter_icon.svg' %}" alt="" class="lazy"></a></li>
-								<li><a href="https://www.facebook.com/SSpk07/"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{% static 'assets/img/facebook_icon.svg' %}" alt="" class="lazy"></a></li>
-								<li><a href="https://www.instagram.com/sumannn.af/"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{% static 'assets/img/instagram_icon.svg' %}" alt="" class="lazy"></a></li>
-								<li><a href="https://www.youtube.com/channel/UC4H3VqU1Z5HqPLUuGgiKpcA"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{% static 'assets/img/youtube_icon.svg' %}" alt="" class="lazy"></a></li>
-								<li>
-									<a
-										class="btn text-white btn-floating m-1"
-										style="background-color: #333333;"
-										href="https://github.com/SumanS7865"
-										role="button"
-										><i class="fab fa-github"></i
-									></a>
-									<!-- Github -->
-									<a
-								</li>
+								<li><a href="" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+										title="Add to favorites"><i class="ti-heart"></i><span>Add to
+											favorites</span></a></li>
+								<li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip"
+										data-bs-placement="left" title="View Details"><svg
+											xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+											fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+											<path
+												d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+											<path
+												d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+										</svg><span>Add to cart</span></a></li>
+							</ul>
+						</div>
+						<!-- /grid_item -->
+					</div>
+					{% endfor %}
+					<!-- /item -->
+				</div>
+				<!-- /products_carousel -->
+			</div>
+			<!-- /container -->
+
+			<div class="bg_gray">
+				<div class="container margin_30">
+					<div id="brands" class="owl-carousel owl-theme">
+						<div class="item">
+							<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+									data-src="{% static 'assets/img/brands/1.png' %}" alt="" class="owl-lazy"></a>
+						</div><!-- /item -->
+						<div class="item">
+							<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+									data-src="{% static 'assets/img/brands/2.png' %}" alt="" class="owl-lazy"></a>
+						</div><!-- /item -->
+						<div class="item">
+							<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+									data-src="{% static 'assets/img/brands/3.png' %}" alt="" class="owl-lazy"></a>
+						</div><!-- /item -->
+						<div class="item">
+							<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+									data-src="{% static 'assets/img/brands/converse.png' %}" alt=""
+									class="owl-lazy"></a>
+						</div><!-- /item -->
+						<div class="item">
+							<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+									data-src="{% static 'assets/img/brands/new-balance.png' %}" alt=""
+									class="owl-lazy"></a>
+						</div><!-- /item -->
+						<div class="item">
+							<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+									data-src="{% static 'assets/img/brands/yeezy.png' %}" alt="" class="owl-lazy"></a>
+						</div><!-- /item -->
+					</div><!-- /carousel -->
+				</div><!-- /container -->
+			</div>
+			<br><br><br><br>
+			<!-- /bg_gray -->
+
+		</main>
+		{% endblock maincontent %}
+		<!-- /main -->
+
+
+		{% block footer %}
+		<footer class="revealed">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6">
+						<h3 data-bs-target="#collapse_1">Quick Links</h3>
+						<div class="collapse dont-collapse-sm links" id="collapse_1">
+							<ul>
+								<li><a href="{% url 'about' %}">About us</a></li>
+								<li><a href="help.html">Faq</a></li>
+								<li><a href="help.html">Help</a></li>
+								<li><a href="{% url 'contact' %}">Contacts</a></li>
 							</ul>
 						</div>
 					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3 data-bs-target="#collapse_2">Categories</h3>
+						<div class="collapse dont-collapse-sm links" id="collapse_2 menu">
+							<ul>
+								{% for category in links %}
+								<li><a href="{{category.get_url}}">{{ category.category_name }}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3 data-bs-target="#collapse_3">Contacts</h3>
+						<div class="collapse dont-collapse-sm contacts" id="collapse_3">
+							<ul>
+								<li><i class="ti-home"></i>Gaindakot - 4 <br>Nawalpur - Nepal</li>
+								<li><i class="ti-headphone-alt"></i>+977 9846946584</li>
+								<li><i class="ti-email"></i><a href="#0">kickskornerofficial@gmail.com</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3 data-bs-target="#collapse_4">Keep in touch</h3>
+						<div class="collapse dont-collapse-sm" id="collapse_4">
+							<div id="newsletter">
+								<div class="form-group">
+									<input type="email" name="email_newsletter" id="email_newsletter"
+										class="form-control" placeholder="Your email">
+									<button type="submit" id="submit-newsletter"><i
+											class="ti-angle-double-right"></i></button>
+								</div>
+							</div>
+							<div class="follow_us">
+								<h5>Follow Us</h5>
+								<ul>
+									<li><a href="https://twitter.com/Suman_sapkota7"><img
+												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+												data-src="{% static 'assets/img/twitter_icon.svg' %}" alt=""
+												class="lazy"></a></li>
+									<li><a href="https://www.facebook.com/SSpk07/"><img
+												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+												data-src="{% static 'assets/img/facebook_icon.svg' %}" alt=""
+												class="lazy"></a></li>
+									<li><a href="https://www.instagram.com/sumannn.af/"><img
+												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+												data-src="{% static 'assets/img/instagram_icon.svg' %}" alt=""
+												class="lazy"></a></li>
+									<li><a href="https://www.youtube.com/channel/UC4H3VqU1Z5HqPLUuGgiKpcA"><img
+												src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+												data-src="{% static 'assets/img/youtube_icon.svg' %}" alt=""
+												class="lazy"></a></li>
+									<li>
+										<a class="btn text-white btn-floating m-1" style="background-color: #333333;"
+											href="https://github.com/SumanS7865" role="button"><i
+												class="fab fa-github"></i></a>
+										<!-- Github -->
+										<a </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /row-->
+				<hr>
+				<div class="row add_bottom_25">
+					<div class="col-lg-6">
+						<ul class="footer-selector clearfix">
+							<li>
+								<div class="styled-select lang-selector">
+									<select>
+										<option value="English" selected>English</option>
+										<option value="French">French</option>
+										<option value="Spanish">Spanish</option>
+										<option value="Russian">Russian</option>
+									</select>
+								</div>
+							</li>
+							<li>
+								<div class="styled-select currency-selector">
+									<select>
+										<option value="US Dollars" selected>Nepali rupees</option>
+										<option value="Euro">Us Dollars</option>
+									</select>
+								</div>
+							</li>
+							<li><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+									data-src="{% static 'assets/img/cards_all.svg' %}" alt="" width="198" height="30"
+									class="lazy"></li>
+						</ul>
+					</div>
+					<div class="col-lg-6">
+						<ul class="additional_links">
+							<li><a href="#0">Terms and conditions</a></li>
+							<li><a href="#0">Privacy</a></li>
+							<li><span>© 2023 KicksKorner</span></li>
+						</ul>
+					</div>
 				</div>
 			</div>
-			<!-- /row-->
-			<hr>
-			<div class="row add_bottom_25">
-				<div class="col-lg-6">
-					<ul class="footer-selector clearfix">
-						<li>
-							<div class="styled-select lang-selector">
-								<select>
-									<option value="English" selected>English</option>
-									<option value="French">French</option>
-									<option value="Spanish">Spanish</option>
-									<option value="Russian">Russian</option>
-								</select>
-							</div>
-						</li>
-						<li>
-							<div class="styled-select currency-selector">
-								<select>
-									<option value="US Dollars" selected>Nepali rupees</option>
-									<option value="Euro">Us Dollars</option>
-								</select>
-							</div>
-						</li>
-						<li><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{% static 'assets/img/cards_all.svg' %}" alt="" width="198" height="30" class="lazy"></li>
-					</ul>
-				</div>
-				<div class="col-lg-6">
-					<ul class="additional_links">
-						<li><a href="#0">Terms and conditions</a></li>
-						<li><a href="#0">Privacy</a></li>
-						<li><span>© 2023 KicksKorner</span></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!--/footer-->
-{% endblock footer %}
+		</footer>
+		<!--/footer-->
+		{% endblock footer %}
 	</div>
 	<!-- page -->
-	
+
 	{% block modal-advertise %}
 	<div id="toTop"></div><!-- Back to top button -->
 	<div class="popup_wrapper">
 		<div class="popup_content">
 			<span class="popup_close">Close</span>
-			<a href="{% url 'store' %}"><img class="img-fluid" src="{% static 'assets/img/banner_popup.png' %}" alt="" width="500" height="500"></a>
+			<a href="{% url 'store' %}"><img class="img-fluid" src="{% static 'assets/img/banner_popup.png' %}" alt=""
+					width="500" height="500"></a>
 		</div>
 	</div>
 	<!-- Advertise Popup -->
 	{% endblock modal-advertise %}
 
 
-	
+
 	<!-- COMMON SCRIPTS -->
-    <script src="{% static 'js/common_scripts.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-	
+	<script src="{% static 'js/common_scripts.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+
 	{% block specific-js %}
 	<!-- SPECIFIC SCRIPTS -->
 	<script src="{% static 'js/carousel-home.min.js' %}"></script>
 	{% endblock specific-js %}
 
 </body>
+
 </html>

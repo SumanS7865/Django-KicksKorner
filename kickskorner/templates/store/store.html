@@ -7,19 +7,21 @@
 
 {% block maincontent %}
 <main>
+    {% for slider in sliders %}
     <div id="carousel-home">
         <div class="owl-carousel owl-theme">
-            <div class="owl-slide cover" style="background-image: url(../static/assets/img/slides/1.jpg);">
+            <div class="owl-slide cover" style="background-image: url({{slider.image1.url}});">
                 <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                     <div class="container">
                         <div class="row justify-content-center justify-content-md-end">
                             <div class="col-lg-6 static">
                                 <div class="slide-text text-end white">
-                                    <h2 class="owl-slide-animated owl-slide-title">Attack Air<br>Max 720 Sage Low</h2>
+                                    <h2 class="owl-slide-animated owl-slide-title">{{slider.title1}}</h2>
                                     <p class="owl-slide-animated owl-slide-subtitle">
-                                        Limited items available at this price
+                                        {{slider.description1}}
                                     </p>
-                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="{% url 'store' %}" role="button">Shop Now</a></div>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
+                                            href="{% url 'store' %}" role="button">Shop Now</a></div>
                                 </div>
                             </div>
                         </div>
@@ -27,17 +29,19 @@
                 </div>
             </div>
             <!--/owl-slide-->
-            <div class="owl-slide cover" style="background-image: url(../static/assets/img/slides/2.jpg);">
+            <div class="owl-slide cover" style="background-image: url({{slider.image2.url}});">
                 <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                     <div class="container">
                         <div class="row justify-content-center justify-content-md-start">
                             <div class="col-lg-6 static">
                                 <div class="slide-text white">
-                                    <h2 class="owl-slide-animated owl-slide-title"> Air Jordan 4<br>Kaws Cool Grey</h2>
+                                    <h2 class="owl-slide-animated owl-slide-title">{{slider.title2}}</h2>
                                     <p class="owl-slide-animated owl-slide-subtitle">
-                                        Limited items available at this price
+                                        {{slider.description2}}
                                     </p>
-                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="http://127.0.0.1:8000/store/jordan/" role="button">Shop Now</a></div>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
+                                            href="http://127.0.0.1:8000/store/category/jordan/" role="button">Shop
+                                            Now</a></div>
                                 </div>
                             </div>
                         </div>
@@ -45,17 +49,19 @@
                 </div>
             </div>
             <!--/owl-slide-->
-            <div class="owl-slide cover" style="background-image: url(../static/assets/img/slides/3.jpg);">
+            <div class="owl-slide cover" style="background-image: url({{slider.image3.url}});">
                 <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
                     <div class="container">
                         <div class="row justify-content-center justify-content-md-start">
                             <div class="col-lg-12 static">
                                 <div class="slide-text text-center white">
-                                    <h2 class="owl-slide-animated owl-slide-title">Travis scott<br>Nike SB Dunk low</h2>
+                                    <h2 class="owl-slide-animated owl-slide-title">{{slider.title3}}</h2>
                                     <p class="owl-slide-animated owl-slide-subtitle">
-                                        Lightweight cushioning and durable support with a Phylon midsole
+                                        {{slider.description3}}
                                     </p>
-                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="http://127.0.0.1:8000/store/jordan/" role="button">Shop Now</a></div>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
+                                            href="http://127.0.0.1:8000/store/category/jordan/" role="button">Shop
+                                            Now</a></div>
                                 </div>
                             </div>
                         </div>
@@ -66,8 +72,9 @@
         </div>
         <div id="icon_drag_mobile"></div>
     </div>
+    {% endfor %}
     <!--/carousel-->
-    
+
     <div class="container margin_60_35">
         <div class="main_title">
             <h2>Top Selling</h2>
@@ -81,24 +88,32 @@
                     <span class="ribbon new">{{product.ribbon}}</span>
                     <figure>
                         <a href="{{product.get_url}}">
-                            <img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}" alt="">
-                            <img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}" alt="">
+                            <img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}"
+                                alt="">
+                            <img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}"
+                                alt="">
                         </a>
                     </figure>
-                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
+                            class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
                     <a href="{{product.get_url}}">
                         <h3>{{ product.product_name }}</h3>
                     </a>
                     <div class="price_box">
-                        <span class="new_price">Rs. {{ product.selling_price }}</span>
-                        <span class="old_price">{{ product.discounted_price }}</span>
+                        <span class="new_price">{{ product.discounted_price }}</span>
+                        <span class="old_price">Rs. {{ product.selling_price }}</span>
                     </div>
                     <ul>
-                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                        <li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="View Details"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                          </svg><span>Add to cart</span></a></li>
+                        <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+                                title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                        <li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip"
+                                data-bs-placement="left" title="View Details"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                    <path
+                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                </svg><span>Add to cart</span></a></li>
                     </ul>
                 </div>
                 <!-- /grid_item -->
@@ -111,27 +126,28 @@
             {% if products.has_other_pages %}
             <ul class="pagination">
                 {% if products.has_previous %}
-                <li><a href="?page={{products.previous_page_number}}" class="prev" title="previous page">&#10094;</a></li>
+                <li><a href="?page={{products.previous_page_number}}" class="prev" title="previous page">&#10094;</a>
+                </li>
                 {% else %}
                 <li><a href="#" class="prev disabled" title="previous page">&#10094;</a></li>
-            {% endif %}
+                {% endif %}
 
                 {% for i in products.paginator.page_range %}
-                    {% if products.number == i %}
+                {% if products.number == i %}
                 <li>
                     <a href="" class="active">{{i}}</a>
                 </li>
-                    {% else %}
+                {% else %}
                 <li>
-                <a href="?page={{i}}" class="">{{i}}</a>
+                    <a href="?page={{i}}" class="">{{i}}</a>
                     {% endif %}
                 </li>
                 {% endfor %}
 
                 {% if products.has_next %}
-                    <li><a href="?page={{products.next_page_number}}" class="next" title="next page">&#10095;</a></li>
+                <li><a href="?page={{products.next_page_number}}" class="next" title="next page">&#10095;</a></li>
                 {% else %}
-                    <li><a href="" class="next disabled" title="next page">&#10095;</a></li>
+                <li><a href="" class="next disabled" title="next page">&#10095;</a></li>
                 {% endif %}
             </ul>
             {% endif %}
@@ -173,11 +189,14 @@
                     <span class="ribbon new">{{product.ribbon}}</span>
                     <figure>
                         <a href="{{product.get_url}}">
-                            <img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}" alt="">
-                            <img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}" alt="">
+                            <img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}"
+                                alt="">
+                            <img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}"
+                                alt="">
                         </a>
                     </figure>
-                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
+                            class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
                     <a href="{{product.get_url}}">
                         <h3>{{ product.product_name }}</h3>
                     </a>
@@ -186,11 +205,16 @@
                         <span class="old_price">{{ product.discounted_price }}</span>
                     </div>
                     <ul>
-                        <li><a href="" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                        <li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="View Details"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                          </svg><span>Add to cart</span></a></li>
+                        <li><a href="" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+                                title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+                        <li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip"
+                                data-bs-placement="left" title="View Details"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                    <path
+                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                </svg><span>Add to cart</span></a></li>
                     </ul>
                 </div>
                 <!-- /grid_item -->
@@ -203,31 +227,37 @@
     <!-- /container -->
 
     <div class="bg_gray">
-			<div class="container margin_30">
-				<div id="brands" class="owl-carousel owl-theme">
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/1.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/2.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/3.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/converse.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/new-balance.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item -->
-					<div class="item">
-						<a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}" data-src="{% static 'assets/img/brands/yeezy.png' %}" alt="" class="owl-lazy"></a>
-					</div><!-- /item --> 
-				</div><!-- /carousel -->
-			</div><!-- /container -->
-		</div>
-		<br><br><br><br>
-		<!-- /bg_gray -->
+        <div class="container margin_30">
+            <div id="brands" class="owl-carousel owl-theme">
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                            data-src="{% static 'assets/img/brands/1.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                            data-src="{% static 'assets/img/brands/2.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                            data-src="{% static 'assets/img/brands/3.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                            data-src="{% static 'assets/img/brands/converse.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                            data-src="{% static 'assets/img/brands/new-balance.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+                <div class="item">
+                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                            data-src="{% static 'assets/img/brands/yeezy.png' %}" alt="" class="owl-lazy"></a>
+                </div><!-- /item -->
+            </div><!-- /carousel -->
+        </div><!-- /container -->
+    </div>
+    <br><br><br><br>
+    <!-- /bg_gray -->
 
 </main>
 {% endblock maincontent %}

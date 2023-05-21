@@ -29,9 +29,11 @@
                                     {% for account in accounts %}
                                     <tr>
                                         <th scope="row">{{forloop.counter}}</th>
-                                        <th scope="row">{{account.email}}</th>
-                                        <td>{{account.first_name}}</td>
-                                        <td>{{account.last_name}}</td>
+                                        <th scope="row"><a href="">
+                                                {{account.email}}</a>
+                                        </th>
+                                        <td> <a href=""> {{account.first_name}} </a></td>
+                                        <td> <a href="">{{account.last_name}} </a></td>
                                         <td>{{account.username}}</td>
                                         <td>{{account.last_login}}</td>
                                         <td>{{account.date_joined}}</td>
