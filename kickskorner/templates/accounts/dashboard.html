@@ -1,0 +1,117 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}KicksKorner | About Us {% endblock %}
+
+
+{% block specific-css %}
+<link href="{% static 'css/about.css' %}" rel="stylesheet">
+{% endblock specific-css %}
+
+
+{% block maincontent %}
+<br><br>
+<section class="section-conten padding-y bg">
+    {% include 'accounts/alerts.html' %}
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-3">
+                <ul class="list-group">
+                    <a href="" class="list-group-item active">My order history</a>
+                    <a href="" class="list-group-item">Transaction</a>
+                    <a href="" class="list-group-item">Return and refunds</a>
+                    <a href="" class="list-group-item">Settings</a>
+                    <a href="" class="list-group-item">My Selling Items</a>
+                    <a href="" class="list-group-item">Received Orders</a>
+                </ul>
+                <br>
+                <a href="{% url 'logout' %}" class="bt btn_1"><i class="fa-solid fa-power-off"></i>&nbsp; <span
+                        class="text">Log
+                        out</span></a>
+            </aside>
+            <main class="col-md-9">
+                <article class="card">
+                    <header class="card-header">
+                        <strong class="d-inline-block mr-3">Order ID: 123456789</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>Order Date: 16 December 2018</span>
+                    </header>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h6 class="text-muted">Delivery to</h6>
+                                <p>Michael Jaction <br>
+                                    Phone +9779846946584 Email: suman@gmail.com <br>
+                                    Location: Home number, Building name, Street 123, tashkent, uzb <br>
+                                    P.O Box: 100123
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <h6 class="text-muted">Payment</h6>
+                                <span class="text-success">
+                                    <i class="fa-brands fa-cc-visa"></i>&nbsp;&nbsp;
+                                    Visa ****** 4216
+                                </span>
+                                <p>Subtotal: $356 <br>
+                                    Shipping Free: $56 <br>
+                                    <strong class="b">Total: $456</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <td width="65">
+                                    <img class="img-xs border" src="" alt="">
+                                </td>
+                                <td>
+                                    <p class="title mb-0">Product name goes here</p>
+                                    <var class="text-muted price">USD 145</var>
+                                </td>
+                                <td>Seller <br> Nike Clothing</td>
+                                <td width="250"> <a href="" class="btn btn_1">Track
+                                        Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=""
+                                        class="btn btn-info">Details</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="img-xs border" src="" alt="">
+                                </td>
+                                <td>
+                                    <p class="title mb-0">Another name goes here</p>
+                                    <var class="text-muted price">USD 15</var>
+                                </td>
+                                <td>Seller <br> ABC Shop</td>
+                                <td width="250"> <a href="" class="btn btn_1">Track
+                                        Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=""
+                                        class="btn btn-info">Details</a></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="img-xs border" src="" alt="">
+                                </td>
+                                <td>
+                                    <p class="title mb-0">The name of product goes here</p>
+                                    <var class="text-muted price">USD 145</var>
+                                </td>
+                                <td>Seller <br> Wallmart</td>
+                                <td width="250"> <a href="" class="btn btn_1">Track
+                                        Order</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=""
+                                        class="btn btn-info">Details</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+</section>
+<br><br>
+
+{% endblock maincontent %}
+
+{% block modal-advertise %}
+{% endblock modal-advertise %}
+
+{% block specific-js %}
+{% endblock specific-js %}

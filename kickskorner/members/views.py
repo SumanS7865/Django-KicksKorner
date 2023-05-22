@@ -71,8 +71,8 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            # messages.success(request, 'Your are now logged in.')
-            return redirect("index")
+            messages.success(request, "Your are now logged in.")
+            return redirect("user_dashboard")
         else:
             messages.error(request, "invalid login credentials")
             return redirect("login")
@@ -102,3 +102,8 @@ def activate(request, uidb64, token):
     else:
         messages.error(request, "Invalid activation link")
         return redirect("register")
+
+
+@login_required(login_url="login")
+def user_dashboard(request):
+    return render(request, "accounts/dashboard.html")
