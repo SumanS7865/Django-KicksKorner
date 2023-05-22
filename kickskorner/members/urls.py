@@ -9,7 +9,14 @@ urlpatterns = [
     path("logout/", views.logout, name="logout"),
     path("user_dashboard/", views.user_dashboard, name="user_dashboard"),
     path("", views.user_dashboard, name="user_dashboard"),
+    path("forgotpassword", views.forgotpassword, name="forgotpassword"),
+    path("resetpassword", views.resetpassword, name="resetpassword"),
     path("activate/<uidb64>/<token>", views.activate, name="activate"),
+    path(
+        "resetpassword_validate/<uidb64>/<token>",
+        views.resetpassword_validate,
+        name="resetpassword_validate",
+    ),
 ]
 
 if DEBUG:
