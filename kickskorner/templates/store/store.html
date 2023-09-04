@@ -60,7 +60,8 @@
                                         {{slider.description3}}
                                     </p>
                                     <div class="owl-slide-animated owl-slide-cta"><a class="btn_1"
-                                            href="http://127.0.0.1:8000/store/category/jordan/" role="button">Shop
+                                            href="http://127.0.0.1:8000/store/category/jordan/air-jordan-4-retro-thunder/"
+                                            role="button">Shop
                                             Now</a></div>
                                 </div>
                             </div>
@@ -100,8 +101,8 @@
                         <h3>{{ product.product_name }}</h3>
                     </a>
                     <div class="price_box">
-                        <span class="new_price">{{ product.discounted_price }}</span>
-                        <span class="old_price">Rs. {{ product.selling_price }}</span>
+                        <span class="new_price">Rs. {{ product.selling_price }}</span>
+                        <!-- <span class="old_price">{{ product.discounted_price }}</span> -->
                     </div>
                     <ul>
                         <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
@@ -155,13 +156,14 @@
     </div>
     <!-- /container -->
 
-    <div class="featured lazy" data-bg="url({% static 'assets/img/23.jpg' %})">
+    {% for slider in sliders %}
+    <div class="featured lazy" data-bg="url({{slider.image2.url}})">
         <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
             <div class="container margin_60">
                 <div class="row justify-content-center justify-content-md-start">
                     <div class="col-lg-6 wow" data-wow-offset="150">
-                        <h3>Air jordan 4<br>kaws cool grey</h3>
-                        <p>Lightweight cushioning and durable support with a Phylon midsole</p>
+                        <h3>{{slider.title2}}</h3>
+                        <p>{{slider.description2}}</p>
                         <div class="feat_text_block">
                             <div class="price_box">
                                 <span class="new_price">Rs. 5600</span>
@@ -174,6 +176,7 @@
             </div>
         </div>
     </div>
+    {% endfor %}
     <!-- /featured -->
 
     <div class="container margin_60_35">
@@ -230,27 +233,33 @@
         <div class="container margin_30">
             <div id="brands" class="owl-carousel owl-theme">
                 <div class="item">
-                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                    <a href="http://127.0.0.1:8000/store/category/nike/"><img
+                            src="{% static 'assets/img/brands/placeholder_brands.png' %}"
                             data-src="{% static 'assets/img/brands/1.png' %}" alt="" class="owl-lazy"></a>
                 </div><!-- /item -->
                 <div class="item">
-                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                    <a href="http://127.0.0.1:8000/store/category/jordan/"><img
+                            src="{% static 'assets/img/brands/placeholder_brands.png' %}"
                             data-src="{% static 'assets/img/brands/2.png' %}" alt="" class="owl-lazy"></a>
                 </div><!-- /item -->
                 <div class="item">
-                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                    <a href="http://127.0.0.1:8000/store/category/yeezy/"><img
+                            src="{% static 'assets/img/brands/placeholder_brands.png' %}"
                             data-src="{% static 'assets/img/brands/3.png' %}" alt="" class="owl-lazy"></a>
                 </div><!-- /item -->
                 <div class="item">
-                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                    <a href="http://127.0.0.1:8000/store/category/new-balance/"><img
+                            src="{% static 'assets/img/brands/placeholder_brands.png' %}"
                             data-src="{% static 'assets/img/brands/converse.png' %}" alt="" class="owl-lazy"></a>
                 </div><!-- /item -->
                 <div class="item">
-                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                    <a href="http://127.0.0.1:8000/store/category/converse/"><img
+                            src="{% static 'assets/img/brands/placeholder_brands.png' %}"
                             data-src="{% static 'assets/img/brands/new-balance.png' %}" alt="" class="owl-lazy"></a>
                 </div><!-- /item -->
                 <div class="item">
-                    <a href="#0"><img src="{% static 'assets/img/brands/placeholder_brands.png' %}"
+                    <a href="http://127.0.0.1:8000/store/category/yeezy/"><img
+                            src="{% static 'assets/img/brands/placeholder_brands.png' %}"
                             data-src="{% static 'assets/img/brands/yeezy.png' %}" alt="" class="owl-lazy"></a>
                 </div><!-- /item -->
             </div><!-- /carousel -->

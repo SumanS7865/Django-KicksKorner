@@ -10,6 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
         "product_name",
         "selling_price",
         "discounted_price",
+        "stock",
         "category",
         "created_date",
         "modified_date",

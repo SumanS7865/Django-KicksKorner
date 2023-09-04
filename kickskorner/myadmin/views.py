@@ -9,6 +9,7 @@ from carts.models import Cart, CartItem
 from category.models import *
 from members.models import *
 from django.utils.text import slugify
+from orders.models import *
 
 
 # Create your views here.
@@ -237,6 +238,14 @@ def accounts(request):
         "accounts": accounts,
     }
     return render(request, "myadmin/accounts.html", context)
+
+
+def orders(request):
+    orders = Order.objects.all()
+    context = {
+        "orders": orders,
+    }
+    return render(request, "myadmin/orders.html", context)
 
 
 def invoice(request):

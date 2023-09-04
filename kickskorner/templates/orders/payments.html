@@ -1,0 +1,228 @@
+{% extends 'index.html' %}
+<style>
+    /* Media query for mobile viewport */
+    @media screen and (max-width: 400px) {
+        #paypal-button-container {
+            width: 100%;
+        }
+    }
+
+    /* Media query for desktop viewport */
+    @media screen and (min-width: 400px) {
+        #paypal-button-container {
+            width: 250px;
+        }
+    }
+</style>
+{% load static %}
+
+{% block title %}KicksKorner | Payments {% endblock %}
+
+{% block specific-css %}
+<!-- SPECIFIC CSS -->
+<link href="{% static 'css/cart.css' %}" rel="stylesheet">
+<link href="{% static 'css/error_track.css' %}" rel="stylesheet">
+<script
+    src="https://www.paypal.com/sdk/js?client-id=AS3rzYnwkKV7qtfhM5ttobVNbpeEWKgPtCljxuleLLv0o2gOKo5PK0fmU3ndmxWV6M6dChYHOvtdqxlE&currency=USD"></script>
+
+{% endblock specific-css %}
+
+{% block modal-advertise %}
+{% endblock modal-advertise %}
+
+
+
+{% block maincontent %}
+<main class="bg_gray">
+    <div class="container margin_30">
+        <div class="page_header">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="{% url 'store' %}">Home</a></li>
+                    <!-- <li><a href="{{product.get_url}}">Product Detail</a></li> -->
+                    <li><a href="{% url 'cart' %}">Cart</a></li>
+                    <li>Payment</li>
+                </ul>
+            </div>
+        </div>
+        <h2 class="text-center mb-3">Review your order and make Payment</h2>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <h5 class="card-header text-dark">Billing Address</h5>
+                    <div class="card-body">
+                        <p class="card-text mb=0">{{order.full_name}}</p>
+                        <p class="card-text mb=0">{{order.full_address}}</p>
+                        <p class="card-text mb=0">{{order.city}}, {{order.state}}</p>
+                        <p class="card-text mb=0">{{order.country}}</p>
+                        <p class="card-text mb=0">{{order.email}}</p>
+                        <p class="card-text mb=0">{{order.phone}}</p>
+
+                        {% if order.order_note %}
+                        <b>Order Note:</b> {{order.order_note}}
+                        {% endif %}
+
+                    </div>
+                </div>
+                <div class="card">
+                    <h5 class="card-header text-dark">Payment Method</h5>
+                    <div class="card-body">
+                        <p class="card-text">PayPal</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h5 class="card-header text-dark">Review Products</h5>
+                    <div class="card-body">
+                        <table class="table table-striped cart-list">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Product
+                                    </th>
+                                    <th>
+                                        Price
+                                    </th>
+                                    <th>
+                                        Quantity
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cart_item in cart_items %}
+                                <tr>
+                                    <td>
+                                        <div class="thumb_cart">
+                                            <img src="{{cart_item.product.image1.url}}"
+                                                data-src="{{cart_item.product.image1.url}}" class="lazy" alt="Image">
+                                        </div>
+                                        <a href="{{cart_item.product.get_url}}"
+                                            class="font-weight-bold">{{cart_item.product.product_name}}</a><br>
+                                        <p class="text-muted small">
+                                            {% if cart_item.variations.all %}
+                                            {% for item in cart_item.variations.all %}
+                                            {{item.variation_category | capfirst}} : {{item.variation_value | capfirst}}
+                                            <br>
+                                            {% endfor %}
+                                            {% endif %}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <strong>Rs. {{cart_item.product.selling_price}}</strong>
+                                    </td>
+                                    <td>
+                                        <label for="">{{cart_item.quantity}}</label>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- /container -->
+
+        <div class="box_cart">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <ul>
+                            <li>
+                                <span>Subtotal</span> Rs. {{total}}
+                            </li>
+                            <li>
+                                <span>Shipping</span> Rs. {{shipping}}
+                            </li>
+                            <li>
+                                <span>Tax</span> Rs. {{tax}}
+                            </li>
+                            <li>
+                                <span>Grand Total</span> Rs. {{grand_total}}
+                            </li>
+                            <li class="text-center">
+                                <img data-src="{% static 'assets/img/cards_all.svg' %}" alt="" width="150" height="30"
+                                    class="lazy">
+                            </li>
+                        </ul>
+                        <a>
+                            <div id="paypal-button-container">
+                                <!-- paypal button will laod -->
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+<!--/main-->
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    var amount = "{{ grand_total }}";
+    var url = "{% url 'payments' %}";
+    var csrftoken = getCookie('csrftoken');
+    var orderID = "{{ order.order_number }}";
+    var payment_method = 'PayPal';
+    var redirect_url = "{% url 'order_complete' %}"
+
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+        // set up the transaction
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: amount,
+                    }
+                }]
+            });
+        },
+
+        // finalize the transactions
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
+                console.log(details);
+                sendData();
+                function sendData() {
+                    fetch(url, {
+                        method: "POST",
+                        headers: {
+                            "Content-type": "application/json",
+                            "X-CSRFToken": csrftoken,
+                        },
+                        body: JSON.stringify({
+                            orderID: orderID,
+                            transID: details.id,
+                            payment_method: payment_method,
+                            status: details.status,
+                        }),
+                    })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            window.location.href = redirect_url + '?order_number=' + data.order_number + '&payment_id=' + data.transID;
+                        });
+                }
+            });
+        }
+    }).render('#paypal-button-container')
+</script>
+
+
+{% endblock maincontent %}

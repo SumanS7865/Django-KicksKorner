@@ -2,15 +2,8 @@
 
 
 {% block main-content %}
-{% if messages %}
-<div class="alert alert-success" role="alert">
-    <div class="messages">
-        {% for message in messages %}
-        {% if message.tags %} {% endif %}{{ message }}
-        {% endfor %}
-    </div>
-</div>
-{% endif %}
+{% include 'accounts/alerts.html' %}
+
 <div class="main-content-inner">
     <div class="row">
         <!-- table primary start -->

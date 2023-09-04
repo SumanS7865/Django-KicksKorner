@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block specific-css %}
-	<!-- SPECIFIC CSS -->
-    <link href="{% static 'css/listing.css' %}" rel="stylesheet">
+<!-- SPECIFIC CSS -->
+<link href="{% static 'css/listing.css' %}" rel="stylesheet">
 {% endblock specific-css %}
 
 {% block modal-advertise %}
@@ -26,9 +26,9 @@
         <img src="{% static 'assets/img/banner-images/1.png' %}" class="img-fluid" alt="">
     </div>
     <!-- /top_banner -->
-        <div id="stick_here"></div>		
-        <div class="toolbox elemento_stick">
-            <div class="container">
+    <div id="stick_here"></div>
+    <div class="toolbox elemento_stick">
+        <div class="container">
             <ul class="clearfix">
                 <li>
                     <!-- <div class="sort_select">
@@ -51,13 +51,13 @@
                     </a>
                 </li>
             </ul>
-            </div>
         </div>
-        <!-- /toolbox -->
-        <div class="container margin_30">
-            <h2>Results For <b></b></h2>
-            <br>
-        
+    </div>
+    <!-- /toolbox -->
+    <div class="container margin_30">
+        <h2>Results For <b></b></h2>
+        <br>
+
         <div class="row">
             <aside class="col-lg-3" id="sidebar_fixed">
                 <div class="filter_col">
@@ -67,16 +67,18 @@
                         <div class="collapse show" id="filter_1">
                             <ul>
                                 <li>
-                                    <label class="container_check"><a href="{% url 'store' %}" style="color:rgb(44, 44, 44);">
-                                        All Products</a><small></small>
+                                    <label class="container_check"><a href="{% url 'store' %}"
+                                            style="color:rgb(44, 44, 44);">
+                                            All Products</a><small></small>
                                         <!-- <input type="checkbox">
                                         <span class="checkmark"></span> -->
                                     </label>
                                 </li>
                                 {% for category in links %}
                                 <li>
-                                    <label class="container_check"><a href="{{category.get_url}}" style="color:rgb(44, 44, 44);">
-                                        {{category.category_name}}</a><small></small>
+                                    <label class="container_check"><a href="{{category.get_url}}"
+                                            style="color:rgb(44, 44, 44);">
+                                            {{category.category_name}}</a><small></small>
                                         <!-- <input type="checkbox">
                                         <span class="checkmark"></span> -->
                                     </label>
@@ -159,14 +161,16 @@
             <!-- /col -->
             <div class="col-lg-9">
                 <div class="row small-gutters">
-				{% for product in products %}
+                    {% for product in products %}
                     <div class="col-6 col-md-4">
                         <div class="grid_item">
                             <span class="ribbon new">{{product.ribbon}}</span>
                             <figure>
                                 <a href="{{product.get_url}}">
-                                    <img class="img-fluid lazy" src="{{product.image1.url}}" data-src="{{product.image1.url}}" alt="">
-								    <img class="img-fluid lazy" src="{{product.image2.url}}" data-src="{{product.image2.url}}" alt="">
+                                    <img class="img-fluid lazy" src="{{product.image1.url}}"
+                                        data-src="{{product.image1.url}}" alt="">
+                                    <img class="img-fluid lazy" src="{{product.image2.url}}"
+                                        data-src="{{product.image2.url}}" alt="">
                                 </a>
                             </figure>
                             <a href="{{product.get_url}}">
@@ -174,20 +178,27 @@
                             </a>
                             <div class="price_box">
                                 <span class="new_price">Rs. {{ product.selling_price }}</span>
-							<span class="old_price">{{ product.discounted_price }}</span>
+                                <!-- <span class="old_price">{{ product.discounted_price }}</span> -->
 
                             </div>
                             <ul>
-                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-                                <li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="View Details"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
-                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
-                                  </svg><span>Add to cart</span></a></li>
+                                <li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left"
+                                        title="Add to favorites"><i class="ti-heart"></i><span>Add to
+                                            favorites</span></a></li>
+                                <li><a href="{{product.get_url}}" class="tooltip-1" data-bs-toggle="tooltip"
+                                        data-bs-placement="left" title="View Details"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                            <path
+                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                            <path
+                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                        </svg><span>Add to cart</span></a></li>
                             </ul>
                         </div>
                         <!-- /grid_item -->
                     </div>
-				{% endfor %}
+                    {% endfor %}
                     <!-- /col -->
                 </div>
                 <!-- /row -->
@@ -195,27 +206,29 @@
                     {% if products.has_other_pages %}
                     <ul class="pagination">
                         {% if products.has_previous %}
-                        <li><a href="?page={{products.previous_page_number}}" class="prev" title="previous page">&#10094;</a></li>
+                        <li><a href="?page={{products.previous_page_number}}" class="prev"
+                                title="previous page">&#10094;</a></li>
                         {% else %}
                         <li><a href="#" class="prev" disabled title="previous page">&#10094;</a></li>
-                    {% endif %}
-        
+                        {% endif %}
+
                         {% for i in products.paginator.page_range %}
-                            {% if products.number == i %}
+                        {% if products.number == i %}
                         <li>
                             <a href="" class="active">{{i}}</a>
                         </li>
-                            {% else %}
+                        {% else %}
                         <li>
-                        <a href="?page={{i}}" class="">{{i}}</a>
+                            <a href="?page={{i}}" class="">{{i}}</a>
                             {% endif %}
                         </li>
                         {% endfor %}
-        
+
                         {% if products.has_next %}
-                            <li><a href="?page={{products.next_page_number}}" class="next" title="next page">&#10095;</a></li>
+                        <li><a href="?page={{products.next_page_number}}" class="next" title="next page">&#10095;</a>
+                        </li>
                         {% else %}
-                            <li><a href="" class="next" disabled title="next page">&#10095;</a></li>
+                        <li><a href="" class="next" disabled title="next page">&#10095;</a></li>
                         {% endif %}
                     </ul>
                     {% endif %}
@@ -223,8 +236,8 @@
             </div>
             <!-- /col -->
         </div>
-        <!-- /row -->			
-            
+        <!-- /row -->
+
     </div>
     <!-- /container -->
 </main>
@@ -232,7 +245,7 @@
 {% endblock %}
 
 
-	
+
 {% block specific-js %}
 <!-- SPECIFIC SCRIPTS -->
 <script src="{% static 'js/sticky_sidebar.min.js' %}"></script>

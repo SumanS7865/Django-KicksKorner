@@ -13,6 +13,7 @@ urlpatterns = [
     path("sliders", views.sliders, name="sliders"),
     path("staffs", views.staffs, name="staffs"),
     path("accounts", views.accounts, name="accounts"),
+    path("orders", views.orders, name="orders"),
     path("error404", views.error404, name="error404"),
     path("addproduct", views.addproduct, name="addproduct"),
     path("addvariation", views.addvariation, name="addvariation"),

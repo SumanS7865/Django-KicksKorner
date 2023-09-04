@@ -152,6 +152,16 @@
                                     <li><a href="{% url 'accounts' %}">Accounts</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-cart-arrow-down"></i>
+                                    <span>ORDERS
+                                    </span></a>
+                                <ul class="collapse">
+                                    <li><a href="{% url 'cartitems' %}">Order Products</a></li>
+                                    <li><a href="{% url 'orders' %}">Orders</a></li>
+                                    <li><a href="{% url 'carts' %}">Payments</a></li>
+                                </ul>
+                            </li>
                             <li><a href="{% url 'error404' %}"><i class="ti-map-alt"></i> <span>maps</span></a></li>
                             <li><a href="{% url 'invoice' %}"><i class="ti-receipt"></i> <span>Invoice
                                         Summary</span></a></li>

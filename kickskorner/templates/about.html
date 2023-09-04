@@ -139,41 +139,15 @@
         </div>
 
         <div class="owl-carousel owl-theme carousel_centered">
+            {% for staff in staffs %}
             <div class="item">
-                <a href="https://www.facebook.com/SSpk07/">
+                <a href="{{staff.link}}">
                     <div class="title">
-                        <h4>Suman Sapkota<em>Founder</em></h4>
-                    </div><img src="{% static 'assets/img/staff/suman.jpg' %}" alt="">
+                        <h4>{{staff.staff_name}}<em>{{staff.role}}</em></h4>
+                    </div><img src="{{staff.image.url}}" alt="">
                 </a>
             </div>
-            <div class="item">
-                <a href="https://instagram.com/lowkey_nishan/">
-                    <div class="title">
-                        <h4>Ranjit Rijal<em>Marketing </em></h4>
-                    </div><img src="{% static 'assets/img/staff/ranjit.jpg' %}" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.facebook.com/santosh.ammai.3">
-                    <div class="title">
-                        <h4>Santosh Ammai<em>Business strategist</em></h4>
-                    </div><img src="{% static 'assets/img/staff/santosh.jpg' %}" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.facebook.com/prabin.ghimire.980">
-                    <div class="title">
-                        <h4>Pravin Ghimire<em>Customer Service</em></h4>
-                    </div><img src="{% static 'assets/img/staff/pravin2.jpg' %}" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.facebook.com/nissan.carkey.1">
-                    <div class="title">
-                        <h4>Nissan Karki<em>Social Media Manager</em></h4>
-                    </div><img src="{% static 'assets/img/staff/nissan.jpg' %}" alt="">
-                </a>
-            </div>
+            {% endfor %}
         </div>
         <!-- /carousel -->
     </div>

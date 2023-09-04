@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 {% load static %}
 
-<title>{% block title %} KicksKorner | 404 Error {% endblock %}</title>
+<title>{% block title %} KicksKorner | Checkout {% endblock %}</title>
 
 {% block specific-css %}
 <!-- SPECIFIC CSS -->
@@ -36,46 +36,47 @@
             <div class="col">
                 <div class="step first">
                     <h3>1. User Info and Billing address</h3>
-                    <form action="" method="POST">
+                    <form action="{% url 'place_order' %}" method="post">
                         {% csrf_token %}
                         <ul class="nav nav-tabs" id="tab_checkout" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#tab_1" role="tab"
                                     aria-controls="tab_1" aria-selected="true">Register</a>
                             </li>
-                            <!-- <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#tab_2" role="tab"
-                                aria-controls="tab_2" aria-selected="false">Login</a>
-                        </li> -->
                         </ul>
                         <div class="tab-content checkout">
                             <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
                                 <div class="row no-gutters">
                                     <div class="col-6 form-group pr-1">
-                                        <input type="text" class="form-control" placeholder="First Name" required>
+                                        <input name="first_name" type="text" class="form-control"
+                                            placeholder="First Name" required>
                                     </div>
                                     <div class="col-6 form-group pl-1">
-                                        <input type="text" class="form-control" placeholder="Last Name" required>
+                                        <input name="last_name" type="text" class="form-control" placeholder="Last Name"
+                                            required>
                                     </div>
                                 </div>
                                 <!-- /row -->
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email" required>
+                                    <input name="email" type="email" class="form-control" placeholder="Email" required>
                                 </div>
                                 <div class="row no-gutters">
                                     <div class="col-6 form-group pr-1">
-                                        <input type="text" class="form-control" placeholder="Address Line 1" required>
+                                        <input name="address_line_1" type="text" class="form-control"
+                                            placeholder="Address Line 1" required>
                                     </div>
                                     <div class="col-6 form-group pl-1">
-                                        <input type="text" class="form-control" placeholder="Address Line 2 ">
+                                        <input name="address_line_2" type="text" class="form-control"
+                                            placeholder="Address Line 2">
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
                                     <div class="col-6 form-group pr-1">
-                                        <input type="text" class="form-control" placeholder="City" required>
+                                        <input name="city" type="text" class="form-control" placeholder="City" required>
                                     </div>
                                     <div class="col-6 form-group pl-1">
-                                        <input type="text" class="form-control" placeholder="State" required>
+                                        <input name="state" type="text" class="form-control" placeholder="State"
+                                            required>
                                     </div>
                                 </div>
                                 <!-- /row -->
@@ -84,19 +85,24 @@
                                         <div class="custom-select-form">
                                             <select class="wide add_bottom_15" name="country" id="country" required>
                                                 <option value="" selected>Country</option>
-                                                <option value="Europe">Europe</option>
-                                                <option value="United states">United states</option>
-                                                <option value="Asia">Asia</option>
+                                                <option value="Austira">Austira</option>
+                                                <option value="Brazil">Brazil</option>
+                                                <option value="Canada">Canada</option>
+                                                <option value="India">India</option>
+                                                <option value="Portugal">Portugal</option>
+                                                <option value="Spain">Spain</option>
+                                                <option value="Nepal">Nepal</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- /row -->
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone Number" required>
+                                    <input name="phone" type="text" class="form-control" placeholder="Phone Number"
+                                        required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea rows="4" cols="50" placeholder="Quick Note" name="textarea" id=""
+                                    <textarea rows="4" cols="80" placeholder="Quick Note" name="order_note" id=""
                                         cols="30" rows="10"></textarea>
                                 </div>
                                 <hr>
@@ -107,7 +113,7 @@
             </div>
             <div class="col-6">
                 <div class="step last">
-                    <h3>3. Order Summary</h3>
+                    <h3>2. Order Summary</h3>
 
                     <div class="box_general summary">
                         <table class="table table-striped cart-list">
@@ -170,7 +176,8 @@
                             </label>
                         </div>
 
-                        <button class="btn_1 full-width" type="submit" name="submit">Confirm and Pay</button>
+                        <button class="btn_1 full-width" type="submit"><i
+                                class="fa-regular fa-credit-card"></i>&nbsp;&nbsp;Confirm and Pay</button>
                         <a href="{% url 'store' %}" class="btn_1 full-width cart"> <i class="fa-solid fa-cart-plus"></i>
                             &nbsp;&nbsp; Continue Shopping
                         </a>

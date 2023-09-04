@@ -5,6 +5,9 @@ from carts.models import CartItem
 from carts.views import _cart_id
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib import messages
 
 
 # Create your views here.
@@ -14,11 +17,9 @@ def store(request):
     page = request.GET.get("page")
     paged_products = paginator.get_page(page)
     sliders = Slider.objects.all()
-    staffs = Staff.objects.all()
     context = {
         "products": paged_products,
         "sliders": sliders,
-        "staffs": staffs,
     }
 
     return render(request, "store/store.html", context)
@@ -73,11 +74,31 @@ def product_detail(request, category_slug, product_slug):
 
 
 def contact(request):
+    name = request.POST.get("name")
+    message = request.POST.get("message")
+    sender = request.POST.get("email")
+    subject = f"New message from {name}."
+
+    if subject and message and sender:
+        email_message = f"{message}\n\n\nSender Email: {sender}"
+        send_mail(
+            subject,
+            email_message,
+            sender,
+            [settings.EMAIL_HOST_USER],
+            fail_silently=False,
+        )
+        success_message = "Message sent successfully!"
+        messages.success(request, success_message)
     return render(request, "contact.html")
 
 
 def about(request):
-    return render(request, "about.html")
+    staffs = Staff.objects.all()
+    context = {
+        "staffs": staffs,
+    }
+    return render(request, "about.html", context)
 
 
 def error(request):

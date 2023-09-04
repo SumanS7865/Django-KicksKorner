@@ -1,0 +1,96 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block title %}KicksKorner | Dashboard {% endblock %}
+
+
+{% block specific-css %}
+<link href="{% static 'css/about.css' %}" rel="stylesheet">
+{% endblock specific-css %}
+
+
+{% block maincontent %}
+<br><br>
+<section class="section-conten padding-y bg">
+    {% include 'accounts/alerts.html' %}
+    <div class="container">
+        <div class="row">
+            {% include 'accounts/dashboard_sidebar.html' %}
+            <main class="col-md-9">
+                <article class="card">
+                    <header class="card-header">
+                        <strong class="d-inline-block mr-3">Edit your profile</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </header>
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <img src="{{userprofile.profile_picture.url}}" alt="Profile Picture" width=70" ,
+                                style="border-radius: 50%;">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="{% url 'edit_profile' %}" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row no-gutters">
+                                        <div class="col-6 form-group pr-1">
+                                            <label>First Name</label>
+                                            {{user_form.first_name}}
+                                        </div>
+                                        <div class="col-6 form-group pl-1">
+                                            <label>Last Name</label>
+                                            {{user_form.last_name}}
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <div class="col-6 form-group pr-1">
+                                            <label>Phone Number</label>
+                                            {{user_form.phone_number}}
+                                        </div>
+                                        <div class="col-6 form-group pl-1">
+                                            <label>Profile Picture</label>
+                                            {{profile_form.profile_picture}}
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <div class="col-6 form-group pr-1">
+                                            <label>Address Line 1</label>
+                                            {{profile_form.address_line_1}}
+                                        </div>
+                                        <div class="col-6 form-group pl-1">
+                                            <label>Address Line 2</label>
+                                            {{profile_form.address_line_2}}
+                                        </div>
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <div class="col-4 form-group pr-1">
+                                            <label>City</label>
+                                            {{profile_form.city}}
+                                        </div>
+                                        <div class="col-4 form-group pl-1">
+                                            <label>State</label>
+                                            {{profile_form.state}}
+                                        </div>
+                                        <div class="col-4 form-group pl-1">
+                                            <label>Country</label>
+                                            {{profile_form.country}}
+                                        </div>
+                                    </div>
+                                    <input class="btn btn-primary" type="submit" value="Save">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+</section>
+<br><br>
+
+{% endblock maincontent %}
+
+{% block modal-advertise %}
+{% endblock modal-advertise %}
+
+{% block specific-js %}
+{% endblock specific-js %}

@@ -10,7 +10,7 @@
 
 {% block maincontent %}
 <main class="bg_gray">
-	
+
     <div class="container margin_60">
         <div class="main_title">
             <h2>Contact KicksKorner</h2>
@@ -43,36 +43,43 @@
                 </div>
             </div>
         </div>
-        <!-- /row -->				
-    </div>
-    <!-- /container -->
-<div class="bg_white">
-    <div class="container margin_60_35">
-        <h4 class="pb-3">Drop Us a Line</h4>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 add_bottom_25">
-                <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Name *">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="email" placeholder="Email *">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" style="height: 150px;" placeholder="Message *"></textarea>
-                </div>
-                <div class="form-group">
-                    <input class="btn_1 full-width" type="submit" value="Submit">
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-6 add_bottom_25">
-            <iframe class="map_contact" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39714.47749917409!2d-0.13662037019554393!3d51.52871971170425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondra%2C+Regno+Unito!5e0!3m2!1sit!2ses!4v1557824540343!5m2!1sit!2ses" style="border: 0" allowfullscreen></iframe>
-            </div>
-        </div>
         <!-- /row -->
     </div>
     <!-- /container -->
-</div>
-<!-- /bg_white -->
+    <div class="bg_white">
+        <div class="container margin_60_35">
+            {% include 'accounts/alerts.html' %}
+            <form action="{% url 'contact' %}" method="POST">
+                {% csrf_token %}
+                <h4 class="pb-3">Drop Us a Line</h4>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 add_bottom_25">
+                        <div class="form-group">
+                            <input name="name" class="form-control" type="text" placeholder="Name *">
+                        </div>
+                        <div class="form-group">
+                            <input name="email" class="form-control" type="email" placeholder="Email *">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" style="height: 150px;"
+                                placeholder="Message *"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn_1 full-width" type="submit" value="Submit">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-6 add_bottom_25">
+                        <iframe class="map_contact"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39714.47749917409!2d-0.13662037019554393!3d51.52871971170425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondra%2C+Regno+Unito!5e0!3m2!1sit!2ses!4v1557824540343!5m2!1sit!2ses"
+                            style="border: 0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <!-- /row -->
+            </form>
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /bg_white -->
 </main>
 <!--/main-->
 {% endblock maincontent %}

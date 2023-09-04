@@ -14,6 +14,8 @@ urlpatterns = [
     path("accounts/", include("members.urls")),
     path("myadmin/", include("myadmin.urls")),
     path("", include("category.urls")),
+    # ORDERS
+    path("orders/", include("orders.urls")),
 ]
 # ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 #     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
