@@ -11,7 +11,6 @@ from kickskorner.settings import (
 from django.conf.urls.static import static
 from django.conf import settings
 
-
 urlpatterns = [
     path("", views.store, name="store"),
     path(
@@ -28,6 +27,9 @@ urlpatterns = [
     path("contact", views.contact, name="contact"),
     path("about/", views.about, name="about"),
     path("error/", views.error, name="error"),
+    path(
+        "submit_review/<int:product_id>/", views.submit_review, name="submit_review"
+    ),  # Corrected URL pattern
 ]
 
 if DEBUG:

@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .forms import RegistrationForm, UserForm, UserProfileForm
-from .models import Account
+from .models import Account, UserProfile
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
 from carts.models import *
 from carts.views import _cart_id
 from orders.models import *
+from django.conf import settings
+from django.core.mail import send_mail
 
 
 # verification email
@@ -43,7 +46,6 @@ def register(request):
 
             # USER ACTIVATION
             current_site = get_current_site(request)
-            mail_subject = "please activate your account"
             message = render_to_string(
                 "accounts/account_verification_email.html",
                 {
@@ -53,9 +55,22 @@ def register(request):
                     "token": default_token_generator.make_token(user),
                 },
             )
-            to_email = email
-            send_email = EmailMessage(mail_subject, message, to=[to_email])
-            send_email.send()
+            subject = "Verify your email"
+
+            if subject and message and email:
+                send_mail(
+                    subject,
+                    message,
+                    settings.EMAIL_HOST_USER,
+                    [email],
+                )
+                messages.success(
+                    request,
+                    f"Thank you for registering with us. We have sent you a verification email to your email address {email}. Please verify it",
+                )
+
+            # send_email = EmailMessage(mail_subject, message, to=[to_email])
+            # send_email.send()
             # messages.success(request, 'Thank you for registering with us. We have sent you a verification email to your email address [test@gmail.com]. Please verify it')
             return redirect("/accounts/login/?command=verification&email=" + email)
 
@@ -161,11 +176,16 @@ def activate(request, uidb64, token):
 
 @login_required(login_url="login")
 def user_dashboard(request):
+    try:
+        userprofile = UserProfile.objects.get(user_id=request.user.id)
+    except UserProfile.DoesNotExist:
+        userprofile = None
+
     orders = Order.objects.order_by("-created_at").filter(
         user_id=request.user.id, is_ordered=True
     )
     orders_count = orders.count()
-    userprofile = UserProfile.objects.get(user_id=request.user.id)
+
     context = {
         "orders_count": orders_count,
         "userprofile": userprofile,
@@ -191,9 +211,23 @@ def forgotpassword(request):
                     "token": default_token_generator.make_token(user),
                 },
             )
-            to_email = email
-            send_email = EmailMessage(mail_subject, message, to=[to_email])
-            send_email.send()
+            # to_email = email
+            # send_email = EmailMessage(mail_subject, message, to=[to_email])
+            # send_email.send()
+
+            subject = "Reset your password"
+
+            if subject and message and email:
+                send_mail(
+                    subject,
+                    message,
+                    settings.EMAIL_HOST_USER,
+                    [email],
+                )
+                messages.success(
+                    request,
+                    f"Thank you for registering with us. We have sent you a verification email to your email address {email}. Please verify it",
+                )
 
             messages.success(
                 request, "password reset email has been set to your email address"

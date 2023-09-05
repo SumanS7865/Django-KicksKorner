@@ -29,7 +29,7 @@ class UserProfileAdmin(admin.ModelAdmin):
     def thumbnail(self, object):
         return format_html(
             '<img src="{}" width="30" style="border-radius:50%;>'.format(
-                object.prfile_picture.url
+                object.profile_picture.url
             )
         )
 

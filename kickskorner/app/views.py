@@ -8,6 +8,8 @@ from django.db.models import Q
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
+from .models import ReviewRating
+from .forms import ReviewForm
 
 
 # Create your views here.
@@ -118,3 +120,29 @@ def search(request):
     }
 
     return render(request, "store/search.html", context)
+
+
+def submit_review(request, product_id):
+    url = request.META.get("HTTP_REFERER")
+    if request.method == "POST":
+        try:
+            reviews = ReviewRating.objects.get(
+                user__id=request.user.id, product__id=product_id
+            )
+            form = ReviewForm(request.POST, instance=reviews)
+            form.save()
+            messages.success(request, "Thank you! your review has been updtated")
+            return redirect(url)
+        except ReviewRating.DoesNotExist:
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                data = ReviewRating()
+                data.subject = form.cleaned_data["subject"]
+                data.rating = form.cleaned_data["rating"]
+                data.review = form.cleaned_data["review"]
+                data.ip = request.META.get("REMOTE_ADDR")
+                data.product_id = product_id
+                data.user_id = request.user.id
+                data.save()
+            messages.success(request, "Thank you! your review has been Submitted.")
+            return redirect(url)
