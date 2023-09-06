@@ -48,35 +48,37 @@
                             <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
                                 <div class="row no-gutters">
                                     <div class="col-6 form-group pr-1">
-                                        <input name="first_name" type="text" class="form-control"
-                                            placeholder="First Name" required>
+                                        <input name="first_name" type="text" value="{{ profile.user.first_name }}"
+                                            class="form-control" placeholder="First Name" required>
                                     </div>
                                     <div class="col-6 form-group pl-1">
-                                        <input name="last_name" type="text" class="form-control" placeholder="Last Name"
-                                            required>
+                                        <input name="last_name" type="text" value="{{ profile.user.last_name }}"
+                                            class="form-control" placeholder="Last Name" required>
                                     </div>
                                 </div>
                                 <!-- /row -->
                                 <div class="form-group">
-                                    <input name="email" type="email" class="form-control" placeholder="Email" required>
+                                    <input name="email" type="email" value="{{ profile.user }}" class="form-control"
+                                        placeholder="Email" required>
                                 </div>
                                 <div class="row no-gutters">
                                     <div class="col-6 form-group pr-1">
-                                        <input name="address_line_1" type="text" class="form-control"
-                                            placeholder="Address Line 1" required>
+                                        <input name="address_line_1" type="text" value="{{ profile.address_line_1 }}"
+                                            class="form-control" placeholder="Address Line 1" required>
                                     </div>
                                     <div class="col-6 form-group pl-1">
-                                        <input name="address_line_2" type="text" class="form-control"
-                                            placeholder="Address Line 2">
+                                        <input name="address_line_2" type="text" value="{{ profile.address_line_2 }}"
+                                            class="form-control" placeholder="Address Line 2">
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
                                     <div class="col-6 form-group pr-1">
-                                        <input name="city" type="text" class="form-control" placeholder="City" required>
+                                        <input name="city" type="text" value="{{ profile.city }}" class="form-control"
+                                            placeholder="City" required>
                                     </div>
                                     <div class="col-6 form-group pl-1">
-                                        <input name="state" type="text" class="form-control" placeholder="State"
-                                            required>
+                                        <input name="state" type="text" value="{{ profile.state }}" class="form-control"
+                                            placeholder="State" required>
                                     </div>
                                 </div>
                                 <!-- /row -->
@@ -84,7 +86,10 @@
                                     <div class="col-md-12 form-group">
                                         <div class="custom-select-form">
                                             <select class="wide add_bottom_15" name="country" id="country" required>
-                                                <option value="" selected>Country</option>
+                                                {% if profile.country %}
+                                                <option selected>{{ profile.country }}</option>
+                                                {% endif %}
+                                                <option>Country</option>
                                                 <option value="Austira">Austira</option>
                                                 <option value="Brazil">Brazil</option>
                                                 <option value="Canada">Canada</option>
@@ -98,8 +103,8 @@
                                 </div>
                                 <!-- /row -->
                                 <div class="form-group">
-                                    <input name="phone" type="text" class="form-control" placeholder="Phone Number"
-                                        required>
+                                    <input name="phone" type="text" value="{{ profile.user.phone_number }}"
+                                        class="form-control" placeholder="Phone Number" required>
                                 </div>
                                 <div class="form-group">
                                     <textarea rows="4" cols="80" placeholder="Quick Note" name="order_note" id=""

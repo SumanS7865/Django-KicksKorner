@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from app.models import Product, Variation
-from .models import Cart, CartItem
+from .models import Cart, CartItem, UserProfile
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.exceptions import MultipleObjectsReturned
 from django.contrib.auth.decorators import login_required
@@ -215,6 +215,9 @@ def checkout(request, total=0, quantity=0, cart_items=None):
     tax = 0  # Set a default value for tax
     shipping = 0  # Set a default value for shipping
     grand_total = 0  # Set a default value for Grand Total
+
+    profile = UserProfile.objects.get(user=request.user)
+
     try:
         if request.user.is_authenticated:
             cart_items = CartItem.objects.filter(user=request.user, is_active=True)
@@ -237,6 +240,7 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         "tax": tax,
         "shipping": shipping,
         "grand_total": grand_total,
+        "profile": profile,
     }
 
     return render(request, "store/checkout.html", context)

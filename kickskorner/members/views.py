@@ -288,13 +288,14 @@ def my_orders(request):
 
 @login_required(login_url="login")
 def edit_profile(request):
-    userprofile = get_object_or_404(UserProfile, user=request.user)
+    userprofile, created = UserProfile.objects.get_or_create(user=request.user)
+
     if request.method == "POST":
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = UserProfileForm(
             request.POST,
             request.FILES,
-            instance=userprofile,  # Change 'request.files' to 'request.FILES'
+            instance=userprofile,
         )
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
@@ -304,6 +305,7 @@ def edit_profile(request):
     else:
         user_form = UserForm(instance=request.user)
         profile_form = UserProfileForm(instance=userprofile)
+
     context = {
         "user_form": user_form,
         "profile_form": profile_form,
