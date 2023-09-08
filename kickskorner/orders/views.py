@@ -157,9 +157,13 @@ def order_complete(request):
         ordered_products = OrderProduct.objects.filter(order_id=order.id)
 
         subtotal = 0
+        pre_total = 0
+
         for i in ordered_products:
+            pre_total = i.product_price * i.quantity
             subtotal += i.product_price * i.quantity
             shipping = 50
+            i.pre_total = pre_total
 
         payment = Payment.objects.get(payment_id=transID)
 
@@ -171,6 +175,7 @@ def order_complete(request):
             "payment": payment,
             "subtotal": subtotal,
             "shipping": shipping,
+            "pre_total": pre_total,
         }
 
         return render(request, "orders/order_complete.html", context)

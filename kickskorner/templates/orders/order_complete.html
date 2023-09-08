@@ -82,6 +82,7 @@
                             <th scope="col">Products</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Product Price</th>
+                            <th scope="col">Total</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,6 +101,7 @@
                             </td>
                             <td>{{item.quantity}}</td>
                             <td>Rs. {{item.product.selling_price}}</td>
+                            <td>Rs. {{item.pre_total}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -124,7 +126,7 @@
                         </li>
                     </ul>
                     <p class="text-dark float-start"><span class="text-dark fw-bold me-3">&nbsp;&nbsp;&nbsp;&nbsp;Total
-                            Amount:</span><span>{{order.grand_total}}</span></p>
+                            Amount:</span><span>{{order.order_total}}</span></p>
                 </div>
             </div>
             <hr>
