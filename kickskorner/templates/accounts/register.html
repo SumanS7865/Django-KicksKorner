@@ -12,8 +12,8 @@
 
 {% block maincontent %}
 <main class="bg_gray">
-	
-		
+
+
 	<div class="container margin_30">
 		<div class="page_header">
 			<div class="breadcrumbs">
@@ -21,101 +21,103 @@
 					<li><a href="#">Home</a></li>
 					<li>Accounts</li>
 				</ul>
+			</div>
+			<h1>Create an Account</h1>
 		</div>
-		<h1>Create an Account</h1>
-	</div>
-	<!-- /page_header -->
-			<div class="row justify-content-center">
+		<!-- /page_header -->
+		<div class="row justify-content-center">
 			<div class="col-xl-6 col-lg-6 col-md-8">
 				<div class="box_account">
 					<h3 class="new_client">Signup</h3> <small class="float-right pt-2">* Required Fields</small>
 					<div class="form_container">
 						{% include 'accounts/alerts.html' %}
 						<br>
-					<form action="{% url 'register' %}" method="POST">
-						{% csrf_token %}
+						<form action="{% url 'register' %}" method="POST">
+							{% csrf_token %}
 
-						<div class="row no-gutters">
-							<div class="col-6 pr-1">
-								<div class="form-group">
-									<label>First Name:</label><br>
-									{{form.first_name}}
+							<div class="row no-gutters">
+								<div class="col-6 pr-1">
+									<div class="form-group">
+										<label>First Name:*</label><br>
+										{{form.first_name}}
+									</div>
+								</div>
+								<div class="col-6 pl-1">
+									<div class="form-group">
+										<label>Last Name:*</label><br>
+										{{ form.last_name }}
+									</div>
 								</div>
 							</div>
-							<div class="col-6 pl-1">
-								<div class="form-group">
-									<label>Last Name:</label><br>
-									{{ form.last_name }}
+							<div class="row no-gutters">
+								<div class="col-6 pr-1">
+									<div class="form-group">
+										<label>Email Address:*</label><br>
+										{{form.email}}
+									</div>
+								</div>
+								<div class="col-6 pl-1">
+									<div class="form-group">
+										<label>Phone Number:*</label><br>
+										{{form.phone_number}}
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row no-gutters">
-							<div class="col-6 pr-1">
-								<div class="form-group">
-									<label>Email Address:</label><br>
-									{{form.email}}
+							<div class="row no-gutters">
+								<div class="col-6 pr-1">
+									<div class="form-group">
+										<label>Create Password:*</label><br>
+										{{form.password}}
+									</div>
 								</div>
-							</div>
-							<div class="col-6 pl-1">
-								<div class="form-group">
-									<label>Phone Number:</label><br>
-									{{form.phone_number}}
+								<div class="col-6 pl-1">
+									<div class="form-group">
+										<label>Repeat Password:*</label><br>
+										{{form.confirm_password}}
+									</div>
 								</div>
+								{{ form.password.errors }}
+								{{ form.phone_number.errors }}
+								{{ form.email.errors }}
+								{{ form.non_field_errors }}
 							</div>
-						</div>
-						<div class="row no-gutters">
-							<div class="col-6 pr-1">
-								<div class="form-group">
-									<label>Create Password:</label><br>
-									{{form.password}}
-								</div>
+							<hr>
+							<hr>
+							<div class="form-group">
+								<label class="container_check">Accept <a href="#0">Terms and conditions</a>
+									<input type="checkbox">
+									<span class="checkmark"></span>
+								</label>
 							</div>
-							<div class="col-6 pl-1">
-								<div class="form-group">
-									<label>Repeat Password:</label><br>
-									{{form.confirm_password}}
-								</div>
+							<div class="text-center">
+								<input type="submit" value="Sign Up" class="btn_1 full-width">
+								<br>
+								Already have an Account? <a href="{% url 'login' %}">login</a>
 							</div>
-							{{ form.email.errors }}
-							{{ form.non_field_errors }}
-						</div>
-						<hr>
-						<hr>
-						<div class="form-group">
-							<label class="container_check">Accept <a href="#0">Terms and conditions</a>
-								<input type="checkbox">
-								<span class="checkmark"></span>
-							</label>
-						</div>
-						<div class="text-center">
-                            <input type="submit" value="Sign Up" class="btn_1 full-width">
-                            <br>
-                            Already have an Account? <a href="{% url 'login' %}">login</a>
-                        </div>
-                        
 
-					</form>
-					<!-- /form_container -->
+
+						</form>
+						<!-- /form_container -->
+					</div>
+					<!-- /box_account -->
 				</div>
-				<!-- /box_account -->
 			</div>
-		</div>
-		<!-- /row -->
+			<!-- /row -->
 		</div>
 		<!-- /container -->
-	</main>
-	<!--/main-->
+</main>
+<!--/main-->
 {% endblock maincontent %}
 
 
 {% block specific-js %}
 <script>
-    // Client type Panel
-		$('input[name="client_type"]').on("click", function() {
-		    var inputValue = $(this).attr("value");
-		    var targetBox = $("." + inputValue);
-		    $(".box").not(targetBox).hide();
-		    $(targetBox).show();
-		});
+	// Client type Panel
+	$('input[name="client_type"]').on("click", function () {
+		var inputValue = $(this).attr("value");
+		var targetBox = $("." + inputValue);
+		$(".box").not(targetBox).hide();
+		$(targetBox).show();
+	});
 </script>
 {% endblock specific-js %}

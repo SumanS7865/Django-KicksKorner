@@ -49,10 +49,10 @@ def payments(request):
         orderproduct.variations.set(product_variation)
         orderproduct.save()
 
-    # reduce the quantity of the sold products
-    product = Product.objects.get(id=item.product_id)
-    product.stock -= item.quantity
-    product.save()
+        # reduce the quantity of the sold products
+        product = Product.objects.get(id=item.product_id)
+        product.stock -= item.quantity
+        product.save()
 
     # clear cart
     CartItem.objects.filter(user=request.user).delete()
