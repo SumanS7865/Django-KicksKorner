@@ -197,7 +197,11 @@
                     <textarea class="form-control" name="review" rows="4"></textarea>
                     <br>
                     {% if user.is_authenticated %}
+                    {% if orderproduct %}
                     <input type="submit" value="Submit Review" class="btn_1">
+                    {% else %}
+                    <p>You must purchase this product to post review.</p>
+                    {% endif %}
                     {% else %}
                     <p>You must be logged in to post a review. <span><a href="{% url 'login' %}">Login now</a></span>
                     </p>
@@ -209,31 +213,29 @@
             <header class="section-heading ml-5">
                 <h3>Customer Reviews</h3>
             </header>
+            {% for review in reviews %}
             <div class="container mb-0">
                 <div class="row">
                     <div class="col-lg-12">
-                        <hr />
+                        <hr>
                         <div class="review-block">
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <img src="{% static 'assets/img/logo/github.png' %}" alt="User Profile Picture"
-                                        width="50" height="50" class="avatar" style="border-radius: 50%;">
-                                    <div class="review-block-name"><a href="#">nktailor</a></div>
-                                    <div class="review-block-date">January 29, 2016<br />1 day ago</div>
+                                    <div class="review-block-name"><a href="#">{{review.user.full_name}}</a></div>
+                                    <div class="review-block-date">January 29, 2016{{review.updated_at}}<br>
+                                    </div>
                                 </div>
                                 <div class="col-sm-10">
-                                    <div class="review-block-title">this was nice in buy</div>
-                                    <div class="review-block-description">this was nice in buy. this was nice in
-                                        buy. this was nice in buy. this was nice in buy this was nice in buy this
-                                        was nice in buy this was nice in buy this was nice in buy</div>
+                                    <div class="review-block-title">{{review.subject}}</div>
+                                    <div class="review-block-description">{{review.review}}</div>
                                 </div>
                             </div>
                             <hr />
                         </div>
                     </div>
                 </div>
-
             </div> <!-- /container -->
+            {% endfor %}
         </div>
     </div>
 
