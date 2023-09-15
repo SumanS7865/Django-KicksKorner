@@ -60,9 +60,6 @@
                     <!-- /page_header -->
                     <div class="prod_info">
                         <h1>{{single_product.product_name}}</h1>
-                        <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
-                                class="icon-star voted"></i><i class="icon-star voted"></i><i
-                                class="icon-star"></i><em>4 reviews</em></span>
                         <p><small>{{single_product.product_name}}</small><br>{{single_product.description}}</p>
                         <div class="prod_options">
                             <div class="row">
@@ -154,91 +151,6 @@
         <!-- /row -->
     </div>
     <!-- /container -->
-
-    <div class="row">
-        <div class="col-md-9">
-
-            <form action="{% url 'submit_review' single_product.id %}" method="POST">
-                {% csrf_token %}
-                <h5>Write Your Review</h5>
-                <div>
-                    <!-- rating starts -->
-
-                    <label for="">
-                        How do you rate this product?
-                    </label>
-                    <br>
-                    <div class="rate">
-                        <input type="radio" name="rating" id="rating10" value="5" required><label for="rating10"
-                            title="5"></label>
-                        <input type="radio" name="rating" id="rating9" value="4.5" required><label for="rating9"
-                            title="4.5" class="half"></label>
-                        <input type="radio" name="rating" id="rating8" value="4" required><label for="rating8"
-                            title="4"></label>
-                        <input type="radio" name="rating" id="rating7" value="3.5" required><label for="rating7"
-                            title="3.5" class="half"></label>
-                        <input type="radio" name="rating" id="rating6" value="3" required><label for="rating6"
-                            title="3"></label>
-                        <input type="radio" name="rating" id="rating5" value="2.5" required><label for="rating5"
-                            title="2.5" class="half"></label>
-                        <input type="radio" name="rating" id="rating4" value="2" required><label for="rating4"
-                            title="2"></label>
-                        <input type="radio" name="rating" id="rating3" value="1.5" required><label for="rating3"
-                            title="1.5" class="half"></label>
-                        <input type="radio" name="rating" id="rating2" value="1" required><label for="rating2"
-                            title="1"></label>
-                        <input type="radio" name="rating" id="rating1" value=".5" required><label for="rating1"
-                            title=".5" class="half"></label>
-                    </div><br>
-                    Title of your review:
-                    <input type="text" class="form-control" name="subject">
-                    <br>
-                    Your review:
-                    <textarea class="form-control" name="review" rows="4"></textarea>
-                    <br>
-                    {% if user.is_authenticated %}
-                    {% if orderproduct %}
-                    <input type="submit" value="Submit Review" class="btn_1">
-                    {% else %}
-                    <p>You must purchase this product to post review.</p>
-                    {% endif %}
-                    {% else %}
-                    <p>You must be logged in to post a review. <span><a href="{% url 'login' %}">Login now</a></span>
-                    </p>
-                    {% endif %}
-                </div>
-                {% include 'accounts/alerts.html' %}
-            </form>
-            <br>
-            <header class="section-heading ml-5">
-                <h3>Customer Reviews</h3>
-            </header>
-            {% for review in reviews %}
-            <div class="container mb-0">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <hr>
-                        <div class="review-block">
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <div class="review-block-name"><a href="#">{{review.user.full_name}}</a></div>
-                                    <div class="review-block-date">January 29, 2016{{review.updated_at}}<br>
-                                    </div>
-                                </div>
-                                <div class="col-sm-10">
-                                    <div class="review-block-title">{{review.subject}}</div>
-                                    <div class="review-block-description">{{review.review}}</div>
-                                </div>
-                            </div>
-                            <hr />
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- /container -->
-            {% endfor %}
-        </div>
-    </div>
-
     <div class="container margin_60_35">
         <div class="main_title">
             <h2>Related</h2>
@@ -258,8 +170,7 @@
                                 alt="">
                         </a>
                     </figure>
-                    <div class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i
-                            class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i></div>
+
                     <a href="{{product.get_url}}">
                         <h3>{{ product.product_name }}</h3>
                     </a>
